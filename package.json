@@ -1,0 +1,28 @@
+{
+  "name": "ios-boiler-template",
+  "version": "1.0.0",
+  "description": "Boilerplate IOS with clean architecture, MMKV, RxSwift, Moya, Task, ...",
+  "author": "Ngoc Le lhngoc2497@gmail.com",
+  "license": "MIT",
+  "files": [
+    "template",
+    "!template/vendor/",
+    "!template/ios/Pods/"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ngocle2497/BoilerplateIOS"
+  },
+  "keywords": [
+    "ios",
+    "mmkv",
+    "clean-architecture",
+    "template",
+    "boilerplate",
+    "starter"
+  ],
+  "bugs": {
+    "url": "https://github.com/ngocle2497/BoilerplateIOS/issues"
+  },
+  "homepage": "https://github.com/ngocle2497/BoilerplateIOS#readme"
+}

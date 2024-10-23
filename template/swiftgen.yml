@@ -1,0 +1,28 @@
+strings:
+  inputs: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Localizable/en.lproj
+  outputs:
+    - templateName: structured-swift5
+      output: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/Strings.swift
+      params:
+        enumName: MLocalize
+        lookupFunction: localized
+xcassets:
+  - inputs: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/Image-Dev.xcassets
+    outputs:
+        output: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/Images.swift
+        templatePath: ${PROJECT_DIR}/swift5.stencil
+        params:
+            enumName: MImages
+            imageTypeName: MImageType
+            imageAliasName: MImageAlias
+
+  - inputs: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/Base.xcassets
+    outputs:
+        output: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/BaseAsset.swift
+        templatePath: ${PROJECT_DIR}/swift5.stencil
+        params:
+            enumName: MBaseAsset
+            imageTypeName: MBaseImageType
+            imageAliasName: MBaseImageAlias
+
+

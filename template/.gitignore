@@ -1,0 +1,7 @@
+Pods/
+.DS_STORE
+tmp.xcconfig
+xcuserdata
+Configuration.swift
+Generated
+!Generated/.gitkeep

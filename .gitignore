@@ -1,0 +1,9 @@
+*.DS_Store
+template/ios/Pods
+ios/Pods/
+vendor/
+ios/prebuild.log
+ios/tmp.xcconfig
+.xcode.env.local
+Gemfile.lock
+Podfile.lock
