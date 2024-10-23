@@ -12,6 +12,7 @@ target 'HelloWorld' do
   pod 'Moya'
   pod 'SwiftGen'
   pod 'SDWebImage'
+  pod 'CryptoSwift'
   pod 'IQKeyboardManagerSwift'
 end
 
