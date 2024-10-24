@@ -7,3 +7,4 @@ ios/tmp.xcconfig
 .xcode.env.local
 Gemfile.lock
 Podfile.lock
+*.xcworkspace/

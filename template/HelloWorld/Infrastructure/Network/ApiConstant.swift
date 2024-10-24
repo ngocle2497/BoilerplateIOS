@@ -3,25 +3,29 @@ import Moya
 
 enum API {
     case users
-    case pushFile
+}
+
+final class ApiConstant {
+    static var shared = ApiConstant()
+    var baseUrl: String = Configuration.API_URL
+    
+    func setBaseUrl(with url: String) {
+        baseUrl = url
+    }
 }
 
 extension API: TargetType {
     var baseURL: URL {
         switch self {
         case .users:
-            return URL(string: "https://randomuser.me")!
-        case .pushFile:
-            return URL(string: "https://domain.file.api")!
+            return URL(string: ApiConstant.shared.baseUrl)!
         }
     }
     
     var path: String {
         switch self {
         case .users:
-            return "/api1"
-        case .pushFile:
-            return "/file"
+            return "/api"
         }
     }
     
@@ -37,9 +41,7 @@ extension API: TargetType {
         let encoding: ParameterEncoding = URLEncoding.queryString
         switch self {
         case .users:
-            return .requestParameters(parameters: ["results": 2], encoding: encoding)
-        case .pushFile:
-            return .requestParameters(parameters: parameters, encoding: encoding)
+            return .requestParameters(parameters: ["results": 50], encoding: encoding)
         }
     }
     
@@ -48,8 +50,6 @@ extension API: TargetType {
         switch self {
         case .users:
             return  defaultHeaders
-        case .pushFile:
-            return ["Content-Type": "multipart/form-data"]
         }
     }
 }

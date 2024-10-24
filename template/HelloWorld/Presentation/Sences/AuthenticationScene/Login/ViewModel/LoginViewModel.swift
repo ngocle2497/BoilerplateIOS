@@ -15,10 +15,8 @@ protocol LoginViewModelOutput {
 }
 
 final class LoginViewModel:ViewModel, LoginViewModelInput, LoginViewModelOutput {
-    
     private let actions: LoginViewModelActions?
     // MARK: - Output
-    
     
     // MARK: - Init
     init(actions: LoginViewModelActions?) {

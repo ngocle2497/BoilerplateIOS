@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		120AEF142CCA3EC100DB1611 /* UserTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 120AEF122CCA3EC100DB1611 /* UserTableViewCell.swift */; };
+		120AEF152CCA3EC100DB1611 /* UserTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 120AEF132CCA3EC100DB1611 /* UserTableViewCell.xib */; };
+		121AF25B2CCA39D300D1A07C /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 121AF25A2CCA39D300D1A07C /* NetworkingService.swift */; };
 		122721852CBF6DDB000C5E32 /* Image-Prod.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 842CD65C2BBC69BB00984066 /* Image-Prod.xcassets */; };
 		1227218B2CBF7A0D000C5E32 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227218A2CBF7A0D000C5E32 /* Configuration.swift */; };
 		1227218D2CBF92B4000C5E32 /* Base.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1227218C2CBF92B4000C5E32 /* Base.xcassets */; };
@@ -76,6 +79,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		120AEF122CCA3EC100DB1611 /* UserTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTableViewCell.swift; sourceTree = "<group>"; };
+		120AEF132CCA3EC100DB1611 /* UserTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserTableViewCell.xib; sourceTree = "<group>"; };
+		121AF25A2CCA39D300D1A07C /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		122721862CBF6E20000C5E32 /* Prod.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		1227218A2CBF7A0D000C5E32 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		1227218C2CBF92B4000C5E32 /* Base.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Base.xcassets; sourceTree = "<group>"; };
@@ -163,6 +169,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		120AEF0D2CCA3E3800DB1611 /* UserCell */ = {
+			isa = PBXGroup;
+			children = (
+				120AEF122CCA3EC100DB1611 /* UserTableViewCell.swift */,
+				120AEF132CCA3EC100DB1611 /* UserTableViewCell.xib */,
+			);
+			path = UserCell;
+			sourceTree = "<group>";
+		};
+		121AF2582CCA39BB00D1A07C /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				121AF2592CCA39C800D1A07C /* NetworkingService */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		121AF2592CCA39C800D1A07C /* NetworkingService */ = {
+			isa = PBXGroup;
+			children = (
+				121AF25A2CCA39D300D1A07C /* NetworkingService.swift */,
+			);
+			path = NetworkingService;
+			sourceTree = "<group>";
+		};
 		1294D1552CC7647F00401985 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +323,7 @@
 		12A3648A2BBD30E20064FCE2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				120AEF0D2CCA3E3800DB1611 /* UserCell */,
 				12A3648E2BBD31580064FCE2 /* HomeViewController.swift */,
 				12A3648F2BBD31580064FCE2 /* HomeViewController.xib */,
 			);
@@ -509,6 +541,7 @@
 		842CD6022BBC60CD00984066 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				121AF2582CCA39BB00D1A07C /* Interfaces */,
 				840292D42BBC6D75004EE551 /* Networking */,
 				840292D12BBC6D5F004EE551 /* Repositories */,
 			);
@@ -748,6 +781,7 @@
 				12A3649D2BBD36660064FCE2 /* RegisterViewController.xib in Resources */,
 				840292E92BBC70EB004EE551 /* DefaultLaunch.storyboard in Resources */,
 				122721852CBF6DDB000C5E32 /* Image-Prod.xcassets in Resources */,
+				120AEF152CCA3EC100DB1611 /* UserTableViewCell.xib in Resources */,
 				12A364802BBD11FC0064FCE2 /* LoginViewController.xib in Resources */,
 				840292E72BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf in Resources */,
 				840292E82BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf in Resources */,
@@ -889,6 +923,7 @@
 				842CD6322BBC669100984066 /* LocalStorage.swift in Sources */,
 				842CD64A2BBC686C00984066 /* String+Utilities.swift in Sources */,
 				1289A6AC2CC6379B00F950BD /* ListView+Utilities.swift in Sources */,
+				120AEF142CCA3EC100DB1611 /* UserTableViewCell.swift in Sources */,
 				842CD60E2BBC62FB00984066 /* AppAppearance.swift in Sources */,
 				840292D72BBC6D89004EE551 /* UsersResponseDTO+Mapping.swift in Sources */,
 				12A364952BBD32130064FCE2 /* AuthorizedSceneDIContainer.swift in Sources */,
@@ -896,6 +931,7 @@
 				12A364862BBD12980064FCE2 /* AuthenticationFlowCoordinator.swift in Sources */,
 				840292D32BBC6D67004EE551 /* UserRepositoriesImpl.swift in Sources */,
 				842CD6192BBC642C00984066 /* StartUpFlowCoordinator.swift in Sources */,
+				121AF25B2CCA39D300D1A07C /* NetworkingService.swift in Sources */,
 				12A3649A2BBD35820064FCE2 /* RegisterViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

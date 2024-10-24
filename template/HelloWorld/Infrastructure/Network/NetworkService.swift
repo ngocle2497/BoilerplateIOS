@@ -27,9 +27,11 @@ enum RequestResult<T: Codable> {
     case failure(BaseError)
 }
 
-class NetworkService {
+class NetworkService: NetworkingService {
     
-    static func request<T: Codable>(_ route: API, type: T.Type) async -> RequestResult<T>  {
+    static var shared = NetworkService()
+    
+    func request<T: Codable>(_ route: API, type: T.Type) async -> RequestResult<T>  {
         do {
             let response = try await NetworkManager.shared.getAPIProvider(type: API.self).async.request(route, type: type.self)
             return .success(ResponseBase<T>(code: 200, data: response))
@@ -39,7 +41,6 @@ class NetworkService {
                     return .failure(.init(code: -100, message: error.localizedDescription))
                 }
                 
-                // Error from request
                 return .failure(.init(code: -100, message: httpError.error.description))
             }
             
