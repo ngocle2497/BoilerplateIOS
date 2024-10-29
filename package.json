@@ -1,6 +1,6 @@
 {
   "name": "ios-boiler-template",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "Boilerplate IOS with clean architecture, MMKV, RxSwift, Moya, Task, ...",
   "author": "Ngoc Le lhngoc2497@gmail.com",
   "license": "MIT",
