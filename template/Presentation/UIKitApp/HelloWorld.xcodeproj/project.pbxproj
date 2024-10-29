@@ -44,7 +44,6 @@
 		842CD5F42BBC5C5600984066 /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 842CD5F32BBC5C5600984066 /* Base */; };
 		842CD6052BBC613A00984066 /* swiftgen.yml in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6042BBC613A00984066 /* swiftgen.yml */; };
 		842CD6072BBC614B00984066 /* swift5.stencil in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6062BBC614B00984066 /* swift5.stencil */; };
-		842CD60E2BBC62FB00984066 /* AppAppearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD60D2BBC62FB00984066 /* AppAppearance.swift */; };
 		842CD6102BBC630E00984066 /* AppFlowCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD60F2BBC630E00984066 /* AppFlowCoordinator.swift */; };
 		842CD6132BBC637800984066 /* AppDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6122BBC637800984066 /* AppDIContainer.swift */; };
 		842CD6152BBC639A00984066 /* StartUpSceneDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6142BBC639A00984066 /* StartUpSceneDIContainer.swift */; };
@@ -169,7 +168,6 @@
 		842CD6062BBC614B00984066 /* swift5.stencil */ = {isa = PBXFileReference; lastKnownFileType = text; path = swift5.stencil; sourceTree = "<group>"; };
 		842CD6092BBC61F000984066 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		842CD60A2BBC623F00984066 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
-		842CD60D2BBC62FB00984066 /* AppAppearance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppAppearance.swift; sourceTree = "<group>"; };
 		842CD60F2BBC630E00984066 /* AppFlowCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppFlowCoordinator.swift; sourceTree = "<group>"; };
 		842CD6122BBC637800984066 /* AppDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDIContainer.swift; sourceTree = "<group>"; };
 		842CD6142BBC639A00984066 /* StartUpSceneDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartUpSceneDIContainer.swift; sourceTree = "<group>"; };
@@ -459,7 +457,6 @@
 			children = (
 				842CD5E72BBC5C5500984066 /* AppDelegate.swift */,
 				842CD5E92BBC5C5500984066 /* SceneDelegate.swift */,
-				842CD60D2BBC62FB00984066 /* AppAppearance.swift */,
 				842CD60F2BBC630E00984066 /* AppFlowCoordinator.swift */,
 				842CD6112BBC636400984066 /* DIContainer */,
 			);
@@ -919,7 +916,6 @@
 				842CD64A2BBC686C00984066 /* String+Utilities.swift in Sources */,
 				1289A6AC2CC6379B00F950BD /* ListView+Utilities.swift in Sources */,
 				120AEF142CCA3EC100DB1611 /* UserTableViewCell.swift in Sources */,
-				842CD60E2BBC62FB00984066 /* AppAppearance.swift in Sources */,
 				12A364952BBD32130064FCE2 /* AuthorizedSceneDIContainer.swift in Sources */,
 				12A364862BBD12980064FCE2 /* AuthenticationFlow.swift in Sources */,
 				842CD6192BBC642C00984066 /* StartUpFlow.swift in Sources */,

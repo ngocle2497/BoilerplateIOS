@@ -98,8 +98,6 @@ struct LocalStorage {
     
     private init() {
         MMKV.initialize(rootDir: nil)
-        self.instance = MMKV(mmapID: "LocalStorage", cryptKey: "ABCB".data(using: .utf8), mode: .singleProcess)
+        self.instance = MMKV(mmapID: "LocalStorage", cryptKey: "HelloWorld".data(using: .utf8), mode: .singleProcess)
     }
-    
-    
 }
