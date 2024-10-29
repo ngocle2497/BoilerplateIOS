@@ -1,6 +1,6 @@
 {
   "name": "ios-boiler-template",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Boilerplate IOS with clean architecture, MMKV, RxSwift, Moya, Task, ...",
   "author": "Ngoc Le lhngoc2497@gmail.com",
   "license": "MIT",
@@ -8,6 +8,9 @@
     "template",
     "template.config.js",
     "!template/HelloWorld.xcworkspace",
+    "!template/Data.xcworkspace",
+    "!template/Domain.xcworkspace",
+    "!template/Infrastructure.xcworkspace",
     "!template/vendor/",
     "!template/ios/Pods/"
   ],

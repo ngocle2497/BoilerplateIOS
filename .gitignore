@@ -1,5 +1,5 @@
 *.DS_Store
-template/ios/Pods
+template/*/**/Pods
 ios/Pods/
 vendor/
 ios/prebuild.log
