@@ -1,14 +1,14 @@
 //
-//  DataTests.swift
-//  DataTests
+//  AdapterTests.swift
+//  AdapterTests
 //
-//  Created by Ngoc H. Le on 29/10/24.
+//  Created by Ngoc H. Le on 30/10/24.
 //
 
 import XCTest
-@testable import Data
+@testable import Adapter
 
-class DataTests: XCTestCase {
+final class AdapterTests: XCTestCase {
 
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.

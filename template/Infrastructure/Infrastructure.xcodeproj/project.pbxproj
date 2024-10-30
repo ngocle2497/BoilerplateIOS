@@ -14,8 +14,9 @@
 		127C897A2CD077C400DAD87C /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C89792CD077C400DAD87C /* HttpStatusCode.swift */; };
 		127C897C2CD077CA00DAD87C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C897B2CD077CA00DAD87C /* NetworkManager.swift */; };
 		127C897E2CD077D000DAD87C /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C897D2CD077D000DAD87C /* NetworkService.swift */; };
-		12F84BB12CD097DF00146913 /* Data.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 12F84BA92CD097AA00146913 /* Data.framework */; };
-		12F84BB22CD097DF00146913 /* Data.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 12F84BA92CD097AA00146913 /* Data.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		128C7A2D2CD21649009602B1 /* Adapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C7A2C2CD21649009602B1 /* Adapter.framework */; };
+		128C7A2E2CD21649009602B1 /* Adapter.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 128C7A2C2CD21649009602B1 /* Adapter.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		129F20252CD20E0D00D80037 /* MmkvStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F20242CD20E0D00D80037 /* MmkvStorage.swift */; };
 		938D120CBD6341BB3C7EC5E1 /* Pods_Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 86F06375DFE1FFBB32B8C8E1 /* Pods_Infrastructure.framework */; };
 		B9120C95A765024A70B23F3A /* Pods_Infrastructure_InfrastructureTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7CB7EA1108E439545AA341A8 /* Pods_Infrastructure_InfrastructureTests.framework */; };
 /* End PBXBuildFile section */
@@ -28,30 +29,16 @@
 			remoteGlobalIDString = 127C895D2CD076BC00DAD87C;
 			remoteInfo = Infrastructure;
 		};
-		12F84BA82CD097AA00146913 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 12F84BA32CD097AA00146913 /* Data.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 127C89892CD0781600DAD87C;
-			remoteInfo = Data;
-		};
-		12F84BAA2CD097AA00146913 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 12F84BA32CD097AA00146913 /* Data.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 127C89912CD0781600DAD87C;
-			remoteInfo = DataTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		12F84BB32CD097DF00146913 /* Embed Frameworks */ = {
+		128C7A2F2CD21649009602B1 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				12F84BB22CD097DF00146913 /* Data.framework in Embed Frameworks */,
+				128C7A2E2CD21649009602B1 /* Adapter.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -67,7 +54,8 @@
 		127C89792CD077C400DAD87C /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		127C897B2CD077CA00DAD87C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		127C897D2CD077D000DAD87C /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
-		12F84BA32CD097AA00146913 /* Data.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Data.xcodeproj; path = ../Data/Data.xcodeproj; sourceTree = "<group>"; };
+		128C7A2C2CD21649009602B1 /* Adapter.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Adapter.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		129F20242CD20E0D00D80037 /* MmkvStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MmkvStorage.swift; sourceTree = "<group>"; };
 		56E7014964D88749205FC086 /* Pods-Infrastructure-InfrastructureTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Infrastructure-InfrastructureTests.debug.xcconfig"; path = "Target Support Files/Pods-Infrastructure-InfrastructureTests/Pods-Infrastructure-InfrastructureTests.debug.xcconfig"; sourceTree = "<group>"; };
 		691714AFF01E5BEBA951A68D /* Pods-Infrastructure-InfrastructureTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Infrastructure-InfrastructureTests.release.xcconfig"; path = "Target Support Files/Pods-Infrastructure-InfrastructureTests/Pods-Infrastructure-InfrastructureTests.release.xcconfig"; sourceTree = "<group>"; };
 		7CB7EA1108E439545AA341A8 /* Pods_Infrastructure_InfrastructureTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Infrastructure_InfrastructureTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -81,7 +69,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				12F84BB12CD097DF00146913 /* Data.framework in Frameworks */,
+				128C7A2D2CD21649009602B1 /* Adapter.framework in Frameworks */,
 				938D120CBD6341BB3C7EC5E1 /* Pods_Infrastructure.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -101,7 +89,7 @@
 		0346A1BE5B0EE44761DC047B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				12F84BA32CD097AA00146913 /* Data.xcodeproj */,
+				128C7A2C2CD21649009602B1 /* Adapter.framework */,
 				86F06375DFE1FFBB32B8C8E1 /* Pods_Infrastructure.framework */,
 				7CB7EA1108E439545AA341A8 /* Pods_Infrastructure_InfrastructureTests.framework */,
 			);
@@ -131,6 +119,7 @@
 		127C89602CD076BC00DAD87C /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				129F20212CD20DF800D80037 /* LocalStorage */,
 				127C89762CD076D700DAD87C /* Network */,
 				127C89612CD076BC00DAD87C /* Infrastructure.h */,
 			);
@@ -156,13 +145,12 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		12F84BA42CD097AA00146913 /* Products */ = {
+		129F20212CD20DF800D80037 /* LocalStorage */ = {
 			isa = PBXGroup;
 			children = (
-				12F84BA92CD097AA00146913 /* Data.framework */,
-				12F84BAB2CD097AA00146913 /* DataTests.xctest */,
+				129F20242CD20E0D00D80037 /* MmkvStorage.swift */,
 			);
-			name = Products;
+			path = LocalStorage;
 			sourceTree = "<group>";
 		};
 		277106BEB932E6838F8399A1 /* Pods */ = {
@@ -199,7 +187,7 @@
 				127C895A2CD076BC00DAD87C /* Sources */,
 				127C895B2CD076BC00DAD87C /* Frameworks */,
 				127C895C2CD076BC00DAD87C /* Resources */,
-				12F84BB32CD097DF00146913 /* Embed Frameworks */,
+				128C7A2F2CD21649009602B1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -260,12 +248,6 @@
 			mainGroup = 127C89542CD076BC00DAD87C;
 			productRefGroup = 127C895F2CD076BC00DAD87C /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 12F84BA42CD097AA00146913 /* Products */;
-					ProjectRef = 12F84BA32CD097AA00146913 /* Data.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				127C895D2CD076BC00DAD87C /* Infrastructure */,
@@ -273,23 +255,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		12F84BA92CD097AA00146913 /* Data.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = Data.framework;
-			remoteRef = 12F84BA82CD097AA00146913 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		12F84BAB2CD097AA00146913 /* DataTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = DataTests.xctest;
-			remoteRef = 12F84BAA2CD097AA00146913 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		127C895C2CD076BC00DAD87C /* Resources */ = {
@@ -377,6 +342,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				129F20252CD20E0D00D80037 /* MmkvStorage.swift in Sources */,
 				127C897C2CD077CA00DAD87C /* NetworkManager.swift in Sources */,
 				127C897A2CD077C400DAD87C /* HttpStatusCode.swift in Sources */,
 				127C897E2CD077D000DAD87C /* NetworkService.swift in Sources */,

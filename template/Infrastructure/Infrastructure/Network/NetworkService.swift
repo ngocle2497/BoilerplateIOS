@@ -1,32 +1,21 @@
 import Foundation
-import RxSwift
-import Moya
 import Alamofire
-import Data
-
-struct HTTPResponseError: Error {
-    let error: Response
-}
+import Adapter
 
 
 public class NetworkService: NetworkingService {
     public static var shared = NetworkService()
-
-    public func request<T>(_ route: ApiEndpoint, type: T.Type) async -> Result<ResponseBase<T>, BaseError> where T : Decodable, T : Encodable {
-        
-        do {
-            let response = try await NetworkManager.shared.getAPIProvider(type: ApiEndpoint.self).async.request(route, type: type.self)
-            return .success(ResponseBase<T>(code: 200, data: response))
-        } catch  {
-            guard let error = error as? MoyaError else {
-                guard let httpError = error as? HTTPResponseError else {
-                    return .failure(.init(code: -100, message: error.localizedDescription))
-                }
-                
-                return .failure(.init(code: -100, message: httpError.error.description))
+    
+    public func request<T: Codable>(_ route: ApiEndpoint, type: T.Type, errorType: T.Type?) async  -> ResultWithCancel<ResponseBase<T>, BaseError<T>> where T : Decodable, T : Encodable {
+        let result =  await NetworkManager.shared.getNetworkSession().request(route, type: type.self, typeError: errorType)
+        switch result {
+        case .success(let data):
+            return .success(.init(code: HttpStatusCode.OK.rawValue, data: data))
+        case .failure(let error):
+            if error.code == HttpStatusCode.CANCELED.rawValue {
+                return .canceled
             }
-            
-            return .failure(.init(code: -100, message: error.localizedDescription))
+            return .failure(.init(code: error.code, message: error.message, error: error.error))
         }
     }
 }

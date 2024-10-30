@@ -1,6 +1,5 @@
 import Foundation
-import Data
-import Moya
+import Adapter
 import Alamofire
 
 
@@ -15,17 +14,17 @@ public final class ApiConstant {
     }
 }
 
-extension ApiEndpoint: TargetType {
-    public var baseURL: URL {
+extension ApiEndpoint {
+    public var baseURL: String {
         switch self {
         case .users:
-            return URL(string: ApiConstant.shared.baseUrl)!
+            return ApiConstant.shared.baseUrl + self.path
         @unknown default:
             fatalError()
         }
     }
     
-    public var path: String {
+    var path: String {
         switch self {
         case .users:
             return "/api"
@@ -34,7 +33,7 @@ extension ApiEndpoint: TargetType {
         }
     }
     
-    public var method: Moya.Method {
+    public var method: HTTPMethod {
         switch self {
         case .users:
             return .get
@@ -43,19 +42,19 @@ extension ApiEndpoint: TargetType {
         }
     }
     
-    public var task: Moya.Task {
+    public var parameters: Parameters {
         let _: [String: Any] = [:]
         let encoding: ParameterEncoding = URLEncoding.queryString
         switch self {
         case .users:
-            return .requestParameters(parameters: ["results": 50], encoding: encoding)
+            return ["results": 100]
         @unknown default:
             fatalError()
         }
     }
     
-    public var headers: [String : String]? {
-        let defaultHeaders: [String: String] = ["Content-Type": "application/json"]
+    public var headers: HTTPHeaders? {
+        let defaultHeaders: HTTPHeaders = ["Content-Type": "application/json"]
         switch self {
         case .users:
             return  defaultHeaders

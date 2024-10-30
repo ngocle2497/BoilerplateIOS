@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 import Domain
 import Infrastructure
-import Data
+import Adapter
 
 final class AuthorizedSceneDIContainer: AuthorizedFlowDependencies {
     

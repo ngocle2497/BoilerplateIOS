@@ -1,6 +1,7 @@
 import Foundation
 import RxCocoa
 import Domain
+import Infrastructure
 
 struct HomeViewModelActions {
     let logout: () -> Void
@@ -44,7 +45,7 @@ extension HomeViewModel {
         })
     }
     func logout() {
-        LOCAL_STORAGE.appToken = nil
+        MMKV_STORAGE.appToken = nil
         actions?.logout();
     }
 }

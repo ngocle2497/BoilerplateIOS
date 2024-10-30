@@ -2,8 +2,7 @@
 platform :ios, '14.0'
 
 def infrastructure_pods
-  pod 'Moya'
-  pod 'RxSwift'
+  pod 'MMKV'
   pod 'Alamofire'
 end
 
@@ -14,7 +13,6 @@ target 'HelloWorld' do
   # Pods for HelloWorld
   infrastructure_pods
   pod 'RxCocoa'
-  pod 'MMKV'
   pod 'SwiftGen'
   pod 'SDWebImage'
   pod 'CryptoSwift'

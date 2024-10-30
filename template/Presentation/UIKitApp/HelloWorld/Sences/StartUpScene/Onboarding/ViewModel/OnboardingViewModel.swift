@@ -1,6 +1,7 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Infrastructure
 
 struct OnboardingViewModelActions {
     let showAuthenticationScreen: (Bool) -> Void
@@ -31,7 +32,7 @@ final class OnboardingViewModel: ViewModel, OnboardingViewModelInput, Onboarding
 extension OnboardingViewModel {
     func saveConfigOnboardingShown() {
         // TODO: Save config Onboarding screen shown.
-        LOCAL_STORAGE.onboardingShown = true
+        MMKV_STORAGE.onboardingShown = true
         actions?.showAuthenticationScreen(true)
     }
 }

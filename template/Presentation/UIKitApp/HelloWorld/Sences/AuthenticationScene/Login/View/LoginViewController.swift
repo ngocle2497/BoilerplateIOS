@@ -1,10 +1,12 @@
 import UIKit
+import Alamofire
 
 class LoginViewController: ViewController<LoginViewModel> {
     
     override func viewDidLoad() {
         super.viewDidLoad()
     }
+    
     static func create(with viewModel: LoginViewModel) -> LoginViewController {
         return LoginViewController(vm: viewModel)
     }

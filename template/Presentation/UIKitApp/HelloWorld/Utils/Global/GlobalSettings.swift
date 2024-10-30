@@ -1,20 +1,42 @@
 import Foundation
 import RxSwift
 import RxCocoa
+import Infrastructure
 
 enum Language: String {
     case english = "en"
     case vietnam = "vi"
+    
+    static func fromString(value: String?) -> Language {
+        guard let dest = Language(rawValue: value ?? "") else {
+            return .english
+        }
+        return dest
+    }
 }
 
 enum ColorTheme: String {
     case dark = "dark"
     case light = "light"
+    
+    static func fromString(value: String?) -> ColorTheme {
+        guard let dest = ColorTheme(rawValue: value ?? "") else {
+            return .light
+        }
+        return dest
+    }
 }
 
 enum FontSize: String {
     case `default` = "Default"
     case large = "Large"
+    
+    static func fromString(value: String?) -> FontSize {
+        guard let dest = FontSize(rawValue: value ?? "") else {
+            return .default
+        }
+        return dest
+    }
 }
 
 let GLOBAL_SETTING = GlobalSettings.shared
@@ -24,26 +46,26 @@ struct GlobalSettings {
     
     private var disposeBag = DisposeBag()
     
-    let language                    = BehaviorRelay<Language>(value: LOCAL_STORAGE.appLanguage!)
-    let theme                       = BehaviorRelay<ColorTheme>(value: LOCAL_STORAGE.appTheme!)
-    let fontSize                    = BehaviorRelay<FontSize>(value: LOCAL_STORAGE.appFont!)
+    let language                    = BehaviorRelay<Language>(value: Language.fromString(value: MMKV_STORAGE.appLanguage))
+    let theme                       = BehaviorRelay<ColorTheme>(value: ColorTheme.fromString(value: MMKV_STORAGE.appTheme))
+    let fontSize                    = BehaviorRelay<FontSize>(value: FontSize.fromString(value: MMKV_STORAGE.appFont))
     
     init() {
         ThemeManager.updateFont(fontSize.value)
         ThemeManager.updateTheme(theme.value)
         
         language.skip(1).subscribe(onNext:  { nextValue in
-            LOCAL_STORAGE.appLanguage     = nextValue
+            MMKV_STORAGE.appLanguage     = nextValue.rawValue
         })
         .disposed(by: disposeBag)
         
         theme.skip(1).subscribe(onNext:     { nextValue in
-            LOCAL_STORAGE.appTheme        = nextValue
+            MMKV_STORAGE.appTheme        = nextValue.rawValue
         })
         .disposed(by: disposeBag)
         
         fontSize.skip(1).subscribe(onNext:  { nextValue in
-            LOCAL_STORAGE.appFont         = nextValue
+            MMKV_STORAGE.appFont         = nextValue.rawValue
         })
         .disposed(by: disposeBag)
     }

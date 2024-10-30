@@ -1,78 +1,72 @@
-import Foundation
-import Moya
 import Alamofire
-
-class APISession {
-    typealias NetworkSession = Alamofire.Session
-    
-    static let session: NetworkSession = {
-        let configuration = URLSessionConfiguration.default
-        configuration.timeoutIntervalForRequest = TimeInterval(60)
-        configuration.timeoutIntervalForResource = TimeInterval(60)
-        let sessionManager = NetworkSession(configuration: configuration, eventMonitors: [])
-        return sessionManager
-    }()
-}
+import Adapter
 
 class NetworkManager {
     static let shared = NetworkManager()
-    
-    func getAPIProvider<T: TargetType>(type: T.Type) -> MoyaProvider<T> {
-        
-        let plugins: [PluginType] =  []
-        
-        return MoyaProvider<T>(session: APISession.session, plugins: plugins)
+    private let session = Session.default
+    func getNetworkSession() -> NetworkManagerConcurency {
+        return NetworkManagerConcurency(session: session)
     }
 }
 
-class CachePolicyPlugin: PluginType {
-    
-    public func prepare(_ request: URLRequest, target: TargetType) -> URLRequest {
-        var mutableRequest = request
-        mutableRequest.cachePolicy = .reloadIgnoringLocalAndRemoteCacheData
-        return mutableRequest
+struct ErrorRequest<T: Codable>: Codable, Error {
+    let code: Int
+    let message: String
+    let error: T?
+    init(code: Int, message: String, error: T?) {
+        self.code = code
+        self.message = message
+        self.error = error
     }
 }
 
-extension MoyaProvider {
-    class MoyaConcurrency {
-        private let provider: MoyaProvider
+class NetworkManagerConcurency {
+    private var cancelable: Task<Result<Codable, AFError>, Error>? = nil
+    private let session: Session
+    
+    init(session: Session) {
+        self.session = session
+    }
+    
+    func request<T: Codable>(_ route: ApiEndpoint,
+                                         type: T.Type,
+                                         typeError: T.Type? = nil) async -> Result<T, ErrorRequest<T>> {
+        let dataResponse = await self.session.request(route.baseURL, method: route.method, parameters: route.parameters, headers: route.headers).serializingData(automaticallyCancelling: true).response
         
-        init(provider: MoyaProvider) {
-            self.provider = provider
-        }
-        
-        func request<T: Decodable>(_ target: Target, type: T.Type) async throws -> T {
-            return try await withCheckedThrowingContinuation { continuation in
-                provider.request(target) { result in
-                    switch result {
-                    case .success(let response):
-                        if response.statusCode == HttpStatusCode.OK.rawValue {
-                            guard let res = try? JSONDecoder.default.decode(T.self, from: response.data) else {
-                                continuation.resume(throwing: MoyaError.jsonMapping(response))
-                                return
-                            }
-                            continuation.resume(returning: res)
-                        } else {
-                            continuation.resume(throwing: HTTPResponseError(error: response))
-                        }
-                    case .failure(let error):
-                        continuation.resume(throwing: error)
-                    }
+        switch dataResponse.result {
+        case .success(let data):
+            if dataResponse.response?.statusCode == HttpStatusCode.OK.rawValue {
+                do {
+                    let jsonData =  try JSONDecoder.default.decode(type.self, from: data)
+                    return .success(jsonData)
+                } catch {
+                    print(error.localizedDescription)
+                    return .failure(.init(code: HttpStatusCode.DECODE_ERROR.rawValue, message: error.localizedDescription, error: nil))
                 }
             }
+            guard let typeError = typeError else {
+                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unkown", error: nil))
+            }
+            do {
+                let jsonData =  try JSONDecoder.default.decode(typeError.self, from: data)
+                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unkown", error: jsonData))
+            } catch {
+                print(error.localizedDescription)
+                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unkown", error: nil))
+            }
+        case .failure(let error):
+            if error.isExplicitlyCancelledError {
+                return .failure(.init(code: HttpStatusCode.CANCELED.rawValue, message: error.localizedDescription, error: nil))
+            }
+            print(error.localizedDescription)
+            return .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKOWN.rawValue, message: error.localizedDescription, error: nil))
         }
     }
-    
-    var async: MoyaConcurrency {
-        MoyaConcurrency(provider: self)
-    }
 }
-
 extension JSONDecoder {
     static var `default`: JSONDecoder {
         let decoder = JSONDecoder()
-        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        decoder.keyDecodingStrategy = .useDefaultKeys
         return decoder
     }
 }

@@ -13,6 +13,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        MMKV_STORAGE.createInstance(with: Configuration.MMKV_CRYPTKEY)
         API_CONSTANT.setBaseUrl(with: Configuration.API_URL)
         
         window = .init(windowScene: windowScene)

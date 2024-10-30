@@ -1,4 +1,5 @@
 import Foundation
+import Infrastructure
 
 struct SplashViewModelActions {
     let showOnboardingScreen: () -> Void
@@ -37,8 +38,8 @@ extension SplashViewModel {
     }
     
     func showNextScreen() {
-        if LOCAL_STORAGE.onboardingShown {
-            if LOCAL_STORAGE.appToken != nil {
+        if MMKV_STORAGE.onboardingShown {
+            if MMKV_STORAGE.appToken != nil {
                 actions?.showAuthorizedScreen(false)
             } else {
                 actions?.showAuthenticationScreen(false)

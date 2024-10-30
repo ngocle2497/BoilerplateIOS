@@ -1,5 +1,5 @@
 import Foundation
 
 public protocol UserRepository {
-    func getUserList() async -> UsersPage
+    func getUserList(completion: @escaping (UsersPage) -> Void) -> Void
 }
