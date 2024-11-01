@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeViewController" customModule="HelloWorld" customModuleProvider="target">
             <connections>
-                <outlet property="usersTableView" destination="fug-aE-a39" id="ZzK-XU-dhR"/>
+                <outlet property="imagesCollectionView" destination="nTj-Oh-H9b" id="qMD-jz-2wj"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -28,22 +28,28 @@
                         <action selector="onLogoutButtonPressed:" destination="-1" eventType="touchUpInside" id="UFc-TO-hot"/>
                     </connections>
                 </button>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fug-aE-a39">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nTj-Oh-H9b">
                     <rect key="frame" x="0.0" y="121" width="393" height="697"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gEQ-Kc-Rlg">
+                        <size key="itemSize" width="128" height="128"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="fug-aE-a39" secondAttribute="trailing" id="C0k-d2-Jef"/>
-                <constraint firstItem="fug-aE-a39" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Ctj-pt-hDe"/>
-                <constraint firstItem="fug-aE-a39" firstAttribute="top" secondItem="4Z2-I2-TyC" secondAttribute="bottom" constant="16" id="O7T-lh-VjT"/>
+                <constraint firstItem="nTj-Oh-H9b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FB4-Xp-qeX"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nTj-Oh-H9b" secondAttribute="bottom" id="FXn-M7-HpR"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nTj-Oh-H9b" secondAttribute="trailing" id="MxM-FH-abf"/>
                 <constraint firstItem="4Z2-I2-TyC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Pal-9h-lWR"/>
                 <constraint firstItem="4Z2-I2-TyC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="eir-LX-SF3"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="fug-aE-a39" secondAttribute="bottom" id="hvd-ft-sZ6"/>
+                <constraint firstItem="nTj-Oh-H9b" firstAttribute="top" secondItem="4Z2-I2-TyC" secondAttribute="bottom" constant="16" id="goP-lL-wy3"/>
             </constraints>
-            <point key="canvasLocation" x="11" y="21"/>
+            <point key="canvasLocation" x="9.9236641221374047" y="20.422535211267608"/>
         </view>
     </objects>
     <resources>

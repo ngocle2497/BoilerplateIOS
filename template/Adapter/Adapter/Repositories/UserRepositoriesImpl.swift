@@ -18,7 +18,7 @@ public final class UserRepositoriesImpl {
 extension UserRepositoriesImpl: UserRepository {
     public func getUserList(completion: @escaping (Domain.UsersPage) -> Void) {
         self.getUserTask = Task {
-            let result =  await self.networkService.request(.users, type: UserResponseDTO.self,errorType: nil)
+            let result =  await self.networkService.request(.users, type: UserResponseDTO.self, errorType: nil)
             switch result {
             case .success(let data):
                 completion(.init(page: data.data.info.page, totalPage: 1, users: data.data.results.map({$0.toDomain()})))
