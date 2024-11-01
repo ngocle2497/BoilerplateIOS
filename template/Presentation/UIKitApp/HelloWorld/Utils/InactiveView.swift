@@ -10,7 +10,7 @@ class InactiveView {
         imageView.widthAnchor.constraint(equalToConstant: 150).isActive = true
         imageView.contentMode = .scaleToFill
         
-        imageView.image = UIImage(named: "SplashIcon")
+        imageView.image = MImages.splashIcon
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
         

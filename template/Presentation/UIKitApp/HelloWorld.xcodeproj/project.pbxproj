@@ -40,6 +40,7 @@
 		12AF2D522CD32EDB00674A77 /* PlaceholderSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF2D512CD32EDB00674A77 /* PlaceholderSource.swift */; };
 		12AF2D602CD37C4B00674A77 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */; };
 		12AF2D612CD37C4B00674A77 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */; };
+		12DBAF472CD4B1A200921C8B /* AnimatedUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBAF462CD4B1A200921C8B /* AnimatedUIView.swift */; };
 		840292E62BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */; };
 		840292E72BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E42BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf */; };
 		840292E82BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E52BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf */; };
@@ -170,6 +171,7 @@
 		12AF2D512CD32EDB00674A77 /* PlaceholderSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderSource.swift; sourceTree = "<group>"; };
 		12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		12DBAF462CD4B1A200921C8B /* AnimatedUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedUIView.swift; sourceTree = "<group>"; };
 		7ED015E401A17E99F1E5795D /* Pods_HelloWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoppinsLatin-Regular.ttf"; sourceTree = "<group>"; };
 		840292E42BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoppinsLatin-Bold.ttf"; sourceTree = "<group>"; };
@@ -296,6 +298,7 @@
 		1294D1552CC7647F00401985 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				12DBAF462CD4B1A200921C8B /* AnimatedUIView.swift */,
 				842CD6492BBC686C00984066 /* String+Utilities.swift */,
 				842CD64B2BBC688A00984066 /* Color+Utilities.swift */,
 				842CD64D2BBC689700984066 /* UIFont+Utilities.swift */,
@@ -990,6 +993,7 @@
 				842CD6422BBC682A00984066 /* DefaultFont.swift in Sources */,
 				12A364932BBD31990064FCE2 /* AuthorizedFlow.swift in Sources */,
 				12A364812BBD11FC0064FCE2 /* LoginViewController.swift in Sources */,
+				12DBAF472CD4B1A200921C8B /* AnimatedUIView.swift in Sources */,
 				842CD6382BBC675600984066 /* SplashViewModel.swift in Sources */,
 				12A3649E2BBD36660064FCE2 /* RegisterViewController.swift in Sources */,
 				842CD5EA2BBC5C5500984066 /* SceneDelegate.swift in Sources */,

@@ -13,7 +13,7 @@ final class RemoteImage: UIView {
         SDImageCache.shared.config.diskCacheReadingOptions = NSData.ReadingOptions.mappedIfSafe
         SDImageCache.shared.config.maxMemoryCost = 1024 * 1024 * 20
         SDImageCache.shared.config.maxDiskAge = 3600 * 24 * 7
-
+        
     }
     private static let screenScaleKey = SDWebImageContextOption(rawValue: "screenScale")
     private static var sharedImage: [String: UIImage] = [:]
@@ -104,9 +104,9 @@ extension RemoteImage {
         var context = SDWebImageContext()
         
         //context[.downloadRequestModifier] = SDWebImageDownloaderRequestModifier(headers: headers)
-            context[.cacheKeyFilter] =  SDWebImageCacheKeyFilter(block: { _ in
-                cacheKey
-            })
+        context[.cacheKeyFilter] =  SDWebImageCacheKeyFilter(block: { _ in
+            cacheKey
+        })
         // Tell SDWebImage to use our own class for animated formats,
         // which has better compatibility with the UIImage and fixes issues with the image duration.
         context[.animatedImageClass] = AnimatedImage.self
@@ -224,7 +224,7 @@ extension RemoteImage {
             ]
         }
         context[RemoteImage.screenScaleKey] = screenScale
-
+        
         pendingOperation = imageManager.loadImage(
             with: source,
             options: loadingOptions,
