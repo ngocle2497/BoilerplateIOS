@@ -7,6 +7,18 @@ public struct MMKVStorage {
     static var shared = MMKVStorage()
     private var instance: MMKV?
     
+    private func getString(forKey: String) -> String? {
+        return instance?.string(forKey: forKey)
+    }
+    
+    private func setString(forKey: String, value: String?) {
+        if let value = value {
+            instance?.set(value, forKey: forKey)
+        } else {
+            instance?.removeValue(forKey: forKey)
+        }
+    }
+    
     public var onboardingShown: Bool {
         get {
             return instance?.bool(forKey: "onboardingShown") ?? false
@@ -18,63 +30,42 @@ public struct MMKVStorage {
     
     public var appToken: String? {
         get {
-            return instance?.string(forKey: "appToken")
+            return getString(forKey: "appToken")
         }
         set {
-            if let value = newValue {
-                instance?.set(value, forKey: "appToken")
-            } else {
-                instance?.removeValue(forKey: "appToken")
-            }
-            
+            setString(forKey: "appToken", value: newValue)
         }
     }
     
     public var appTheme: String? {
         get {
-            return instance?.string(forKey: "appTheme")
+            return getString(forKey: "appTheme")
         }
         set {
-            if let value = newValue {
-                instance?.set(value, forKey: "appTheme")
-            } else {
-                instance?.removeValue(forKey: "appTheme")
-            }
+            setString(forKey: "appTheme", value: newValue)
         }
     }
     
     public var appFont: String? {
         get {
-            return instance?.string(forKey: "appFont")
+            return getString(forKey: "appFont")
         }
         set {
-            if let value = newValue {
-                instance?.set(value, forKey: "appFont")
-            } else {
-                instance?.removeValue(forKey: "appFont")
-            }
+            setString(forKey: "appFont", value: newValue)
         }
     }
     
     public var appLanguage: String? {
         get {
-            return instance?.string(forKey: "appLanguage")
+            return getString(forKey: "appLanguage")
         }
         set {
-            if let value = newValue {
-                instance?.set(value, forKey: "appLanguage")
-            } else {
-                instance?.removeValue(forKey: "appLanguage")
-            }
+            setString(forKey: "appLanguage", value: newValue)
         }
     }
     
     public func resetAll() {
-        if let instance = instance {
-            for key in instance.allKeys() {
-                instance.removeValue(forKey: key as! String)
-            }
-        }
+        instance?.clearAll()
     }
     public mutating func createInstance(with cryptKey: String = "HelloWorld") {
         MMKV.initialize(rootDir: nil)
