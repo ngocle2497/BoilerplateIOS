@@ -129,9 +129,6 @@ class HomeViewController: ViewController<HomeViewModel> {
         imagesCollectionView.collectionViewLayout = layout
     }
     
-    override func setupRx() {
-    }
-    
     @IBAction func onLogoutButtonPressed(_ sender: Any) {
         vm.logout()
     }

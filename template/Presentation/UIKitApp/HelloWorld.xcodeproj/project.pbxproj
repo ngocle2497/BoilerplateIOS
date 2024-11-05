@@ -10,6 +10,7 @@
 		1227218B2CBF7A0D000C5E32 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227218A2CBF7A0D000C5E32 /* Configuration.swift */; };
 		1227218D2CBF92B4000C5E32 /* Base.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1227218C2CBF92B4000C5E32 /* Base.xcassets */; };
 		1227218F2CBFA191000C5E32 /* BaseAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227218E2CBFA191000C5E32 /* BaseAsset.swift */; };
+		123D9B462CD9D668003BA96E /* Combine+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D9B452CD9D668003BA96E /* Combine+Utilities.swift */; };
 		1289A6AA2CC6335C00F950BD /* UIImage+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1289A6A92CC6335C00F950BD /* UIImage+Utilities.swift */; };
 		1289A6AC2CC6379B00F950BD /* ListView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1289A6AB2CC6379B00F950BD /* ListView+Utilities.swift */; };
 		128C7A392CD21682009602B1 /* Infrastructure.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 128C7A362CD2167D009602B1 /* Infrastructure.framework */; };
@@ -23,9 +24,9 @@
 		128C7A682CD2354A009602B1 /* BlurHash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C7A672CD2354A009602B1 /* BlurHash.swift */; };
 		128C7A6A2CD2355C009602B1 /* BlurHashLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C7A692CD2355C009602B1 /* BlurHashLoader.swift */; };
 		128C7A6C2CD2391C009602B1 /* RemoteImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128C7A6B2CD2391C009602B1 /* RemoteImage.swift */; };
+		1292EDF22CDA0F1800A03385 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1292EDF02CDA0F1800A03385 /* LoginViewController.swift */; };
+		1292EDF32CDA0F1800A03385 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1292EDF12CDA0F1800A03385 /* LoginViewController.xib */; };
 		12A364792BBD11530064FCE2 /* AuthenticationDIContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A364782BBD11530064FCE2 /* AuthenticationDIContainer.swift */; };
-		12A364802BBD11FC0064FCE2 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12A3647F2BBD11FC0064FCE2 /* LoginViewController.xib */; };
-		12A364812BBD11FC0064FCE2 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3647E2BBD11FC0064FCE2 /* LoginViewController.swift */; };
 		12A364842BBD120F0064FCE2 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A364832BBD120F0064FCE2 /* LoginViewModel.swift */; };
 		12A364862BBD12980064FCE2 /* AuthenticationFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A364852BBD12980064FCE2 /* AuthenticationFlow.swift */; };
 		12A3648D2BBD30F30064FCE2 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12A3648C2BBD30F30064FCE2 /* HomeViewModel.swift */; };
@@ -144,6 +145,7 @@
 		1227218A2CBF7A0D000C5E32 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		1227218C2CBF92B4000C5E32 /* Base.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Base.xcassets; sourceTree = "<group>"; };
 		1227218E2CBFA191000C5E32 /* BaseAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAsset.swift; sourceTree = "<group>"; };
+		123D9B452CD9D668003BA96E /* Combine+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Utilities.swift"; sourceTree = "<group>"; };
 		1289A6A92CC6335C00F950BD /* UIImage+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utilities.swift"; sourceTree = "<group>"; };
 		1289A6AB2CC6379B00F950BD /* ListView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListView+Utilities.swift"; sourceTree = "<group>"; };
 		128C7A302CD2167D009602B1 /* Infrastructure.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Infrastructure.xcodeproj; path = ../../Infrastructure/Infrastructure.xcodeproj; sourceTree = "<group>"; };
@@ -154,9 +156,9 @@
 		128C7A672CD2354A009602B1 /* BlurHash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHash.swift; sourceTree = "<group>"; };
 		128C7A692CD2355C009602B1 /* BlurHashLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurHashLoader.swift; sourceTree = "<group>"; };
 		128C7A6B2CD2391C009602B1 /* RemoteImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteImage.swift; sourceTree = "<group>"; };
+		1292EDF02CDA0F1800A03385 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		1292EDF12CDA0F1800A03385 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		12A364782BBD11530064FCE2 /* AuthenticationDIContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationDIContainer.swift; sourceTree = "<group>"; };
-		12A3647E2BBD11FC0064FCE2 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		12A3647F2BBD11FC0064FCE2 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		12A364832BBD120F0064FCE2 /* LoginViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		12A364852BBD12980064FCE2 /* AuthenticationFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationFlow.swift; sourceTree = "<group>"; };
 		12A3648C2BBD30F30064FCE2 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -304,6 +306,7 @@
 				842CD64D2BBC689700984066 /* UIFont+Utilities.swift */,
 				1289A6A92CC6335C00F950BD /* UIImage+Utilities.swift */,
 				1289A6AB2CC6379B00F950BD /* ListView+Utilities.swift */,
+				123D9B452CD9D668003BA96E /* Combine+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -373,8 +376,8 @@
 		12A3647D2BBD11EC0064FCE2 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				12A3647E2BBD11FC0064FCE2 /* LoginViewController.swift */,
-				12A3647F2BBD11FC0064FCE2 /* LoginViewController.xib */,
+				1292EDF02CDA0F1800A03385 /* LoginViewController.swift */,
+				1292EDF12CDA0F1800A03385 /* LoginViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -832,7 +835,7 @@
 				12A3649D2BBD36660064FCE2 /* RegisterViewController.xib in Resources */,
 				840292E92BBC70EB004EE551 /* DefaultLaunch.storyboard in Resources */,
 				12AF2D612CD37C4B00674A77 /* ImageCollectionViewCell.xib in Resources */,
-				12A364802BBD11FC0064FCE2 /* LoginViewController.xib in Resources */,
+				1292EDF32CDA0F1800A03385 /* LoginViewController.xib in Resources */,
 				840292E72BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf in Resources */,
 				840292E82BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf in Resources */,
 				842CD6572BBC693900984066 /* Localizable.strings in Resources */,
@@ -864,7 +867,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ninput_file=\"${PROJECT_DIR}/${TARGET_NAME}/Configuration/tmp.xcconfig\"\n\n# Initialize variable\nBUNDLE_IDENTIFIER=\"\"\n\n# Read the configuration file\nwhile IFS='=' read -r key value; do\n  case \"$key\" in\n    'BUNDLE_IDENTIFIER') BUNDLE_IDENTIFIER=\"$value\" ;;\n  esac\ndone < \"$input_file\"\n\n{\nxcrun simctl uninstall booted \"$BUNDLE_IDENTIFIER\"\n} || {\necho \"Old app not found or Device not booted\"\n}\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ninput_file=\"${PROJECT_DIR}/${TARGET_NAME}/Configuration/tmp.xcconfig\"\n\n# Initialize variable\nBUNDLE_IDENTIFIER=\"\"\n\n# Read the configuration file\nwhile IFS='=' read -r key value; do\n  case \"$key\" in\n    'BUNDLE_IDENTIFIER') BUNDLE_IDENTIFIER=\"$value\" ;;\n  esac\ndone < \"$input_file\"\n\n{\n# xcrun simctl uninstall booted \"$BUNDLE_IDENTIFIER\"\n} || {\necho \"Old app not found or Device not booted\"\n}\n";
 		};
 		12FB3C822CD0C447006A6AC6 /* Setup Firebase Environment GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -992,7 +995,6 @@
 				842CD6242BBC64FE00984066 /* InactiveView.swift in Sources */,
 				842CD6422BBC682A00984066 /* DefaultFont.swift in Sources */,
 				12A364932BBD31990064FCE2 /* AuthorizedFlow.swift in Sources */,
-				12A364812BBD11FC0064FCE2 /* LoginViewController.swift in Sources */,
 				12DBAF472CD4B1A200921C8B /* AnimatedUIView.swift in Sources */,
 				842CD6382BBC675600984066 /* SplashViewModel.swift in Sources */,
 				12A3649E2BBD36660064FCE2 /* RegisterViewController.swift in Sources */,
@@ -1001,8 +1003,10 @@
 				1227218F2CBFA191000C5E32 /* BaseAsset.swift in Sources */,
 				12A364842BBD120F0064FCE2 /* LoginViewModel.swift in Sources */,
 				842CD6452BBC683E00984066 /* LightColorTheme.swift in Sources */,
+				123D9B462CD9D668003BA96E /* Combine+Utilities.swift in Sources */,
 				842CD65B2BBC698600984066 /* Images.swift in Sources */,
 				842CD6102BBC630E00984066 /* AppFlowCoordinator.swift in Sources */,
+				1292EDF22CDA0F1800A03385 /* LoginViewController.swift in Sources */,
 				842CD63F2BBC681100984066 /* ThemeManager.swift in Sources */,
 				842CD64A2BBC686C00984066 /* String+Utilities.swift in Sources */,
 				1289A6AC2CC6379B00F950BD /* ListView+Utilities.swift in Sources */,

@@ -1,7 +1,6 @@
 import Foundation
-import RxSwift
-import RxCocoa
 import Infrastructure
+import Combine
 
 enum Language: String {
     case english = "en"
@@ -44,53 +43,53 @@ let GLOBAL_SETTING = GlobalSettings.shared
 struct GlobalSettings {
     static let shared: GlobalSettings = GlobalSettings()
     
-    private var disposeBag = DisposeBag()
+    private var bag = Set<AnyCancellable>()
     
-    let language                    = BehaviorRelay<Language>(value: Language.fromString(value: MMKV_STORAGE.appLanguage))
-    let theme                       = BehaviorRelay<ColorTheme>(value: ColorTheme.fromString(value: MMKV_STORAGE.appTheme))
-    let fontSize                    = BehaviorRelay<FontSize>(value: FontSize.fromString(value: MMKV_STORAGE.appFont))
+    let language                    = CurrentValueSubject<Language, Never>(Language.fromString(value: MMKV_STORAGE.appLanguage))
+    let theme                       = CurrentValueSubject<ColorTheme, Never>(ColorTheme.fromString(value: MMKV_STORAGE.appTheme))
+    let fontSize                    = CurrentValueSubject<FontSize, Never>( FontSize.fromString(value: MMKV_STORAGE.appFont))
     
     init() {
         ThemeManager.updateFont(fontSize.value)
         ThemeManager.updateTheme(theme.value)
         
-        language.skip(1).subscribe(onNext:  { nextValue in
+        language.dropFirst().sink(receiveValue: { nextValue in
             MMKV_STORAGE.appLanguage     = nextValue.rawValue
         })
-        .disposed(by: disposeBag)
+        .store(in: &bag)
         
-        theme.skip(1).subscribe(onNext:     { nextValue in
+        theme.dropFirst().sink(receiveValue: { nextValue in
             MMKV_STORAGE.appTheme        = nextValue.rawValue
         })
-        .disposed(by: disposeBag)
+        .store(in: &bag)
         
-        fontSize.skip(1).subscribe(onNext:  { nextValue in
+        fontSize.dropFirst().sink(receiveValue: { nextValue in
             MMKV_STORAGE.appFont         = nextValue.rawValue
         })
-        .disposed(by: disposeBag)
+        .store(in: &bag)
     }
     
     func updateLanguage(lang: Language) {
-        language.accept(lang)
+        language.send(lang)
     }
     
     func updateLanguage(_ with: (_ oldValue: Language) -> Language) {
-        language.accept(with(language.value))
+        language.send(with(language.value))
     }
     
     func updateTheme(theme: ColorTheme) {
-        self.theme.accept(theme)
+        self.theme.send(theme)
     }
     
     func updateTheme(_ with: (_ oldValue: ColorTheme) -> ColorTheme) {
-        theme.accept(with(theme.value))
+        theme.send(with(theme.value))
     }
     
     func updateFontSize(font: FontSize) {
-        fontSize.accept(font)
+        fontSize.send(font)
     }
     
     func updateFontSize(_ with: (_ oldValue: FontSize) -> FontSize) {
-        fontSize.accept(with(fontSize.value))
+        fontSize.send(with(fontSize.value))
     }
 }

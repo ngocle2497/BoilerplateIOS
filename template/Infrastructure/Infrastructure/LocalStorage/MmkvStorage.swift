@@ -21,46 +21,46 @@ public struct MMKVStorage {
     
     public var onboardingShown: Bool {
         get {
-            return instance?.bool(forKey: "onboardingShown") ?? false
+            return instance?.bool(forKey: #function) ?? false
         }
         set {
-            instance?.set(newValue, forKey: "onboardingShown")
+            instance?.set(newValue, forKey: #function)
         }
     }
     
     public var appToken: String? {
         get {
-            return getString(forKey: "appToken")
+            return getString(forKey: #function)
         }
         set {
-            setString(forKey: "appToken", value: newValue)
+            setString(forKey: #function, value: newValue)
         }
     }
     
     public var appTheme: String? {
         get {
-            return getString(forKey: "appTheme")
+            return getString(forKey: #function)
         }
         set {
-            setString(forKey: "appTheme", value: newValue)
+            setString(forKey: #function, value: newValue)
         }
     }
     
     public var appFont: String? {
         get {
-            return getString(forKey: "appFont")
+            return getString(forKey: #function)
         }
         set {
-            setString(forKey: "appFont", value: newValue)
+            setString(forKey: #function, value: newValue)
         }
     }
     
     public var appLanguage: String? {
         get {
-            return getString(forKey: "appLanguage")
+            return getString(forKey: #function)
         }
         set {
-            setString(forKey: "appLanguage", value: newValue)
+            setString(forKey: #function, value: newValue)
         }
     }
     

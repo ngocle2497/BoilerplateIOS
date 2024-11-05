@@ -1,13 +1,12 @@
 import UIKit
-import Alamofire
-import SDWebImage
 
 class LoginViewController: ViewController<LoginViewModel> {
     static func create(with viewModel: LoginViewModel) -> LoginViewController {
         return LoginViewController(vm: viewModel)
     }
-
+    
     override func setup() {
+        hideKeyboardWhenClickOutSide = true
     }
     
     @IBAction func onLoginClick(_ sender: Any) {
@@ -17,4 +16,3 @@ class LoginViewController: ViewController<LoginViewModel> {
         vm.showRegisterScreen()
     }
 }
-
