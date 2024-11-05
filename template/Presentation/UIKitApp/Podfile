@@ -12,6 +12,7 @@ target 'HelloWorld' do
 
   # Pods for HelloWorld
   infrastructure_pods
+  pod "SwipeTransition"
   pod 'RxCocoa'
   pod 'netfox'
   pod 'SwiftGen'

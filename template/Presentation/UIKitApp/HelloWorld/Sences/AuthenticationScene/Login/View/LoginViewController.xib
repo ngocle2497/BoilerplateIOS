@@ -40,19 +40,11 @@
                         </button>
                     </subviews>
                 </stackView>
-                <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4Jn-ho-UJK">
-                    <rect key="frame" x="0.0" y="59" width="393" height="34"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <textInputTraits key="textInputTraits"/>
-                </textField>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="4Jn-ho-UJK" secondAttribute="trailing" id="4Id-4G-VIy"/>
                 <constraint firstItem="6fe-ZZ-lbS" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Zeo-oc-bbW"/>
-                <constraint firstItem="4Jn-ho-UJK" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="dkC-SH-ERA"/>
-                <constraint firstItem="4Jn-ho-UJK" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="eYi-tZ-jGO"/>
                 <constraint firstItem="6fe-ZZ-lbS" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="k5W-ly-Gei"/>
             </constraints>
             <point key="canvasLocation" x="97" y="21"/>

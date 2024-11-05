@@ -14,40 +14,47 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
     private let viewModel: VM!
     var bag = Set<AnyCancellable>()
     private var tap: UITapGestureRecognizer?
+    
+    /// Set true to listen keyboard event. Default: false
     var listenKeyboardChange: Bool = false {
         didSet {
             setupKeyboardChange()
         }
     }
     
+    /// Click root view to hide keyboard. Default: false
     var hideKeyboardWhenClickOutSide: Bool = false {
         didSet {
             setupHideKeyboard()
         }
     }
     
+    /// View model
     var vm: VM {
         get {
             return viewModel
         }
     }
     
+    /// Status bar style. Default: dark
     var statusBarStyle: UIStatusBarStyle = .darkContent {
         didSet {
             self.updateStatusBar()
         }
     }
     
-    var screenOrientations: UIInterfaceOrientationMask = .portrait {
+    /// Change screen orientation. Defaut: .portrait
+    var screenOrientation: UIInterfaceOrientationMask = .portrait {
         didSet {
             if #available(iOS 16.0, *) {
                 self.navigationController?.setNeedsUpdateOfSupportedInterfaceOrientations()
             } else {
-                UIDevice.current.setValue(screenOrientations, forKey: "orientation")
+                UIDevice.current.setValue(screenOrientation, forKey: "orientation")
             }
         }
     }
     
+    ///  Enable swipe to back. Default: true
     var getureEnabled = true {
         didSet {
             self.navigationController?.interactivePopGestureRecognizer?.isEnabled = getureEnabled
@@ -56,7 +63,7 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask  {
         get {
-            return screenOrientations
+            return screenOrientation
         }
     }
     
@@ -112,12 +119,14 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
             self.view.addGestureRecognizer(tap)
         }
     }
+    
     private func setupKeyboardChange() {
         unRegisterKeyboardChange()
         if listenKeyboardChange {
             registerKeyboardChange()
         }
     }
+    
     private func updateStatusBar() {
         UIView.animate(withDuration: 0.3) {
             self.setNeedsStatusBarAppearanceUpdate()
@@ -170,43 +179,52 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
     }
     
     // MARK: - Public ==============
+    /// Called when keyboard status change (will show, did show, will hide, did hide). Required listenKeyboardChange: true
     func keyboardChange(type: KeyboardEventType, keyboardSize: CGRect) {
         
     }
+    
+    /// Called on  view did load
     func setup() {
-        GLOBAL_SETTING.theme.dropFirst().sink(with: self, receiveValue: { vc, _ in
+        GLOBAL_SETTING.theme.sink(with: self, receiveValue: { vc, _ in
             vc.themeUpdate()
         }).store(in: &bag)
         
-        GLOBAL_SETTING.language.dropFirst().sink(with: self, receiveValue: { vc, _ in
+        GLOBAL_SETTING.language.sink(with: self, receiveValue: { vc, _ in
             vc.languageUpdate()
         }).store(in: &bag)
         
-        GLOBAL_SETTING.fontSize.dropFirst().sink(with: self, receiveValue: { vc, _ in
+        GLOBAL_SETTING.fontSize.sink(with: self, receiveValue: { vc, _ in
             vc.fontSizeUpdate()
         }).store(in: &bag)
     }
     
+    /// Called when theme update or view loaded
     func setupView() {
         
     }
     
+    /// Called when fontSize update or view loaded or language update
     func setupText() {
         
     }
     
+    /// Called when view loaded to seting up combine
     func setupCombine() {
         
     }
     
+    /// Called when fontSize update or view loaded
     func fontSizeUpdate() {
         setupText()
     }
     
+    /// Called when language update or view loaded
     func languageUpdate() {
         setupText()
     }
     
+    /// Called when theme update or view loaded
     func themeUpdate() {
         setupView()
     }

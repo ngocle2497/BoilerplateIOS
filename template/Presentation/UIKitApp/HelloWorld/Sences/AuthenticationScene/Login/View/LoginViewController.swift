@@ -5,10 +5,6 @@ class LoginViewController: ViewController<LoginViewModel> {
         return LoginViewController(vm: viewModel)
     }
     
-    override func setup() {
-        hideKeyboardWhenClickOutSide = true
-    }
-    
     @IBAction func onLoginClick(_ sender: Any) {
         vm.submit()
     }

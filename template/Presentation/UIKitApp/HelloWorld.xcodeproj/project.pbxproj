@@ -867,7 +867,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ninput_file=\"${PROJECT_DIR}/${TARGET_NAME}/Configuration/tmp.xcconfig\"\n\n# Initialize variable\nBUNDLE_IDENTIFIER=\"\"\n\n# Read the configuration file\nwhile IFS='=' read -r key value; do\n  case \"$key\" in\n    'BUNDLE_IDENTIFIER') BUNDLE_IDENTIFIER=\"$value\" ;;\n  esac\ndone < \"$input_file\"\n\n{\n# xcrun simctl uninstall booted \"$BUNDLE_IDENTIFIER\"\n} || {\necho \"Old app not found or Device not booted\"\n}\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ninput_file=\"${PROJECT_DIR}/${TARGET_NAME}/Configuration/tmp.xcconfig\"\n\n# Initialize variable\nBUNDLE_IDENTIFIER=\"\"\n\n# Read the configuration file\nwhile IFS='=' read -r key value; do\n  case \"$key\" in\n    'BUNDLE_IDENTIFIER') BUNDLE_IDENTIFIER=\"$value\" ;;\n  esac\ndone < \"$input_file\"\n\n#{\n# xcrun simctl uninstall booted \"$BUNDLE_IDENTIFIER\"\n#} || {\n#echo \"Old app not found or Device not booted\"\n#}\n";
 		};
 		12FB3C822CD0C447006A6AC6 /* Setup Firebase Environment GoogleService-Info.plist */ = {
 			isa = PBXShellScriptBuildPhase;
