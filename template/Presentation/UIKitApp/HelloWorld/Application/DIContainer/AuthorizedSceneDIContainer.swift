@@ -5,7 +5,6 @@ import Infrastructure
 import Adapter
 
 final class AuthorizedSceneDIContainer: AuthorizedFlowDependencies {
-    
     // MARK: - Repositories
     func makeUserRepository() -> UserRepository {
         UserRepositoriesImpl(networkService: NetworkService.shared)
@@ -19,12 +18,21 @@ final class AuthorizedSceneDIContainer: AuthorizedFlowDependencies {
         )
     }
     
-    // MARK: - Home
-    func makeHomeViewController(actions: HomeViewModelActions) -> HomeViewController {
-        return HomeViewController.create(with: makeHomeViewModel(actions: actions))
+    // MARK: - Profile
+    func makeProfileVC(actions: ProfileViewModelActions) -> ProfileViewController {
+        return ProfileViewController.create(with: makeProfileVM(actions: actions))
     }
     
-    private func makeHomeViewModel(actions: HomeViewModelActions) -> HomeViewModel {
+    private func makeProfileVM(actions: ProfileViewModelActions) -> ProfileViewModel {
+        return ProfileViewModel(actions: actions)
+    }
+    
+    // MARK: - Home
+    func makeHomeVC(actions: HomeViewModelActions) -> HomeViewController {
+        return HomeViewController.create(with: makeHomeVM(actions: actions))
+    }
+    
+    private func makeHomeVM(actions: HomeViewModelActions) -> HomeViewModel {
         return HomeViewModel(actions: actions, userUseCase: makeUserUseCase())
     }
     

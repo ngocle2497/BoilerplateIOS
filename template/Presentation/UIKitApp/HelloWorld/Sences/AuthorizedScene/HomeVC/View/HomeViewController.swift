@@ -1,5 +1,4 @@
 import UIKit
-import RxCocoa
 
 struct ImageThumbHash {
     let url: String
@@ -8,7 +7,7 @@ struct ImageThumbHash {
 
 
 class HomeViewController: ViewController<HomeViewModel> {
-
+    
     let data: [ImageThumbHash] = [
         .init(url: "https://picsum.photos/id/102/300/400", thumbHash: "6kkONQiJiH+Il3iYd3O4WXh/c3cH"),
         .init(url: "https://picsum.photos/id/103/300/400", thumbHash: "H/gJPQhJl3+JJoeHd4SHuGdwgwY4"),
@@ -110,7 +109,7 @@ class HomeViewController: ViewController<HomeViewModel> {
         .init(url: "https://picsum.photos/id/203/300/400", thumbHash: "3/cZHQaKiI+HZ3dYiIiId4qQpgh4"),
         .init(url: "https://picsum.photos/id/204/300/400", thumbHash: "G/gZJQaIiJ+Hl3dnh4V3iHaQcgdJ"),
         .init(url: "https://picsum.photos/id/206/300/400", thumbHash: "JRkaPQh4d394V4doeHd3h3iAgAcI")
-        ]
+    ]
     
     @IBOutlet weak var imagesCollectionView: UICollectionView!
     static func create(with viewModel: HomeViewModel) -> HomeViewController {
@@ -121,30 +120,48 @@ class HomeViewController: ViewController<HomeViewModel> {
     override func setup() {
         imagesCollectionView.delegate = self
         imagesCollectionView.dataSource = self
+        imagesCollectionView.showsVerticalScrollIndicator = false
         imagesCollectionView.register(ImageCollectionViewCell.self)
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumInteritemSpacing = 5
-        layout.minimumLineSpacing = 5
-
+        let layout = createLayout()
+        
         imagesCollectionView.collectionViewLayout = layout
     }
     
-    @IBAction func onLogoutButtonPressed(_ sender: Any) {
-        vm.logout()
+    override func setupCombine() {
+        vm.data.dropFirst().sink(with: self) { vc, data in
+            print(data.count)
+        }.store(in: &bag)
+    }
+    
+
+    private func createLayout() -> UICollectionViewLayout {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0 / 3.0),
+                                               heightDimension: .absolute((UIScreen.main.bounds.width - 10) / 3))
+        let spacing = CGFloat(5)
+        var group: NSCollectionLayoutGroup!
+        if #available(iOS 16.0, *) {
+            group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, repeatingSubitem: item, count: 3)
+        } else {
+            group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 3)
+        }
+        group.interItemSpacing = .fixed(spacing)
+        
+        let section = NSCollectionLayoutSection(group: group)
+        
+        section.interGroupSpacing = spacing
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        
+        return layout
     }
 }
 
 
 extension HomeViewController: UICollectionViewDelegate,
-                                UICollectionViewDataSource,
-                                UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-         let padding: CGFloat = 5
-         let collectionViewSize = collectionView.frame.size.width - (padding * 2)
-         let itemSize = collectionViewSize / 3 - 1
-         return CGSize(width: itemSize, height: itemSize)
-    }
+                              UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         data.count

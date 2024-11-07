@@ -15,20 +15,20 @@ final class StartUpSceneDIContainer: StartUpFlowDependencies {
     }
     
     // MARK: - Splash
-    func makeSplashViewController(actions: SplashViewModelActions) -> SplashViewController {
-        return SplashViewController.create(with: makeSplashViewModel(actions: actions))
+    func makeSplashVC(actions: SplashViewModelActions) -> SplashViewController {
+        return SplashViewController.create(with: makeSplashVM(actions: actions))
     }
     
-    private func makeSplashViewModel(actions: SplashViewModelActions) -> SplashViewModel {
+    private func makeSplashVM(actions: SplashViewModelActions) -> SplashViewModel {
         return SplashViewModel(actions: actions)
     }
     
     // MARK: - Onboarding
-    func makeOnboardingViewController(actions: OnboardingViewModelActions) -> OnboardingViewController {
-        return OnboardingViewController.create(with: makeIntroViewModel(actions: actions))
+    func makeOnboardingVC(actions: OnboardingViewModelActions) -> OnboardingViewController {
+        return OnboardingViewController.create(with: makeIntroVM(actions: actions))
     }
     
-    func makeIntroViewModel(actions: OnboardingViewModelActions) -> OnboardingViewModel {
+    func makeIntroVM(actions: OnboardingViewModelActions) -> OnboardingViewModel {
         return OnboardingViewModel(actions: actions)
     }
     

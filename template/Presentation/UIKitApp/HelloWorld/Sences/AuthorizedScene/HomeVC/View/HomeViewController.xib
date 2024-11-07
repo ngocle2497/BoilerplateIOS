@@ -20,16 +20,8 @@
             <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4Z2-I2-TyC">
-                    <rect key="frame" x="172.66666666666666" y="75" width="48" height="30"/>
-                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                    <state key="normal" title="Logout"/>
-                    <connections>
-                        <action selector="onLogoutButtonPressed:" destination="-1" eventType="touchUpInside" id="UFc-TO-hot"/>
-                    </connections>
-                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="nTj-Oh-H9b">
-                    <rect key="frame" x="0.0" y="121" width="393" height="697"/>
+                    <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="gEQ-Kc-Rlg">
                         <size key="itemSize" width="128" height="128"/>
@@ -40,14 +32,12 @@
                 </collectionView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
+                <constraint firstItem="nTj-Oh-H9b" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="7qh-JC-tPf"/>
                 <constraint firstItem="nTj-Oh-H9b" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="FB4-Xp-qeX"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="nTj-Oh-H9b" secondAttribute="bottom" id="FXn-M7-HpR"/>
+                <constraint firstAttribute="bottom" secondItem="nTj-Oh-H9b" secondAttribute="bottom" id="FXn-M7-HpR"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="nTj-Oh-H9b" secondAttribute="trailing" id="MxM-FH-abf"/>
-                <constraint firstItem="4Z2-I2-TyC" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="Pal-9h-lWR"/>
-                <constraint firstItem="4Z2-I2-TyC" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="16" id="eir-LX-SF3"/>
-                <constraint firstItem="nTj-Oh-H9b" firstAttribute="top" secondItem="4Z2-I2-TyC" secondAttribute="bottom" constant="16" id="goP-lL-wy3"/>
             </constraints>
             <point key="canvasLocation" x="9.9236641221374047" y="20.422535211267608"/>
         </view>

@@ -1,6 +1,4 @@
 import Foundation
-import RxSwift
-import RxCocoa
 import Infrastructure
 
 struct OnboardingViewModelActions {

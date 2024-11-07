@@ -2,9 +2,9 @@ import Foundation
 import UIKit
 
 protocol StartUpFlowDependencies {
-    func makeSplashViewController(actions: SplashViewModelActions) -> SplashViewController
+    func makeSplashVC(actions: SplashViewModelActions) -> SplashViewController
     
-    func makeOnboardingViewController(actions: OnboardingViewModelActions) -> OnboardingViewController
+    func makeOnboardingVC(actions: OnboardingViewModelActions) -> OnboardingViewController
 }
 
 final class StartUpFlow {
@@ -20,14 +20,14 @@ final class StartUpFlow {
     
     func start() {
         let actions = SplashViewModelActions(showOnboardingScreen: showOnboardingScreen, showAuthenticationScreen: showAuthenticationScreen, showAuthorizedScreen: showAuthorizedScreen)
-        let vc = dependencies.makeSplashViewController(actions: actions)
+        let vc = dependencies.makeSplashVC(actions: actions)
 
         navigationController?.setViewControllers([vc], animated: true)
     }
     
     private func showOnboardingScreen() {
         let actions = OnboardingViewModelActions(showAuthenticationScreen: showAuthenticationScreen)
-        let vc = dependencies.makeOnboardingViewController(actions: actions)
+        let vc = dependencies.makeOnboardingVC(actions: actions)
         navigationController?.setViewControllers([vc], animated: false)
     }
     

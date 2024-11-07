@@ -4,20 +4,20 @@ import UIKit
 final class AuthenticationDIContainer: AuthenticationFlowDependencies {
     
     // MARK: - Login
-    func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController {
-        return LoginViewController.create(with: makeLoginViewModel(actions: actions))
+    func makeLoginVC(actions: LoginViewModelActions) -> LoginViewController {
+        return LoginViewController.create(with: makeLoginVM(actions: actions))
     }
     
-    private func makeLoginViewModel(actions: LoginViewModelActions) -> LoginViewModel {
+    private func makeLoginVM(actions: LoginViewModelActions) -> LoginViewModel {
         return LoginViewModel(actions: actions)
     }
     
     // MARK: - Register
-    func makeRegisterViewController(actions: RegisterViewModelActions) -> RegisterViewController {
-        return RegisterViewController.create(with: makeRegisterViewModel(actions: actions))
+    func makeRegisterVC(actions: RegisterViewModelActions) -> RegisterViewController {
+        return RegisterViewController.create(with: makeRegisterVM(actions: actions))
     }
     
-    func makeRegisterViewModel(actions: RegisterViewModelActions) -> RegisterViewModel {
+    func makeRegisterVM(actions: RegisterViewModelActions) -> RegisterViewModel {
         return RegisterViewModel(actions: actions)
     }
     

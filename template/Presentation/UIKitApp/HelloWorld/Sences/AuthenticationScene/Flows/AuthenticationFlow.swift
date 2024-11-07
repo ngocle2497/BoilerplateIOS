@@ -2,9 +2,9 @@ import Foundation
 import UIKit
 
 protocol AuthenticationFlowDependencies {
-    func makeLoginViewController(actions: LoginViewModelActions) -> LoginViewController
+    func makeLoginVC(actions: LoginViewModelActions) -> LoginViewController
     
-    func makeRegisterViewController(actions: RegisterViewModelActions) -> RegisterViewController
+    func makeRegisterVC(actions: RegisterViewModelActions) -> RegisterViewController
 }
 
 final class AuthenticationFlow {
@@ -20,7 +20,7 @@ final class AuthenticationFlow {
     
     func start(animated: Bool) {
         let actions = LoginViewModelActions(showRegisterScreen: showRegisterScreen, showAuthorizedScreen: showAuthorizedScreen)
-        let vc = dependencies.makeLoginViewController(actions: actions)
+        let vc = dependencies.makeLoginVC(actions: actions)
         
         navigationController?.setViewControllers([vc], animated: animated)
         loginController = vc
@@ -28,7 +28,7 @@ final class AuthenticationFlow {
     
     private func showRegisterScreen() {
         let actions = RegisterViewModelActions(popToLogin: popToLogin)
-        let vc = dependencies.makeRegisterViewController(actions: actions)
+        let vc = dependencies.makeRegisterVC(actions: actions)
         navigationController?.pushViewController(vc, animated: true)
     }
     

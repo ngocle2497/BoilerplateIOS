@@ -10,6 +10,14 @@
 		1227218B2CBF7A0D000C5E32 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227218A2CBF7A0D000C5E32 /* Configuration.swift */; };
 		1227218D2CBF92B4000C5E32 /* Base.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1227218C2CBF92B4000C5E32 /* Base.xcassets */; };
 		1227218F2CBFA191000C5E32 /* BaseAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1227218E2CBFA191000C5E32 /* BaseAsset.swift */; };
+		122891A62CDC5D95003D4605 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122891A52CDC5D95003D4605 /* TabBarController.swift */; };
+		122891A82CDC5DB9003D4605 /* BaseCardTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122891A72CDC5DB9003D4605 /* BaseCardTabBar.swift */; };
+		122891AA2CDC5DD3003D4605 /* LightTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122891A92CDC5DD3003D4605 /* LightTabBar.swift */; };
+		122891AC2CDC5E09003D4605 /* UIView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122891AB2CDC5E09003D4605 /* UIView+Utilities.swift */; };
+		122891AE2CDC5EA0003D4605 /* UIStackView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122891AD2CDC5EA0003D4605 /* UIStackView+Utilities.swift */; };
+		122891B32CDC659C003D4605 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122891B12CDC659C003D4605 /* ProfileViewController.swift */; };
+		122891B42CDC659C003D4605 /* ProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 122891B22CDC659C003D4605 /* ProfileViewController.xib */; };
+		122891B72CDC678C003D4605 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 122891B62CDC678C003D4605 /* ProfileViewModel.swift */; };
 		123D9B462CD9D668003BA96E /* Combine+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 123D9B452CD9D668003BA96E /* Combine+Utilities.swift */; };
 		1289A6AA2CC6335C00F950BD /* UIImage+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1289A6A92CC6335C00F950BD /* UIImage+Utilities.swift */; };
 		1289A6AC2CC6379B00F950BD /* ListView+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1289A6AB2CC6379B00F950BD /* ListView+Utilities.swift */; };
@@ -41,7 +49,7 @@
 		12AF2D522CD32EDB00674A77 /* PlaceholderSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF2D512CD32EDB00674A77 /* PlaceholderSource.swift */; };
 		12AF2D602CD37C4B00674A77 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */; };
 		12AF2D612CD37C4B00674A77 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */; };
-		12DBAF472CD4B1A200921C8B /* AnimatedUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBAF462CD4B1A200921C8B /* AnimatedUIView.swift */; };
+		12DBAF472CD4B1A200921C8B /* UIView+Animated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBAF462CD4B1A200921C8B /* UIView+Animated.swift */; };
 		840292E62BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */; };
 		840292E72BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E42BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf */; };
 		840292E82BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E52BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf */; };
@@ -145,6 +153,14 @@
 		1227218A2CBF7A0D000C5E32 /* Configuration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		1227218C2CBF92B4000C5E32 /* Base.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Base.xcassets; sourceTree = "<group>"; };
 		1227218E2CBFA191000C5E32 /* BaseAsset.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseAsset.swift; sourceTree = "<group>"; };
+		122891A52CDC5D95003D4605 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		122891A72CDC5DB9003D4605 /* BaseCardTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCardTabBar.swift; sourceTree = "<group>"; };
+		122891A92CDC5DD3003D4605 /* LightTabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightTabBar.swift; sourceTree = "<group>"; };
+		122891AB2CDC5E09003D4605 /* UIView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Utilities.swift"; sourceTree = "<group>"; };
+		122891AD2CDC5EA0003D4605 /* UIStackView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Utilities.swift"; sourceTree = "<group>"; };
+		122891B12CDC659C003D4605 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		122891B22CDC659C003D4605 /* ProfileViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileViewController.xib; sourceTree = "<group>"; };
+		122891B62CDC678C003D4605 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		123D9B452CD9D668003BA96E /* Combine+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Combine+Utilities.swift"; sourceTree = "<group>"; };
 		1289A6A92CC6335C00F950BD /* UIImage+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Utilities.swift"; sourceTree = "<group>"; };
 		1289A6AB2CC6379B00F950BD /* ListView+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ListView+Utilities.swift"; sourceTree = "<group>"; };
@@ -173,7 +189,7 @@
 		12AF2D512CD32EDB00674A77 /* PlaceholderSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderSource.swift; sourceTree = "<group>"; };
 		12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
-		12DBAF462CD4B1A200921C8B /* AnimatedUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnimatedUIView.swift; sourceTree = "<group>"; };
+		12DBAF462CD4B1A200921C8B /* UIView+Animated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animated.swift"; sourceTree = "<group>"; };
 		7ED015E401A17E99F1E5795D /* Pods_HelloWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoppinsLatin-Regular.ttf"; sourceTree = "<group>"; };
 		840292E42BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoppinsLatin-Bold.ttf"; sourceTree = "<group>"; };
@@ -232,6 +248,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1228919E2CDC5D88003D4605 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				122891A52CDC5D95003D4605 /* TabBarController.swift */,
+				122891A72CDC5DB9003D4605 /* BaseCardTabBar.swift */,
+				122891A92CDC5DD3003D4605 /* LightTabBar.swift */,
+			);
+			path = TabBar;
+			sourceTree = "<group>";
+		};
+		122891AF2CDC6580003D4605 /* ProfileVC */ = {
+			isa = PBXGroup;
+			children = (
+				122891B52CDC677D003D4605 /* ViewModel */,
+				122891B02CDC6588003D4605 /* View */,
+			);
+			path = ProfileVC;
+			sourceTree = "<group>";
+		};
+		122891B02CDC6588003D4605 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				122891B12CDC659C003D4605 /* ProfileViewController.swift */,
+				122891B22CDC659C003D4605 /* ProfileViewController.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		122891B52CDC677D003D4605 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				122891B62CDC678C003D4605 /* ProfileViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		128C7A312CD2167D009602B1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,13 +352,15 @@
 		1294D1552CC7647F00401985 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				12DBAF462CD4B1A200921C8B /* AnimatedUIView.swift */,
+				12DBAF462CD4B1A200921C8B /* UIView+Animated.swift */,
+				122891AD2CDC5EA0003D4605 /* UIStackView+Utilities.swift */,
 				842CD6492BBC686C00984066 /* String+Utilities.swift */,
 				842CD64B2BBC688A00984066 /* Color+Utilities.swift */,
 				842CD64D2BBC689700984066 /* UIFont+Utilities.swift */,
 				1289A6A92CC6335C00F950BD /* UIImage+Utilities.swift */,
 				1289A6AB2CC6379B00F950BD /* ListView+Utilities.swift */,
 				123D9B452CD9D668003BA96E /* Combine+Utilities.swift */,
+				122891AB2CDC5E09003D4605 /* UIView+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -350,8 +404,8 @@
 			isa = PBXGroup;
 			children = (
 				12A3647B2BBD11DF0064FCE2 /* Flows */,
-				12A364962BBD356B0064FCE2 /* Register */,
-				12A3647C2BBD11E40064FCE2 /* Login */,
+				12A364962BBD356B0064FCE2 /* RegisterVC */,
+				12A3647C2BBD11E40064FCE2 /* LoginVC */,
 			);
 			path = AuthenticationScene;
 			sourceTree = "<group>";
@@ -364,13 +418,13 @@
 			path = Flows;
 			sourceTree = "<group>";
 		};
-		12A3647C2BBD11E40064FCE2 /* Login */ = {
+		12A3647C2BBD11E40064FCE2 /* LoginVC */ = {
 			isa = PBXGroup;
 			children = (
 				12A364822BBD12040064FCE2 /* ViewModel */,
 				12A3647D2BBD11EC0064FCE2 /* View */,
 			);
-			path = Login;
+			path = LoginVC;
 			sourceTree = "<group>";
 		};
 		12A3647D2BBD11EC0064FCE2 /* View */ = {
@@ -394,18 +448,19 @@
 			isa = PBXGroup;
 			children = (
 				12A364892BBD30DC0064FCE2 /* Flow */,
-				12A364882BBD30CF0064FCE2 /* Home */,
+				122891AF2CDC6580003D4605 /* ProfileVC */,
+				12A364882BBD30CF0064FCE2 /* HomeVC */,
 			);
 			path = AuthorizedScene;
 			sourceTree = "<group>";
 		};
-		12A364882BBD30CF0064FCE2 /* Home */ = {
+		12A364882BBD30CF0064FCE2 /* HomeVC */ = {
 			isa = PBXGroup;
 			children = (
 				12A3648B2BBD30E60064FCE2 /* ViewModel */,
 				12A3648A2BBD30E20064FCE2 /* View */,
 			);
-			path = Home;
+			path = HomeVC;
 			sourceTree = "<group>";
 		};
 		12A364892BBD30DC0064FCE2 /* Flow */ = {
@@ -434,13 +489,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		12A364962BBD356B0064FCE2 /* Register */ = {
+		12A364962BBD356B0064FCE2 /* RegisterVC */ = {
 			isa = PBXGroup;
 			children = (
 				12A364982BBD35770064FCE2 /* ViewModel */,
 				12A364972BBD35730064FCE2 /* View */,
 			);
-			path = Register;
+			path = RegisterVC;
 			sourceTree = "<group>";
 		};
 		12A364972BBD35730064FCE2 /* View */ = {
@@ -583,8 +638,8 @@
 			isa = PBXGroup;
 			children = (
 				842CD6172BBC642300984066 /* Flows */,
-				842CD6342BBC672D00984066 /* Splash */,
-				842CD61A2BBC647000984066 /* Onboarding */,
+				842CD6342BBC672D00984066 /* SplashVC */,
+				842CD61A2BBC647000984066 /* OnboardingVC */,
 			);
 			path = StartUpScene;
 			sourceTree = "<group>";
@@ -597,13 +652,13 @@
 			path = Flows;
 			sourceTree = "<group>";
 		};
-		842CD61A2BBC647000984066 /* Onboarding */ = {
+		842CD61A2BBC647000984066 /* OnboardingVC */ = {
 			isa = PBXGroup;
 			children = (
 				842CD6292BBC654D00984066 /* ViewModel */,
 				842CD61B2BBC647800984066 /* View */,
 			);
-			path = Onboarding;
+			path = OnboardingVC;
 			sourceTree = "<group>";
 		};
 		842CD61B2BBC647800984066 /* View */ = {
@@ -628,6 +683,7 @@
 		842CD61E2BBC64BE00984066 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				1228919E2CDC5D88003D4605 /* TabBar */,
 				128C7A5C2CD23233009602B1 /* RemoteImage */,
 				842CD61F2BBC64CA00984066 /* BaseView.swift */,
 			);
@@ -642,13 +698,13 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
-		842CD6342BBC672D00984066 /* Splash */ = {
+		842CD6342BBC672D00984066 /* SplashVC */ = {
 			isa = PBXGroup;
 			children = (
 				842CD6362BBC673A00984066 /* ViewModel */,
 				842CD6352BBC673500984066 /* View */,
 			);
-			path = Splash;
+			path = SplashVC;
 			sourceTree = "<group>";
 		};
 		842CD6352BBC673500984066 /* View */ = {
@@ -834,6 +890,7 @@
 				840292EA2BBC70F5004EE551 /* SplashViewController.xib in Resources */,
 				12A3649D2BBD36660064FCE2 /* RegisterViewController.xib in Resources */,
 				840292E92BBC70EB004EE551 /* DefaultLaunch.storyboard in Resources */,
+				122891B42CDC659C003D4605 /* ProfileViewController.xib in Resources */,
 				12AF2D612CD37C4B00674A77 /* ImageCollectionViewCell.xib in Resources */,
 				1292EDF32CDA0F1800A03385 /* LoginViewController.xib in Resources */,
 				840292E72BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf in Resources */,
@@ -973,7 +1030,9 @@
 				842CD6472BBC684C00984066 /* DarkColorTheme.swift in Sources */,
 				842CD6132BBC637800984066 /* AppDIContainer.swift in Sources */,
 				842CD6202BBC64CA00984066 /* BaseView.swift in Sources */,
+				122891AC2CDC5E09003D4605 /* UIView+Utilities.swift in Sources */,
 				1227218B2CBF7A0D000C5E32 /* Configuration.swift in Sources */,
+				122891B72CDC678C003D4605 /* ProfileViewModel.swift in Sources */,
 				12A3648D2BBD30F30064FCE2 /* HomeViewModel.swift in Sources */,
 				1289A6AA2CC6335C00F950BD /* UIImage+Utilities.swift in Sources */,
 				12A364792BBD11530064FCE2 /* AuthenticationDIContainer.swift in Sources */,
@@ -985,6 +1044,7 @@
 				842CD6542BBC692200984066 /* Strings.swift in Sources */,
 				12AF2D4A2CD3256300674A77 /* AnimatedImage.swift in Sources */,
 				842CD6222BBC64E200984066 /* ViewController.swift in Sources */,
+				122891B32CDC659C003D4605 /* ProfileViewController.swift in Sources */,
 				842CD64E2BBC689700984066 /* UIFont+Utilities.swift in Sources */,
 				12A364912BBD31580064FCE2 /* HomeViewController.swift in Sources */,
 				12AF2D602CD37C4B00674A77 /* ImageCollectionViewCell.swift in Sources */,
@@ -995,11 +1055,12 @@
 				842CD6242BBC64FE00984066 /* InactiveView.swift in Sources */,
 				842CD6422BBC682A00984066 /* DefaultFont.swift in Sources */,
 				12A364932BBD31990064FCE2 /* AuthorizedFlow.swift in Sources */,
-				12DBAF472CD4B1A200921C8B /* AnimatedUIView.swift in Sources */,
+				12DBAF472CD4B1A200921C8B /* UIView+Animated.swift in Sources */,
 				842CD6382BBC675600984066 /* SplashViewModel.swift in Sources */,
 				12A3649E2BBD36660064FCE2 /* RegisterViewController.swift in Sources */,
 				842CD5EA2BBC5C5500984066 /* SceneDelegate.swift in Sources */,
 				128C7A662CD23278009602B1 /* ThumbHashLoader.swift in Sources */,
+				122891AE2CDC5EA0003D4605 /* UIStackView+Utilities.swift in Sources */,
 				1227218F2CBFA191000C5E32 /* BaseAsset.swift in Sources */,
 				12A364842BBD120F0064FCE2 /* LoginViewModel.swift in Sources */,
 				842CD6452BBC683E00984066 /* LightColorTheme.swift in Sources */,
@@ -1008,10 +1069,13 @@
 				842CD6102BBC630E00984066 /* AppFlowCoordinator.swift in Sources */,
 				1292EDF22CDA0F1800A03385 /* LoginViewController.swift in Sources */,
 				842CD63F2BBC681100984066 /* ThemeManager.swift in Sources */,
+				122891A82CDC5DB9003D4605 /* BaseCardTabBar.swift in Sources */,
+				122891AA2CDC5DD3003D4605 /* LightTabBar.swift in Sources */,
 				842CD64A2BBC686C00984066 /* String+Utilities.swift in Sources */,
 				1289A6AC2CC6379B00F950BD /* ListView+Utilities.swift in Sources */,
 				128C7A642CD23246009602B1 /* ThumbHash.swift in Sources */,
 				12A364952BBD32130064FCE2 /* AuthorizedSceneDIContainer.swift in Sources */,
+				122891A62CDC5D95003D4605 /* TabBarController.swift in Sources */,
 				128C7A6A2CD2355C009602B1 /* BlurHashLoader.swift in Sources */,
 				12A364862BBD12980064FCE2 /* AuthenticationFlow.swift in Sources */,
 				842CD6192BBC642C00984066 /* StartUpFlow.swift in Sources */,
@@ -1225,12 +1289,6 @@
 					"-framework",
 					"\"MMKVCore\"",
 					"-framework",
-					"\"RxCocoa\"",
-					"-framework",
-					"\"RxRelay\"",
-					"-framework",
-					"\"RxSwift\"",
-					"-framework",
 					"\"SDWebImage\"",
 					"-framework",
 					"\"UIKit\"",
@@ -1305,12 +1363,6 @@
 					"\"MMKV\"",
 					"-framework",
 					"\"MMKVCore\"",
-					"-framework",
-					"\"RxCocoa\"",
-					"-framework",
-					"\"RxRelay\"",
-					"-framework",
-					"\"RxSwift\"",
 					"-framework",
 					"\"SDWebImage\"",
 					"-framework",

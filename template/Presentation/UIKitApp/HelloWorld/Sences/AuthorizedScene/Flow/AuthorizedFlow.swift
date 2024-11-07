@@ -2,7 +2,8 @@ import Foundation
 import UIKit
 
 protocol AuthorizedFlowDependencies {
-    func makeHomeViewController(actions: HomeViewModelActions) -> HomeViewController
+    func makeHomeVC(actions: HomeViewModelActions) -> HomeViewController
+    func makeProfileVC(actions: ProfileViewModelActions) -> ProfileViewController
 }
 
 final class AuthorizedFlow {
@@ -17,10 +18,18 @@ final class AuthorizedFlow {
     }
     
     func start(animated: Bool) {
-        let actions = HomeViewModelActions(logout: logout)
-        let vc = dependencies.makeHomeViewController(actions: actions)
+        let tabbar = TabBarController()
 
-        navigationController?.setViewControllers([vc], animated: animated)
+        let homeActions = HomeViewModelActions()
+        let homeVC = dependencies.makeHomeVC(actions: homeActions)
+        homeVC.tabBarItem = .init(title: "Home", image: UIImage(systemName: "house"), tag: 0)
+        
+        let profileActions = ProfileViewModelActions(logout: logout)
+        let profileVC = dependencies.makeProfileVC(actions: profileActions)
+        profileVC.tabBarItem = .init(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
+        
+        tabbar.viewControllers = [homeVC, profileVC]
+        navigationController?.setViewControllers([tabbar], animated: animated)
     }
     
     private func logout() {
