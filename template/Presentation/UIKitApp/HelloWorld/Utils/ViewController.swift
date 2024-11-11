@@ -36,8 +36,8 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
         }
     }
     
-    /// Status bar style. Default: dark
-    var statusBarStyle: UIStatusBarStyle = .darkContent {
+    /// Status bar style. Default: default
+    var statusBarStyle: UIStatusBarStyle = .default {
         didSet {
             self.updateStatusBar()
         }
@@ -101,10 +101,23 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         tap!.cancelsTouchesInView = true
         
         navigationController?.interactivePopGestureRecognizer?.delegate = self
+        GLOBAL_SETTING.theme.sink(with: self, receiveValue: { vc, _ in
+            vc.themeUpdate()
+        }).store(in: &bag)
+        
+        GLOBAL_SETTING.language.sink(with: self, receiveValue: { vc, _ in
+            vc.languageUpdate()
+        }).store(in: &bag)
+        
+        GLOBAL_SETTING.fontSize.sink(with: self, receiveValue: { vc, _ in
+            vc.fontSizeUpdate()
+        }).store(in: &bag)
+        
         setup()
         setupCombine()
     }
@@ -186,17 +199,7 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
     
     /// Called on  view did load
     func setup() {
-        GLOBAL_SETTING.theme.sink(with: self, receiveValue: { vc, _ in
-            vc.themeUpdate()
-        }).store(in: &bag)
-        
-        GLOBAL_SETTING.language.sink(with: self, receiveValue: { vc, _ in
-            vc.languageUpdate()
-        }).store(in: &bag)
-        
-        GLOBAL_SETTING.fontSize.sink(with: self, receiveValue: { vc, _ in
-            vc.fontSizeUpdate()
-        }).store(in: &bag)
+
     }
     
     /// Called when theme update or view loaded
