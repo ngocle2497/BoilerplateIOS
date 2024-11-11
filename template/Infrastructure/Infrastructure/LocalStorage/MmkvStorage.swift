@@ -5,7 +5,7 @@ public var MMKV_STORAGE = MMKVStorage.shared
 
 public struct MMKVStorage {
     static var shared = MMKVStorage()
-    private var instance: MMKV?
+    private(set) var instance: MMKV?
     
     private func getString(forKey: String) -> String? {
         return instance?.string(forKey: forKey)
@@ -67,7 +67,8 @@ public struct MMKVStorage {
     public func resetAll() {
         instance?.clearAll()
     }
-    public mutating func createInstance(with cryptKey: String = "HelloWorld") {
+
+    public mutating func createInstance(cryptKey: String = "HelloWorld") {
         MMKV.initialize(rootDir: nil)
         self.instance = MMKV(mmapID: "LocalStorage", cryptKey: cryptKey.data(using: .utf8), mode: .singleProcess)
     }

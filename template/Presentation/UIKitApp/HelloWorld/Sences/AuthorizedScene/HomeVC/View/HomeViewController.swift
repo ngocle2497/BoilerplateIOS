@@ -125,6 +125,7 @@ class HomeViewController: ViewController<HomeViewModel> {
         let layout = createLayout()
         
         imagesCollectionView.collectionViewLayout = layout
+        vm.getUserList()
     }
     
     override func setupCombine() {

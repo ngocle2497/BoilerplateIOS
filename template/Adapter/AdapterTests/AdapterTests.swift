@@ -1,10 +1,3 @@
-//
-//  AdapterTests.swift
-//  AdapterTests
-//
-//  Created by Ngoc H. Le on 30/10/24.
-//
-
 import XCTest
 @testable import Adapter
 

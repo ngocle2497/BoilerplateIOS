@@ -1,5 +1,6 @@
 import UIKit
 import Infrastructure
+import Adapter
 import netfox
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
@@ -65,7 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 #if DEBUG
         NFX.sharedInstance().start()
 #endif
-        MMKV_STORAGE.createInstance(with: Configuration.MMKV_CRYPTKEY)
+        MMKV_STORAGE.createInstance(cryptKey: Configuration.MMKV_CRYPTKEY)
         API_CONSTANT.setBaseUrl(with: Configuration.API_URL)
         RemoteImage.registerLoaders()
     }

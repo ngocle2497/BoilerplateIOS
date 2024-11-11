@@ -1,10 +1,3 @@
-//
-//  Infrastructure.h
-//  Infrastructure
-//
-//  Created by Ngoc H. Le on 29/10/24.
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for Infrastructure.

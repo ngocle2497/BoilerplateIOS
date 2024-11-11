@@ -1,10 +1,3 @@
-//
-//  Domain.h
-//  Domain
-//
-//  Created by Ngoc H. Le on 29/10/24.
-//
-
 #import <Foundation/Foundation.h>
 
 //! Project version number for Domain.

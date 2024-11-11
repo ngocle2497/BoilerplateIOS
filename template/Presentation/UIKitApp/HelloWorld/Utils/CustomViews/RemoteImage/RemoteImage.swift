@@ -212,17 +212,6 @@ extension RemoteImage {
         }
         cancelPendingOperation()
         var context = createSDWebImageContext(cacheKey: self.source)
-        // It seems that `UIImageView` can't tint some vector graphics. If the `tintColor` prop is specified,
-        // we tell the SVG coder to decode to a bitmap instead. This will become useless when we switch to SVGNative coder.
-        if imageTintColor != nil {
-            context[.imageDecodeOptions] = [
-                SDImageCoderOption.webImageContext: [
-                    "svgPrefersBitmap": true,
-                    "svgImageSize": sdImageView.bounds.size,
-                    "svgImagePreserveAspectRatio": true
-                ]
-            ]
-        }
         context[RemoteImage.screenScaleKey] = screenScale
         
         pendingOperation = imageManager.loadImage(

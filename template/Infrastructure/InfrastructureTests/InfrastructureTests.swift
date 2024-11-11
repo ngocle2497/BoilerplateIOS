@@ -1,10 +1,3 @@
-//
-//  InfrastructureTests.swift
-//  InfrastructureTests
-//
-//  Created by Ngoc H. Le on 29/10/24.
-//
-
 import XCTest
 @testable import Infrastructure
 

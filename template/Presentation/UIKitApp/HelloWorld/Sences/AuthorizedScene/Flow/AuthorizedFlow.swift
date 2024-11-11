@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import Infrastructure
 
 protocol AuthorizedFlowDependencies {
     func makeHomeVC(actions: HomeViewModelActions) -> HomeViewController
@@ -33,6 +34,7 @@ final class AuthorizedFlow {
     }
     
     private func logout() {
+        NetworkService.shared.cancleAllRequest()
         let container = AuthenticationDIContainer()
         let flow = container.makeAuthenticationSceneFlow(navigationController: navigationController)
         flow.start(animated: true)
