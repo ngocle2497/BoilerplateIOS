@@ -13,7 +13,8 @@ struct NetworkResult {
 
 class NetworkManager {
     var networkStatus = PassthroughSubject<NetworkResult, Never>()
-    static let shared = NetworkManager(session: Session.default)
+    static let shared = NetworkManager(session: Session(interceptor: RetryInterceptor()))
+    
     private let session: Session
     
     init(session: Session) {
@@ -93,13 +94,13 @@ class NetworkManagerConcurency {
     func request<T: Codable, E: Codable>(_ route: ApiEndpoint,
                                          type: T.Type,
                                          typeError: E.Type) async -> Result<T, ErrorRequest<E>> {
-        let dataResponse = await self.session.request(route.url, method: route.method, parameters: route.params, headers: route.headers).serializingData(automaticallyCancelling: true).response
+        let dataResponse = await self.session.request(route.url, method: route.method, parameters: route.params, headers: route.headers).validate().serializingData(automaticallyCancelling: true).response
         return handleRequest(dataResponse: dataResponse, type: type, typeError: typeError)
     }
     
     func request<T: Codable>(_ route: ApiEndpoint,
                                          type: T.Type ) async -> Result<T, ErrorRequest<T>> {
-        let dataResponse = await self.session.request(route.url, method: route.method, parameters: route.params, headers: route.headers).serializingData(automaticallyCancelling: true).response
+        let dataResponse = await self.session.request(route.url, method: route.method, parameters: route.params, headers: route.headers).validate().serializingData(automaticallyCancelling: true).response
         return handleRequest(dataResponse: dataResponse, type: type, typeError: nil)
     }
 }

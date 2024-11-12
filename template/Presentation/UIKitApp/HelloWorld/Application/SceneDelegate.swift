@@ -29,6 +29,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         appFlow = AppFlow(navigationController: navigation, appDIContainer: appDIContainer)
         appFlow?.start()
+        NetworkService.shared.delegate = self
         window?.makeKeyAndVisible()
     }
     
@@ -75,5 +76,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 extension SceneDelegate: UINavigationControllerDelegate {
     func navigationControllerSupportedInterfaceOrientations(_ navigationController: UINavigationController) -> UIInterfaceOrientationMask {
         return navigationController.topViewController?.supportedInterfaceOrientations ?? .all
+    }
+}
+
+extension SceneDelegate: NetworkServiceDelegate {
+    func getApiRouteForRefreshToken() -> ApiEndpoint {
+        return Endpoint(from: .refreshToken)
     }
 }

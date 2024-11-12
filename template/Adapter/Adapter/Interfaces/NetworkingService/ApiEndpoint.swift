@@ -19,7 +19,7 @@ extension Endpointable {
 }
 
 
-class Endpoint: ApiEndpoint {
+public class Endpoint: ApiEndpoint {
     public var url: String
     
     public var method: Alamofire.HTTPMethod
@@ -28,7 +28,7 @@ class Endpoint: ApiEndpoint {
     
     public var params: Alamofire.Parameters?
     
-    init(from target: ApiTarget) {
+    public init(from target: ApiTarget) {
         self.url = target.url
         self.method = target.method
         self.headers = target.headers
@@ -37,6 +37,7 @@ class Endpoint: ApiEndpoint {
 }
 
 public enum ApiTarget {
+    case refreshToken
     case users
 }
 
@@ -44,7 +45,7 @@ public enum ApiTarget {
 extension ApiTarget {
     public var url: String {
         switch self {
-        case .users:
+        default:
             return ApiConstant.shared.baseUrl + self.path
         }
     }
@@ -52,7 +53,9 @@ extension ApiTarget {
     var path: String {
         switch self {
         case .users:
-            return "/api"
+            return "/users"
+        case .refreshToken:
+            return "/refresh-token"
         }
     }
     
@@ -60,6 +63,8 @@ extension ApiTarget {
         switch self {
         case .users:
             return .get
+        case .refreshToken:
+            return .post
         }
     }
     
@@ -69,13 +74,15 @@ extension ApiTarget {
         switch self {
         case .users:
             return ["results": 3000]
+        default:
+            return [:]
         }
     }
     
     public var headers: HTTPHeaders? {
         let defaultHeaders: HTTPHeaders = ["Content-Type": "application/json"]
         switch self {
-        case .users:
+        default:
             return  defaultHeaders
         }
     }
