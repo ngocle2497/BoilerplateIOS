@@ -80,7 +80,8 @@ extension SceneDelegate: UINavigationControllerDelegate {
 }
 
 extension SceneDelegate: NetworkServiceDelegate {
-    func getApiRouteForRefreshToken() -> ApiEndpoint {
-        return Endpoint(from: .refreshToken)
+    func getApiRouteForRefreshToken() -> ApiEndpoint? {
+        // create new endpoint to refresh token while request 401
+        return nil
     }
 }

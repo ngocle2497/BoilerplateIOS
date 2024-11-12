@@ -7,22 +7,11 @@ strings:
         enumName: MLocalize
         lookupFunction: localized
 xcassets:
-  - inputs: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/Image.xcassets
+  - inputs: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/GeneratedAssets.xcassets
     outputs:
-        output: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/Images.swift
+        output: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/Assets.swift
         templatePath: ${PROJECT_DIR}/swift5.stencil
         params:
-            enumName: MImages
-            imageTypeName: MImageType
-            imageAliasName: MImageAlias
-
-  - inputs: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/Base.xcassets
-    outputs:
-        output: ${PROJECT_DIR}/${TARGET_NAME}/Resources/Generated/BaseAsset.swift
-        templatePath: ${PROJECT_DIR}/swift5.stencil
-        params:
-            enumName: MBaseAsset
-            imageTypeName: MBaseImageType
-            imageAliasName: MBaseImageAlias
-
-
+            enumName: MAssets
+            imageTypeName: MAssetsType
+            imageAliasName: MAssetsAlias

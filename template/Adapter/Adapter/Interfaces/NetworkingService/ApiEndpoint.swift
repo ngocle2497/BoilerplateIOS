@@ -53,7 +53,7 @@ extension ApiTarget {
     var path: String {
         switch self {
         case .users:
-            return "/users"
+            return "/api"
         case .refreshToken:
             return "/refresh-token"
         }

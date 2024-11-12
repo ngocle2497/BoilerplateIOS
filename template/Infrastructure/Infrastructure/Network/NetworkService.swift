@@ -51,7 +51,7 @@ final class RetryInterceptor: RequestInterceptor {
     
     private func afRefreshToken() async -> Bool {
         // we check NetworkService.shared.delegate above, so we can force value here
-        let route = NetworkService.shared.delegate!.getApiRouteForRefreshToken()
+        let route = NetworkService.shared.delegate!.getApiRouteForRefreshToken()!
         let dataResponse = await AF.request(route.url, method: route.method, parameters: route.params, headers: route.headers).serializingData(automaticallyCancelling: true).response
         switch dataResponse.result {
         case .success(let data):
@@ -98,7 +98,7 @@ final class RetryInterceptor: RequestInterceptor {
 }
 
 public protocol NetworkServiceDelegate {
-    func getApiRouteForRefreshToken() -> ApiEndpoint
+    func getApiRouteForRefreshToken() -> ApiEndpoint?
 }
 
 public class NetworkService: NetworkingService {
