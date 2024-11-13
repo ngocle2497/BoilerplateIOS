@@ -70,6 +70,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         MMKV_STORAGE.createInstance(cryptKey: Configuration.MMKV_CRYPTKEY)
         API_CONSTANT.setBaseUrl(with: Configuration.API_URL)
         RemoteImage.registerLoaders()
+        
+//        NetworkService.shared.enableSSL(with:sslConfig)
     }
 }
 

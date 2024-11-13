@@ -1,7 +1,7 @@
 import Foundation
 import Domain
 
-public final class UserRepositoriesImpl: Endpointable {
+public final class UserRepositoriesImpl {
     
     private var networkService: NetworkingService
     
@@ -19,7 +19,8 @@ public final class UserRepositoriesImpl: Endpointable {
 extension UserRepositoriesImpl: UserRepository {
     public func getUserList(completion: @escaping (Domain.UsersPage) -> Void) {
         self.getUserTask = Task {
-            let result = await self.networkService.request(fromApiTarget(.users), type: UserResponseDTO.self)
+            let result = await self.networkService.request(Endpoint(.users(results: 200)), type: UserResponseDTO.self)
+            
             switch result {
             case .success(let data):
                 completion(.init(page: data.data.info.page, totalPage: 1, users: data.data.results.map({$0.toDomain()})))

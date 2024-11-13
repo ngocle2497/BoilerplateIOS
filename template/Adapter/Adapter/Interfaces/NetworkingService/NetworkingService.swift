@@ -8,7 +8,6 @@ public struct BaseError: Error  {
     }
 }
 
-
 public enum ResultWithError<T, E> {
     case success(T)
     case failure(E?)
@@ -35,4 +34,12 @@ public protocol NetworkingService {
     func request<T: Codable, E: Codable>(_ route: ApiEndpoint, type: T.Type, errorType: E.Type) async -> ResultWithError<ResponseBase<T>, E>
     
     func request<T: Codable>(_ route: ApiEndpoint, type: T.Type) async -> ResultWithoutBaseError<ResponseBase<T>>
+    
+    func request(_ route: ApiEndpoint) async -> ResultWithoutBaseError<()>
+    
+    func upload<T: Codable>(_ route: ApiEndpoint, type: T.Type) async -> ResultWithoutBaseError<ResponseBase<T>>
+    
+    func upload(_ route: ApiEndpoint) async -> ResultWithoutBaseError<()>
+    
+    func upload<T: Codable, E: Codable>(_ route: ApiEndpoint, type: T.Type, errorType: E.Type) async -> ResultWithError<ResponseBase<T>, E>
 }

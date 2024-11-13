@@ -1,6 +1,7 @@
 import Alamofire
 import Adapter
 import Combine
+import TrustKit
 
 struct NetworkResult {
     var status: Int
@@ -11,13 +12,19 @@ struct NetworkResult {
     }
 }
 
-class NetworkManager {
+final class NetworkManager {
     var networkStatus = PassthroughSubject<NetworkResult, Never>()
+    static var trustkitInstance: TrustKit? = nil
+    
     static let shared = NetworkManager(session: Session(interceptor: RetryInterceptor()))
     
-    private let session: Session
+    private var session: Session
     
     init(session: Session) {
+        self.session = session
+    }
+    
+    func updateSession(session: Session) {
         self.session = session
     }
     
@@ -50,6 +57,35 @@ class NetworkManagerConcurency {
     
     init(session: Session) {
         self.session = session
+    }
+}
+
+// MARK: - Private func
+extension NetworkManagerConcurency {
+    private func handleParamsWithFormData(multiPart: MultipartFormData, params: Parameters) {
+        for (key, value) in params {
+            if let temp = value as? String {
+                multiPart.append(temp.data(using: .utf8)!, withName: key)
+            }
+            if let temp = value as? Int {
+                multiPart.append("\(temp)".data(using: .utf8)!, withName: key)
+            }
+            if let temp = value as? NSArray {
+                temp.forEach({ element in
+                    let keyObj = key + "[]"
+                    if let string = element as? String {
+                        multiPart.append(string.data(using: .utf8)!, withName: keyObj)
+                    } else
+                    if let num = element as? Int {
+                        let value = "\(num)"
+                        multiPart.append(value.data(using: .utf8)!, withName: keyObj)
+                    }
+                })
+            }
+            if let temp = value as? FormDataRequest {
+                multiPart.append(temp.data, withName: temp.keyName, fileName: temp.fileName, mimeType: temp.mimeType)
+            }
+        }
     }
     
     private func handleRequest<T: Codable, E: Codable>(dataResponse: DataResponse<Data, AFError>, type: T.Type,
@@ -90,20 +126,113 @@ class NetworkManagerConcurency {
             return .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKOWN.rawValue, message: error.localizedDescription, error: nil))
         }
     }
-    
+}
+
+// MARK: - Public func
+extension NetworkManagerConcurency {
     func request<T: Codable, E: Codable>(_ route: ApiEndpoint,
                                          type: T.Type,
                                          typeError: E.Type) async -> Result<T, ErrorRequest<E>> {
-        let dataResponse = await self.session.request(route.url, method: route.method, parameters: route.params, headers: route.headers).validate().serializingData(automaticallyCancelling: true).response
+        let dataResponse = await self.session.request(route.url,
+                                                      method: route.method,
+                                                      parameters: route.params,
+                                                      encoding: route.encoding ?? URLEncoding.queryString,
+                                                      headers: route.headers)
+            .validate()
+            .serializingData(automaticallyCancelling: true)
+            .response
         return handleRequest(dataResponse: dataResponse, type: type, typeError: typeError)
     }
     
     func request<T: Codable>(_ route: ApiEndpoint,
-                                         type: T.Type ) async -> Result<T, ErrorRequest<T>> {
-        let dataResponse = await self.session.request(route.url, method: route.method, parameters: route.params, headers: route.headers).validate().serializingData(automaticallyCancelling: true).response
+                             type: T.Type ) async -> Result<T, ErrorRequest<T>> {
+        let dataResponse = await self.session.request(route.url,
+                                                      method: route.method,
+                                                      parameters: route.params,
+                                                      encoding: route.encoding ?? URLEncoding.queryString,
+                                                      headers: route.headers)
+            .validate()
+            .serializingData(automaticallyCancelling: true)
+            .response
         return handleRequest(dataResponse: dataResponse, type: type, typeError: nil)
     }
+    
+    func request(_ route: ApiEndpoint) async -> Result<(), AFError> {
+        let dataResponse = await self.session.request(route.url,
+                                                      method: route.method,
+                                                      parameters: route.params,
+                                                      encoding: route.encoding ?? URLEncoding.queryString,
+                                                      headers: route.headers)
+            .validate()
+            .serializingData(automaticallyCancelling: true)
+            .response
+        
+        switch dataResponse.result {
+        case .success(_):
+            return .success(())
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
+    func upload(_ route: ApiEndpoint) async -> Result<(), AFError> {
+        let dataResponse = await self.session.upload(
+            multipartFormData: { [weak self] multiPart in
+                guard let self, let params = route.params else {
+                    return
+                }
+                self.handleParamsWithFormData(multiPart: multiPart, params: params)
+            },
+            to: route.url,
+            method: route.method,
+            headers: route.headers)
+            .validate()
+            .serializingData(automaticallyCancelling: true)
+            .response
+        
+        switch dataResponse.result {
+        case .success(_):
+            return .success(())
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
+    func upload<T: Codable>(_ route: ApiEndpoint, type: T.Type) async -> Result<T, ErrorRequest<T>> {
+        let dataResponse = await self.session.upload(
+            multipartFormData: { [weak self] multiPart in
+                guard let self, let params = route.params else {
+                    return
+                }
+                self.handleParamsWithFormData(multiPart: multiPart, params: params)
+            },
+            to: route.url,
+            method: route.method,
+            headers: route.headers)
+            .validate()
+            .serializingData(automaticallyCancelling: true)
+            .response
+        return handleRequest(dataResponse: dataResponse, type: type, typeError: nil)
+    }
+    
+    func upload<T: Codable, E: Codable>(_ route: ApiEndpoint, type: T.Type, typeError: E.Type) async -> Result<T, ErrorRequest<E>> {
+        let dataResponse = await self.session.upload(
+            multipartFormData: { [weak self] multiPart in
+                guard let self, let params = route.params else {
+                    return
+                }
+                self.handleParamsWithFormData(multiPart: multiPart, params: params)
+            },
+            to: route.url,
+            method: route.method,
+            headers: route.headers)
+            .validate()
+            .serializingData(automaticallyCancelling: true)
+            .response
+        return handleRequest(dataResponse: dataResponse, type: type, typeError: typeError)
+    }
 }
+
 extension JSONDecoder {
     static var `default`: JSONDecoder {
         let decoder = JSONDecoder()

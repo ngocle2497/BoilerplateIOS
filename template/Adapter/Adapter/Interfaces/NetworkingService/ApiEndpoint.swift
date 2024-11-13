@@ -5,16 +5,32 @@ public protocol ApiEndpoint: AnyObject {
     var url: String { get }
     var method: HTTPMethod { get }
     var params: Parameters? { get }
+    var encoding: ParameterEncoding? { get }
     var headers: HTTPHeaders? { get }
 }
 
-protocol Endpointable {
-    func fromApiTarget(_ target: ApiTarget) -> ApiEndpoint
+public protocol FormDataRequest {
+    var keyName: String { get }
+    var fileName: String { get }
+    var mimeType: String { get }
+    var data: Data { get }
 }
 
-extension Endpointable {
-    func fromApiTarget(_ target: ApiTarget) -> ApiEndpoint {
-        return Endpoint(from: target)
+public class FormData: FormDataRequest {
+    
+    public var keyName: String
+    
+    public var fileName: String
+    
+    public var mimeType: String
+    
+    public var data: Data
+    
+    public init(keyName: String, fileName: String, mimeType: String, data: Data) {
+        self.keyName = keyName
+        self.fileName = fileName
+        self.mimeType = mimeType
+        self.data = data
     }
 }
 
@@ -22,23 +38,27 @@ extension Endpointable {
 public class Endpoint: ApiEndpoint {
     public var url: String
     
-    public var method: Alamofire.HTTPMethod
+    public var method: HTTPMethod
     
-    public var headers: Alamofire.HTTPHeaders?
+    public var headers: HTTPHeaders?
     
-    public var params: Alamofire.Parameters?
+    public var params: Parameters?
     
-    public init(from target: ApiTarget) {
+    public var encoding: ParameterEncoding?
+    
+    public init(_ target: ApiTarget) {
         self.url = target.url
         self.method = target.method
         self.headers = target.headers
         self.params = target.parameters
+        self.encoding = target.encoding
     }
 }
 
 public enum ApiTarget {
     case refreshToken
-    case users
+    case users(results: Int)
+    case uploadImage([String: FormDataRequest])
 }
 
 
@@ -54,6 +74,8 @@ extension ApiTarget {
         switch self {
         case .users:
             return "/api"
+        case .uploadImage(_):
+            return "/upload"
         case .refreshToken:
             return "/refresh-token"
         }
@@ -61,19 +83,29 @@ extension ApiTarget {
     
     public var method: HTTPMethod {
         switch self {
-        case .users:
-            return .get
+        case .uploadImage(_):
+            return .post
         case .refreshToken:
             return .post
+        default:
+            return .get
+        }
+    }
+    
+    public var encoding: ParameterEncoding {
+        switch self {
+        default:
+            return URLEncoding.queryString
         }
     }
     
     public var parameters: Parameters {
         let _: [String: Any] = [:]
-        let encoding: ParameterEncoding = URLEncoding.queryString
         switch self {
-        case .users:
-            return ["results": 3000]
+        case .users(let result):
+            return ["results": result]
+        case .uploadImage(let data):
+            return data
         default:
             return [:]
         }
@@ -82,6 +114,8 @@ extension ApiTarget {
     public var headers: HTTPHeaders? {
         let defaultHeaders: HTTPHeaders = ["Content-Type": "application/json"]
         switch self {
+        case .uploadImage(_):
+            return ["Content-type": "multipart/form-data"]
         default:
             return  defaultHeaders
         }

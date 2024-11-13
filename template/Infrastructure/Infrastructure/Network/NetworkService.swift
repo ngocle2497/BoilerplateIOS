@@ -1,116 +1,45 @@
 import Foundation
 import Alamofire
 import Adapter
-
-
-struct RefreshTokenResponse: Codable {
-    var data: String
-    var status: Int
-}
-
-final class RetryInterceptor: RequestInterceptor {
-    
-    private let retryLimit = 2
-    static var refreshTask: Task<Bool, Never>?
-    
-    func adapt(_ urlRequest: URLRequest, for session: Session, completion: @escaping (Result<URLRequest, Error>) -> Void) {
-        var request = urlRequest
-        guard let token = MMKV_STORAGE.appToken else {
-            completion(.success(urlRequest))
-            return
-        }
-        let bearerToken = "Bearer \(token)"
-        request.setValue(bearerToken, forHTTPHeaderField: "Authorization")
-        completion(.success(request))
-    }
-    
-    func retry(_ request: Request, for session: Session, dueTo error: any Error, completion: @escaping (RetryResult) -> Void) {
-        guard let statusCode = request.response?.statusCode else {
-            completion(.doNotRetry)
-            return
-        }
-        
-        guard request.retryCount < retryLimit else {
-            completion(.doNotRetry)
-            return
-        }
-        switch statusCode {
-        case 200...299:
-            completion(.doNotRetry)
-        case HttpStatusCode.UN_AUTHORIZED.rawValue:
-            if NetworkService.shared.delegate?.getApiRouteForRefreshToken() == nil {
-                completion(.doNotRetry)
-                return
-            }
-            refreshTokenIfNecessary { isSuccess in isSuccess ? completion(.retry) : completion(.doNotRetry) }
-            break
-        default:
-            completion(.retry)
-        }
-    }
-    
-    private func afRefreshToken() async -> Bool {
-        // we check NetworkService.shared.delegate above, so we can force value here
-        let route = NetworkService.shared.delegate!.getApiRouteForRefreshToken()!
-        let dataResponse = await AF.request(route.url, method: route.method, parameters: route.params, headers: route.headers).serializingData(automaticallyCancelling: true).response
-        switch dataResponse.result {
-        case .success(let data):
-            if dataResponse.response?.statusCode == HttpStatusCode.OK.rawValue {
-                do {
-                    let jsonData =  try JSONDecoder.default.decode(RefreshTokenResponse.self, from: data)
-                    MMKV_STORAGE.appToken = jsonData.data
-                    return true
-                } catch {
-                    print(error.localizedDescription)
-                    NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.DECODE_ERROR.rawValue, messages: error.localizedDescription))
-                    return false
-                }
-            }
-            return false
-        case .failure(_):
-            return false
-        }
-    }
-    
-    private func refreshTokenTask() async -> Bool {
-        if let task = RetryInterceptor.refreshTask {
-            return await task.value
-        }
-        let task = Task {
-            await afRefreshToken()
-        }
-        RetryInterceptor.refreshTask = task
-        return await withTaskCancellationHandler {
-            let value = await task.value
-            RetryInterceptor.refreshTask = nil
-            return value
-        } onCancel: {
-            task.cancel()
-        }
-    }
-    
-    private func refreshTokenIfNecessary(completion: @escaping (_ isSuccess: Bool) -> Void) {
-        Task {
-            let value = await refreshTokenTask()
-            completion(value)
-        }
-    }
-}
+import TrustKit
 
 public protocol NetworkServiceDelegate {
     func getApiRouteForRefreshToken() -> ApiEndpoint?
 }
 
-public class NetworkService: NetworkingService {
-    
+
+
+
+public class NetworkService {
     public static var shared = NetworkService()
     
     public var delegate: NetworkServiceDelegate? = nil
     
+    public func enableSSL(with config: SSLPinningConfig) {
+        NetworkManager.trustkitInstance = TrustKit.init(configuration: config.toDic())
+        let evaluators = config.getEvaluators()
+        let manager = ServerTrustManager(evaluators: evaluators)
+        let session = Session(delegate: NetworkSessionDelegate(), interceptor: RetryInterceptor(), serverTrustManager: manager)
+        NetworkManager.shared.updateSession(session: session)
+        
+        NetworkManager.trustkitInstance!.pinningValidatorCallback = { (validatorResult, hostName, pinningPolicy) in
+            if validatorResult.finalTrustDecision == .shouldBlockConnection {
+                debugPrint("Connection blocked for domain: \(validatorResult.serverHostname)")
+            }
+        }
+    }
+    
+    public func disableSSL() {
+        NetworkManager.trustkitInstance = nil
+        NetworkManager.shared.updateSession(session: Session(interceptor: RetryInterceptor()))
+    }
+    
     public func cancleAllRequest() {
         NetworkManager.shared.cancelAllRequest()
     }
-    
+}
+
+extension NetworkService: NetworkingService  {
     public func request<T: Codable>(_ route: ApiEndpoint, type: T.Type) async -> ResultWithoutBaseError<ResponseBase<T>>{
         let result =  await NetworkManager.shared.getNetworkConcurrency().request(route, type: type.self)
         switch result {
@@ -126,6 +55,57 @@ public class NetworkService: NetworkingService {
     
     public func request<T: Codable, E: Codable>(_ route: ApiEndpoint, type: T.Type, errorType: E.Type) async  -> ResultWithError<ResponseBase<T>, E> {
         let result =  await NetworkManager.shared.getNetworkConcurrency().request(route, type: type.self, typeError: errorType)
+        switch result {
+        case .success(let data):
+            return .success(.init(code: HttpStatusCode.OK.rawValue, data: data))
+        case .failure(let error):
+            if error.code == HttpStatusCode.CANCELED.rawValue {
+                return .canceled
+            }
+            return .failure(nil)
+        }
+    }
+    public func request(_ route: ApiEndpoint) async -> ResultWithoutBaseError<()> {
+        let result =  await NetworkManager.shared.getNetworkConcurrency().request(route)
+        switch result {
+        case .success(_):
+            return .success(())
+        case .failure(let error):
+            if error.isExplicitlyCancelledError || error.localizedDescription.lowercased().contains("cancelled") {
+                return .canceled
+            }
+            return .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKOWN.rawValue, message: error.localizedDescription))
+        }
+    }
+    
+    public func upload(_ route: ApiEndpoint) async -> ResultWithoutBaseError<()> {
+        let result =  await NetworkManager.shared.getNetworkConcurrency().upload(route)
+        switch result {
+        case .success(_):
+            return .success(())
+        case .failure(let error):
+            if error.isExplicitlyCancelledError || error.localizedDescription.lowercased().contains("cancelled") {
+                return .canceled
+            }
+            return .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKOWN.rawValue, message: error.localizedDescription))
+        }
+    }
+    
+    public func upload<T: Codable>(_ route: ApiEndpoint, type: T.Type) async -> ResultWithoutBaseError<ResponseBase<T>> {
+        let result =  await NetworkManager.shared.getNetworkConcurrency().upload(route, type: type.self)
+        switch result {
+        case .success(let data):
+            return .success(.init(code: HttpStatusCode.OK.rawValue, data: data))
+        case .failure(let error):
+            if error.code == HttpStatusCode.CANCELED.rawValue {
+                return .canceled
+            }
+            return .failure(.init(code: error.code, message: error.message))
+        }
+    }
+    
+    public func upload<T: Codable, E: Codable>(_ route: ApiEndpoint, type: T.Type, errorType: E.Type) async -> ResultWithError<ResponseBase<T>, E> {
+        let result =  await NetworkManager.shared.getNetworkConcurrency().upload(route, type: type.self, typeError: errorType)
         switch result {
         case .success(let data):
             return .success(.init(code: HttpStatusCode.OK.rawValue, data: data))

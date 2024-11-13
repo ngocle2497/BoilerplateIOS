@@ -4,6 +4,7 @@ platform :ios, '14.0'
 def infrastructure_pods
   pod 'MMKV'
   pod 'Alamofire'
+  pod 'TrustKit'
 end
 
 target 'HelloWorld' do

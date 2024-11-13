@@ -6,6 +6,7 @@ target 'Infrastructure' do
   use_frameworks!
   pod 'MMKV'
   pod 'Alamofire'
+  pod 'TrustKit'
   # Pods for Infrastructure
 
   target 'InfrastructureTests' do

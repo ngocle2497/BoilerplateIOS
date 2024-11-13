@@ -1264,7 +1264,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INCLUDED_SOURCE_FILE_NAMES = GeneratedAssets.xcassets;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "HelloWorld-Dev";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = DefaultLaunch.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
@@ -1336,7 +1336,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INCLUDED_SOURCE_FILE_NAMES = GeneratedAssets.xcassets;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "$(APP_DISPLAY_NAME)";
+				INFOPLIST_KEY_CFBundleDisplayName = "HelloWorld-Dev";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = DefaultLaunch.storyboard;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait";
