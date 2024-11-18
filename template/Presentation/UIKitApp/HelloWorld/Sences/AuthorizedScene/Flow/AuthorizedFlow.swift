@@ -34,7 +34,7 @@ final class AuthorizedFlow {
     }
     
     private func logout() {
-        NetworkService.shared.cancleAllRequest()
+        NetworkingServiceImpl.shared.cancleAllRequest()
         let container = AuthenticationDIContainer()
         let flow = container.makeAuthenticationSceneFlow(navigationController: navigationController)
         flow.start(animated: true)

@@ -3,15 +3,6 @@ import Adapter
 import Combine
 import TrustKit
 
-struct NetworkResult {
-    var status: Int
-    var messages: String
-    init(status: Int, messages: String) {
-        self.status = status
-        self.messages = messages
-    }
-}
-
 final class NetworkManager {
     var networkStatus = PassthroughSubject<NetworkResult, Never>()
     static var trustkitInstance: TrustKit? = nil
@@ -34,26 +25,15 @@ final class NetworkManager {
         }
     }
     
-    func getNetworkConcurrency() -> NetworkManagerConcurency {
-        return NetworkManagerConcurency(session: session)
+    func getNetworkConcurrency() -> NetworkManagerConcurrency {
+        return NetworkManagerConcurrency(session: session)
     }
 }
 
-struct ErrorRequest<T: Codable>: Codable, Error {
-    let code: Int
-    let message: String
-    let error: T?
-    
-    init(code: Int, message: String, error: T?) {
-        self.code = code
-        self.message = message
-        self.error = error
-    }
-}
-
-class NetworkManagerConcurency {
-    private var cancelable: Task<Result<Codable, AFError>, Error>? = nil
+class NetworkManagerConcurrency {
+    private var downloadRequest: DownloadRequest? = nil
     private weak var session: Session!
+    
     
     init(session: Session) {
         self.session = session
@@ -61,35 +41,10 @@ class NetworkManagerConcurency {
 }
 
 // MARK: - Private func
-extension NetworkManagerConcurency {
-    private func handleParamsWithFormData(multiPart: MultipartFormData, params: Parameters) {
-        for (key, value) in params {
-            if let temp = value as? String {
-                multiPart.append(temp.data(using: .utf8)!, withName: key)
-            }
-            if let temp = value as? Int {
-                multiPart.append("\(temp)".data(using: .utf8)!, withName: key)
-            }
-            if let temp = value as? NSArray {
-                temp.forEach({ element in
-                    let keyObj = key + "[]"
-                    if let string = element as? String {
-                        multiPart.append(string.data(using: .utf8)!, withName: keyObj)
-                    } else
-                    if let num = element as? Int {
-                        let value = "\(num)"
-                        multiPart.append(value.data(using: .utf8)!, withName: keyObj)
-                    }
-                })
-            }
-            if let temp = value as? FormDataRequest {
-                multiPart.append(temp.data, withName: temp.keyName, fileName: temp.fileName, mimeType: temp.mimeType)
-            }
-        }
-    }
-    
+extension NetworkManagerConcurrency {
     private func handleRequest<T: Codable, E: Codable>(dataResponse: DataResponse<Data, AFError>, type: T.Type,
                                                        typeError: E.Type? = nil) -> Result<T, ErrorRequest<E>>{
+        
         switch dataResponse.result {
         case .success(let data):
             if dataResponse.response?.statusCode == HttpStatusCode.OK.rawValue {
@@ -104,68 +59,53 @@ extension NetworkManagerConcurency {
                 }
             }
             guard let typeError = typeError else {
-                NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.UNKOWN.rawValue, messages: dataResponse.error?.localizedDescription ?? "Unkown"))
-                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unkown", error: nil))
+                NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.UNKNOWN.rawValue, messages: dataResponse.error?.localizedDescription ?? "Unknown"))
+                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKNOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unknown", error: nil))
             }
             do {
                 let jsonData =  try JSONDecoder.default.decode(typeError.self, from: data)
-                NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.UNKOWN.rawValue, messages: dataResponse.error?.localizedDescription ?? "Unkown"))
-                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unkown", error: jsonData))
+                NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.UNKNOWN.rawValue, messages: dataResponse.error?.localizedDescription ?? "Unknown"))
+                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKNOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unknown", error: jsonData))
             } catch {
                 print(error.localizedDescription)
-                NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.UNKOWN.rawValue, messages: dataResponse.error?.localizedDescription ?? "Unkown"))
-                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unkown", error: nil))
+                NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.UNKNOWN.rawValue, messages: dataResponse.error?.localizedDescription ?? "Unknown"))
+                return .failure(.init(code: dataResponse.response?.statusCode ?? HttpStatusCode.UNKNOWN.rawValue, message: dataResponse.error?.localizedDescription ?? "Unknown", error: nil))
             }
         case .failure(let error):
             if error.isExplicitlyCancelledError || error.localizedDescription.lowercased().contains("cancelled") {
                 NetworkManager.shared.networkStatus.send(.init(status: HttpStatusCode.CANCELED.rawValue, messages: "Canceled"))
                 return .failure(.init(code: HttpStatusCode.CANCELED.rawValue, message: error.localizedDescription, error: nil))
             }
-            NetworkManager.shared.networkStatus.send(.init(status: error.responseCode ?? HttpStatusCode.UNKOWN.rawValue, messages: error.localizedDescription))
+            NetworkManager.shared.networkStatus.send(.init(status: error.responseCode ?? HttpStatusCode.UNKNOWN.rawValue, messages: error.localizedDescription))
             print(error.localizedDescription)
-            return .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKOWN.rawValue, message: error.localizedDescription, error: nil))
+            return .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKNOWN.rawValue, message: error.localizedDescription, error: nil))
         }
+    }
+    private func serializingRequest(_ route: URLRequestConvertible) async -> DataResponse<Data, AFError>{
+        return await self.session.request("")
+            .validate()
+            .serializingData(automaticallyCancelling: true)
+            .response
     }
 }
 
 // MARK: - Public func
-extension NetworkManagerConcurency {
-    func request<T: Codable, E: Codable>(_ route: ApiEndpoint,
+extension NetworkManagerConcurrency {
+    func request<T: Codable, E: Codable>(_ route: URLRequestConvertible,
                                          type: T.Type,
                                          typeError: E.Type) async -> Result<T, ErrorRequest<E>> {
-        let dataResponse = await self.session.request(route.url,
-                                                      method: route.method,
-                                                      parameters: route.params,
-                                                      encoding: route.encoding ?? URLEncoding.queryString,
-                                                      headers: route.headers)
-            .validate()
-            .serializingData(automaticallyCancelling: true)
-            .response
+        let dataResponse = await serializingRequest(route)
         return handleRequest(dataResponse: dataResponse, type: type, typeError: typeError)
     }
     
-    func request<T: Codable>(_ route: ApiEndpoint,
+    func request<T: Codable>(_ route: URLRequestConvertible,
                              type: T.Type ) async -> Result<T, ErrorRequest<T>> {
-        let dataResponse = await self.session.request(route.url,
-                                                      method: route.method,
-                                                      parameters: route.params,
-                                                      encoding: route.encoding ?? URLEncoding.queryString,
-                                                      headers: route.headers)
-            .validate()
-            .serializingData(automaticallyCancelling: true)
-            .response
+        let dataResponse = await serializingRequest(route)
         return handleRequest(dataResponse: dataResponse, type: type, typeError: nil)
     }
     
-    func request(_ route: ApiEndpoint) async -> Result<(), AFError> {
-        let dataResponse = await self.session.request(route.url,
-                                                      method: route.method,
-                                                      parameters: route.params,
-                                                      encoding: route.encoding ?? URLEncoding.queryString,
-                                                      headers: route.headers)
-            .validate()
-            .serializingData(automaticallyCancelling: true)
-            .response
+    func request(_ route: URLRequestConvertible) async -> Result<(), AFError> {
+        let dataResponse = await serializingRequest(route)
         
         switch dataResponse.result {
         case .success(_):
@@ -175,61 +115,43 @@ extension NetworkManagerConcurency {
         }
     }
     
-    func upload(_ route: ApiEndpoint) async -> Result<(), AFError> {
-        let dataResponse = await self.session.upload(
-            multipartFormData: { [weak self] multiPart in
-                guard let self, let params = route.params else {
+    func download(_ route: URLRequestConvertible, resumeData: Data? = nil, onProgress: ((_ progress: Double) -> Void)? = nil, requestCreated: ((DownloadRequest)->Void)? = nil ) async -> Result<String, ErrorDownload> {
+        return await withTaskCancellationHandler {
+            await withCheckedContinuation { [weak self] continuation in
+                guard let self else {
+                    continuation.resume(returning: .failure(.init(code: HttpStatusCode.UNKNOWN.rawValue, message: "Self was destroyed", resumeData: nil)))
                     return
                 }
-                self.handleParamsWithFormData(multiPart: multiPart, params: params)
-            },
-            to: route.url,
-            method: route.method,
-            headers: route.headers)
-            .validate()
-            .serializingData(automaticallyCancelling: true)
-            .response
-        
-        switch dataResponse.result {
-        case .success(_):
-            return .success(())
-        case .failure(let error):
-            return .failure(error)
+                if let resumeData {
+                    self.downloadRequest = session.download(resumingWith: resumeData).validate()
+                } else {
+                    self.downloadRequest = session.download(route).validate()
+                }
+                
+                self.downloadRequest!.downloadProgress { progress in
+                    guard let onProgress else {
+                        return
+                    }
+                    onProgress(progress.fractionCompleted)
+                }
+                
+                if let requestCreated {
+                    requestCreated(self.downloadRequest!)
+                }
+                
+                self.downloadRequest?.response(completionHandler: { response in
+                    switch response.result {
+                    case .success(let url):
+                        continuation.resume(returning: .success(url?.absoluteString ?? ""))
+                    case .failure(let error):
+                        continuation.resume(returning: .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKNOWN.rawValue, message: error.localizedDescription, resumeData: self.downloadRequest?.resumeData ?? error.downloadResumeData)))
+                    }
+                })
+                
+            }
+        } onCancel: {[weak self] in
+            self?.downloadRequest?.cancel(producingResumeData: true)
         }
-    }
-    
-    func upload<T: Codable>(_ route: ApiEndpoint, type: T.Type) async -> Result<T, ErrorRequest<T>> {
-        let dataResponse = await self.session.upload(
-            multipartFormData: { [weak self] multiPart in
-                guard let self, let params = route.params else {
-                    return
-                }
-                self.handleParamsWithFormData(multiPart: multiPart, params: params)
-            },
-            to: route.url,
-            method: route.method,
-            headers: route.headers)
-            .validate()
-            .serializingData(automaticallyCancelling: true)
-            .response
-        return handleRequest(dataResponse: dataResponse, type: type, typeError: nil)
-    }
-    
-    func upload<T: Codable, E: Codable>(_ route: ApiEndpoint, type: T.Type, typeError: E.Type) async -> Result<T, ErrorRequest<E>> {
-        let dataResponse = await self.session.upload(
-            multipartFormData: { [weak self] multiPart in
-                guard let self, let params = route.params else {
-                    return
-                }
-                self.handleParamsWithFormData(multiPart: multiPart, params: params)
-            },
-            to: route.url,
-            method: route.method,
-            headers: route.headers)
-            .validate()
-            .serializingData(automaticallyCancelling: true)
-            .response
-        return handleRequest(dataResponse: dataResponse, type: type, typeError: typeError)
     }
 }
 

@@ -1,22 +1,7 @@
 import Foundation
 import Alamofire
 
-public protocol ApiEndpoint: AnyObject {
-    var url: String { get }
-    var method: HTTPMethod { get }
-    var params: Parameters? { get }
-    var encoding: ParameterEncoding? { get }
-    var headers: HTTPHeaders? { get }
-}
-
-public protocol FormDataRequest {
-    var keyName: String { get }
-    var fileName: String { get }
-    var mimeType: String { get }
-    var data: Data { get }
-}
-
-public class FormData: FormDataRequest {
+public struct FormData: Sendable {
     
     public var keyName: String
     
@@ -34,54 +19,42 @@ public class FormData: FormDataRequest {
     }
 }
 
-
-public class Endpoint: ApiEndpoint {
-    public var url: String
-    
-    public var method: HTTPMethod
-    
-    public var headers: HTTPHeaders?
-    
-    public var params: Parameters?
-    
-    public var encoding: ParameterEncoding?
-    
-    public init(_ target: ApiTarget) {
-        self.url = target.url
-        self.method = target.method
-        self.headers = target.headers
-        self.params = target.parameters
-        self.encoding = target.encoding
-    }
+enum BodyType {
+    case `default`(Codable)
+    case formData(FormData)
 }
 
 public enum ApiTarget {
     case refreshToken
     case users(results: Int)
-    case uploadImage([String: FormDataRequest])
+    case uploadImage(file: FormData)
+    case download
 }
 
 
-extension ApiTarget {
-    public var url: String {
+extension ApiTarget: URLRequestConvertible {
+    public var baseUrl: String {
         switch self {
         default:
-            return ApiConstant.shared.baseUrl + self.path
+            return ApiConstant.shared.baseUrl
         }
     }
+    
     
     var path: String {
         switch self {
         case .users:
             return "/api"
-        case .uploadImage(_):
+        case .uploadImage:
             return "/upload"
         case .refreshToken:
             return "/refresh-token"
+        case .download:
+            return "/download"
         }
     }
     
-    public var method: HTTPMethod {
+    var method: HTTPMethod {
         switch self {
         case .uploadImage(_):
             return .post
@@ -92,32 +65,52 @@ extension ApiTarget {
         }
     }
     
-    public var encoding: ParameterEncoding {
-        switch self {
-        default:
-            return URLEncoding.queryString
-        }
-    }
-    
-    public var parameters: Parameters {
-        let _: [String: Any] = [:]
+    var parameters: Parameters {
         switch self {
         case .users(let result):
             return ["results": result]
-        case .uploadImage(let data):
-            return data
         default:
             return [:]
         }
     }
     
-    public var headers: HTTPHeaders? {
-        let defaultHeaders: HTTPHeaders = ["Content-Type": "application/json"]
+    var body: BodyType? {
         switch self {
-        case .uploadImage(_):
-            return ["Content-type": "multipart/form-data"]
+        case .uploadImage(let file):
+            return .formData(file)
         default:
-            return  defaultHeaders
+            return nil
         }
+    }
+    
+    var headers: HTTPHeaders {
+        let defaultHeaders: HTTPHeaders = ["Content-Type": "application/json"]
+        return  defaultHeaders
+    }
+    
+    public func asURLRequest() throws -> URLRequest {
+        let url = URL(string: baseUrl)!.appendingPathComponent(path)
+        
+        var request = URLRequest(url: url)
+        
+        request = try! URLEncoding(destination: .queryString).encode(request, with: parameters)
+        
+        request.headers = headers
+        request.method = method
+        if let body = body {
+            switch body {
+            case .default(let data):
+                request.httpBody = try! JSONEncoder().encode(data)
+                break
+            case .formData(let formData):
+                let multipatr = MultipartFormData()
+                multipatr.append(formData.data, withName: formData.keyName, fileName: formData.fileName, mimeType: formData.mimeType)
+                request.httpBody = try! multipatr.encode()
+                request.setValue(multipatr.contentType, forHTTPHeaderField: "Content-Type")
+                break
+            }
+        }
+        
+        return request
     }
 }

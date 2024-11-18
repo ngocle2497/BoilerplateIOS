@@ -7,7 +7,7 @@ import Adapter
 final class AuthorizedSceneDIContainer: AuthorizedFlowDependencies {
     // MARK: - Repositories
     func makeUserRepository() -> UserRepository {
-        UserRepositoriesImpl(networkService: NetworkService.shared)
+        UserRepositoriesImpl(networkService: NetworkingServiceImpl.shared)
     }
     
     // MARK: - UseCases

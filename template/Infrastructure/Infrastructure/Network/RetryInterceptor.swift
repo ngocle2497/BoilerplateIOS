@@ -36,7 +36,7 @@ final class RetryInterceptor: RequestInterceptor {
         case 200...299:
             completion(.doNotRetry)
         case HttpStatusCode.UN_AUTHORIZED.rawValue:
-            if NetworkService.shared.delegate?.getApiRouteForRefreshToken() == nil {
+            if NetworkingServiceImpl.shared.delegate?.getApiRouteForRefreshToken() == nil {
                 completion(.doNotRetry)
                 return
             }
@@ -49,8 +49,8 @@ final class RetryInterceptor: RequestInterceptor {
     
     private func afRefreshToken() async -> Bool {
         // we check NetworkService.shared.delegate above, so we can force value here
-        let route = NetworkService.shared.delegate!.getApiRouteForRefreshToken()!
-        let dataResponse = await AF.request(route.url, method: route.method, parameters: route.params, headers: route.headers).serializingData(automaticallyCancelling: true).response
+        let route = NetworkingServiceImpl.shared.delegate!.getApiRouteForRefreshToken()!
+        let dataResponse = await AF.request(route).serializingData(automaticallyCancelling: true).response
         switch dataResponse.result {
         case .success(let data):
             if dataResponse.response?.statusCode == HttpStatusCode.OK.rawValue {

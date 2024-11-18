@@ -2,6 +2,7 @@ import UIKit
 import Infrastructure
 import Adapter
 import netfox
+import Alamofire
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -29,7 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         }
         appFlow = AppFlow(navigationController: navigation, appDIContainer: appDIContainer)
         appFlow?.start()
-        NetworkService.shared.delegate = self
+        NetworkingServiceImpl.shared.delegate = self
         window?.makeKeyAndVisible()
     }
     
@@ -82,8 +83,8 @@ extension SceneDelegate: UINavigationControllerDelegate {
 }
 
 extension SceneDelegate: NetworkServiceDelegate {
-    func getApiRouteForRefreshToken() -> ApiEndpoint? {
+    func getApiRouteForRefreshToken() -> URLRequestConvertible? {
         // create new endpoint to refresh token while request 401
-        return nil
+        return ApiTarget.refreshToken
     }
 }
