@@ -24,7 +24,7 @@ enum BodyType {
     case formData(FormData)
 }
 
-public enum ApiTarget {
+public enum ApiTarget: URLRequestConvertible {
     case refreshToken
     case users(results: Int)
     case uploadImage(file: FormData)
@@ -32,7 +32,7 @@ public enum ApiTarget {
 }
 
 
-extension ApiTarget: URLRequestConvertible {
+extension ApiTarget {
     public var baseUrl: String {
         switch self {
         default:

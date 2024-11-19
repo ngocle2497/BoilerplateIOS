@@ -66,6 +66,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     private func appInitialize() {
 #if DEBUG
+        // When use NFX, Alamofire upload progress cannot fire
         NFX.sharedInstance().start()
 #endif
         MMKV_STORAGE.createInstance(cryptKey: Configuration.MMKV_CRYPTKEY)

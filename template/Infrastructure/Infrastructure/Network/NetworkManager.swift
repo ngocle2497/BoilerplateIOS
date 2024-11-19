@@ -32,6 +32,7 @@ final class NetworkManager {
 
 class NetworkManagerConcurrency {
     private var downloadRequest: DownloadRequest? = nil
+    private var uploadRequest: UploadRequest? = nil
     private weak var session: Session!
     
     
@@ -81,11 +82,22 @@ extension NetworkManagerConcurrency {
             return .failure(.init(code: error.responseCode ?? HttpStatusCode.UNKNOWN.rawValue, message: error.localizedDescription, error: nil))
         }
     }
-    private func serializingRequest(_ route: URLRequestConvertible) async -> DataResponse<Data, AFError>{
-        return await self.session.request("")
+    
+    private func serializingRequest(_ route: URLRequestConvertible) async -> DataResponse<Data, AFError> {
+        return await self.session.request(route)
             .validate()
             .serializingData(automaticallyCancelling: true)
             .response
+    }
+    
+    private func serializingUpload(_ route: URLRequestConvertible, onProgress: ((Double) -> Void)? = nil) async -> DataResponse<Data, AFError> {
+        self.uploadRequest = session.upload(route.urlRequest!.httpBody!, with: route)
+        if let onProgress {
+            self.uploadRequest!.uploadProgress {progress in
+                onProgress(progress.fractionCompleted)
+            }
+        }
+        return await self.uploadRequest!.validate().serializingData(automaticallyCancelling: true).response
     }
 }
 
@@ -106,13 +118,33 @@ extension NetworkManagerConcurrency {
     
     func request(_ route: URLRequestConvertible) async -> Result<(), AFError> {
         let dataResponse = await serializingRequest(route)
-        
+
         switch dataResponse.result {
         case .success(_):
             return .success(())
         case .failure(let error):
             return .failure(error)
         }
+    }
+    
+    func upload(_ route: URLRequestConvertible, onProgress: ((Double) -> Void)? = nil) async -> Result<(), AFError> {
+        let dataResponse = await serializingUpload(route, onProgress: onProgress)
+        switch dataResponse.result {
+        case .success(_):
+            return .success(())
+        case .failure(let error):
+            return .failure(error)
+        }
+    }
+    
+    func upload<T: Codable>(_ route: URLRequestConvertible, type: T.Type,  onProgress: ((Double) -> Void)? = nil) async -> Result<T, ErrorRequest<T>> {
+        let dataResponse = await serializingUpload(route, onProgress: onProgress)
+        return handleRequest(dataResponse: dataResponse, type: type, typeError: nil)
+    }
+    
+    func upload<T: Codable, E: Codable>(_ route: URLRequestConvertible, type: T.Type, typeError: E.Type, onProgress: ((Double) -> Void)? = nil) async -> Result<T, ErrorRequest<E>> {
+        let dataResponse = await serializingUpload(route, onProgress: onProgress)
+        return handleRequest(dataResponse: dataResponse, type: type, typeError: typeError)
     }
     
     func download(_ route: URLRequestConvertible, resumeData: Data? = nil, onProgress: ((_ progress: Double) -> Void)? = nil, requestCreated: ((DownloadRequest)->Void)? = nil ) async -> Result<String, ErrorDownload> {

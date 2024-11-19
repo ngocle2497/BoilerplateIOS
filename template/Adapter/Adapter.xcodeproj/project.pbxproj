@@ -10,7 +10,7 @@
 		124F99792CD214D000A96DD8 /* Adapter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 124F99702CD214D000A96DD8 /* Adapter.framework */; };
 		124F997E2CD214D000A96DD8 /* AdapterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F997D2CD214D000A96DD8 /* AdapterTests.swift */; };
 		124F997F2CD214D000A96DD8 /* Adapter.h in Headers */ = {isa = PBXBuildFile; fileRef = 124F99732CD214D000A96DD8 /* Adapter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		124F998B2CD2151900A96DD8 /* ApiEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F998A2CD2151900A96DD8 /* ApiEndpoint.swift */; };
+		124F998B2CD2151900A96DD8 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F998A2CD2151900A96DD8 /* Endpoint.swift */; };
 		124F998D2CD2152200A96DD8 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F998C2CD2152200A96DD8 /* NetworkingService.swift */; };
 		124F99912CD2153C00A96DD8 /* UsersResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F99902CD2153C00A96DD8 /* UsersResponseDTO+Mapping.swift */; };
 		124F99942CD2155200A96DD8 /* UserRepositoriesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 124F99932CD2155200A96DD8 /* UserRepositoriesImpl.swift */; };
@@ -64,7 +64,7 @@
 		124F99732CD214D000A96DD8 /* Adapter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Adapter.h; sourceTree = "<group>"; };
 		124F99782CD214D000A96DD8 /* AdapterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdapterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		124F997D2CD214D000A96DD8 /* AdapterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdapterTests.swift; sourceTree = "<group>"; };
-		124F998A2CD2151900A96DD8 /* ApiEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiEndpoint.swift; sourceTree = "<group>"; };
+		124F998A2CD2151900A96DD8 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		124F998C2CD2152200A96DD8 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
 		124F99902CD2153C00A96DD8 /* UsersResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
 		124F99932CD2155200A96DD8 /* UserRepositoriesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoriesImpl.swift; sourceTree = "<group>"; };
@@ -150,7 +150,7 @@
 		124F99892CD2151200A96DD8 /* NetworkingService */ = {
 			isa = PBXGroup;
 			children = (
-				124F998A2CD2151900A96DD8 /* ApiEndpoint.swift */,
+				124F998A2CD2151900A96DD8 /* Endpoint.swift */,
 				12A7C10E2CDCCFE1007E3A11 /* ApiConstant.swift */,
 				124F998C2CD2152200A96DD8 /* NetworkingService.swift */,
 			);
@@ -412,7 +412,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				124F998B2CD2151900A96DD8 /* ApiEndpoint.swift in Sources */,
+				124F998B2CD2151900A96DD8 /* Endpoint.swift in Sources */,
 				124F99912CD2153C00A96DD8 /* UsersResponseDTO+Mapping.swift in Sources */,
 				124F99942CD2155200A96DD8 /* UserRepositoriesImpl.swift in Sources */,
 				12A7C10F2CDCCFE1007E3A11 /* ApiConstant.swift in Sources */,

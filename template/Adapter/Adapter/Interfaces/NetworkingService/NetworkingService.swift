@@ -1,4 +1,5 @@
 import Alamofire
+
 public struct BaseError: Error  {
     public let code: Int
     public let message: String
@@ -52,9 +53,15 @@ public protocol NetworkingService {
     func download(_ route: URLRequestConvertible, resumeData: Data? , onProgress: ((_ progress: Double) -> Void)?) async -> ResultWithError<String, BaseError>
     
     // MARK: - Upload
-    func upload<T: Codable>(_ route: URLRequestConvertible, type: T.Type) async -> ResultWithError<ResponseBase<T>, BaseError>
-    
     func upload(_ route: URLRequestConvertible) async -> ResultWithError<(), BaseError>
     
+    func upload(_ route: URLRequestConvertible, onProgress: ((_ progress: Double) -> Void)?) async -> ResultWithError<(), BaseError>
+
+    func upload<T: Codable>(_ route: URLRequestConvertible, type: T.Type, onProgress: ((_ progress: Double) -> Void)?) async -> ResultWithError<ResponseBase<T>, BaseError>
+    
+    func upload<T: Codable>(_ route: URLRequestConvertible, type: T.Type) async -> ResultWithError<ResponseBase<T>, BaseError>
+    
     func upload<T: Codable, E: Codable>(_ route: URLRequestConvertible, type: T.Type, errorType: E.Type) async -> ResultWithError<ResponseBase<T>, E>
+    
+    func upload<T: Codable, E: Codable>(_ route: URLRequestConvertible, type: T.Type, errorType: E.Type, onProgress: ((_ progress: Double) -> Void)?) async -> ResultWithError<ResponseBase<T>, E>
 }
