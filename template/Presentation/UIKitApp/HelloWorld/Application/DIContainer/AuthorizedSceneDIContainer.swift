@@ -11,7 +11,6 @@ final class AuthorizedSceneDIContainer: AuthorizedFlowDependencies {
     }
     
     // MARK: - UseCases
-    
     func makeUserUseCase() -> UserUseCase {
         UserUseCaseImpl(
             userRepository: makeUserRepository()

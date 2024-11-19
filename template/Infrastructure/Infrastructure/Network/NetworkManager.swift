@@ -5,7 +5,7 @@ import TrustKit
 
 final class NetworkManager {
     var networkStatus = PassthroughSubject<NetworkResult, Never>()
-    static var trustkitInstance: TrustKit? = nil
+    static var trustKitInstance: TrustKit? = nil
     
     static let shared = NetworkManager(session: Session(interceptor: RetryInterceptor()))
     

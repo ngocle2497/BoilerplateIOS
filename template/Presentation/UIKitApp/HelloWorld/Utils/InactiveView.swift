@@ -57,7 +57,7 @@ class InactiveView {
             }
             UIView.animate(withDuration: 0.1, animations: {
                 containerView.alpha = 0
-            }, completion: {finised in
+            }, completion: { _ in
                 containerView.removeFromSuperview()
                 self.containerView = nil
             })

@@ -3,7 +3,7 @@ import UIKit
 import Combine
 
 enum KeyboardEventType {
-    case wilShow
+    case willShow
     case didShow
     case willHide
     case didHide
@@ -43,7 +43,7 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
         }
     }
     
-    /// Change screen orientation. Defaut: .portrait
+    /// Change screen orientation. Default: .portrait
     var screenOrientation: UIInterfaceOrientationMask = .portrait {
         didSet {
             if #available(iOS 16.0, *) {
@@ -165,7 +165,7 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
     
     @objc private func keyboardWillShow(notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            keyboardChange(type: .wilShow, keyboardSize: keyboardSize)
+            keyboardChange(type: .willShow, keyboardSize: keyboardSize)
         }
     }
     
@@ -212,7 +212,7 @@ class ViewController<VM: ViewModel>: UIViewController, UIGestureRecognizerDelega
         
     }
     
-    /// Called when view loaded to seting up combine
+    /// Called when view loaded to setting up combine
     func setupCombine() {
         
     }
@@ -237,6 +237,6 @@ class ViewModel {
     private(set) var bag = Set<AnyCancellable>()
     
     deinit {
-        print("\(String(describing: self)) deinit")
+        print("\(String(describing: self)) de-init")
     }
 }

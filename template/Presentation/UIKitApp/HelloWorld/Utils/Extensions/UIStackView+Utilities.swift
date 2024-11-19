@@ -36,7 +36,7 @@ extension UIStackView {
     }
 
     @discardableResult
-    func preparedForAutolayout() -> UIStackView {
+    func preparedForAutoLayout() -> UIStackView {
         translatesAutoresizingMaskIntoConstraints = false
         return self
     }

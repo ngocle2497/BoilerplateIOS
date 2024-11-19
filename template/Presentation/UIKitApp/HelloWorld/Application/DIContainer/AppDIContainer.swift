@@ -8,5 +8,4 @@ final class AppDIContainer {
         
         return StartUpSceneDIContainer(dependencies: dependencies)
     }
-    
 }

@@ -19,7 +19,7 @@ final class AuthorizedFlow {
     }
     
     func start(animated: Bool) {
-        let tabbar = TabBarController()
+        let tabBar = TabBarController()
 
         let homeActions = HomeViewModelActions()
         let homeVC = dependencies.makeHomeVC(actions: homeActions)
@@ -29,12 +29,12 @@ final class AuthorizedFlow {
         let profileVC = dependencies.makeProfileVC(actions: profileActions)
         profileVC.tabBarItem = .init(title: "Profile", image: UIImage(systemName: "person"), tag: 1)
         
-        tabbar.viewControllers = [homeVC, profileVC]
-        navigationController?.setViewControllers([tabbar], animated: animated)
+        tabBar.viewControllers = [homeVC, profileVC]
+        navigationController?.setViewControllers([tabBar], animated: animated)
     }
     
     private func logout() {
-        NetworkingServiceImpl.shared.cancleAllRequest()
+        NetworkingServiceImpl.shared.cancelAllRequest()
         let container = AuthenticationDIContainer()
         let flow = container.makeAuthenticationSceneFlow(navigationController: navigationController)
         flow.start(animated: true)

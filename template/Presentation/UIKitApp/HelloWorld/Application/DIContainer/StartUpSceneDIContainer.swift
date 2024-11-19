@@ -3,7 +3,6 @@ import UIKit
 
 final class StartUpSceneDIContainer: StartUpFlowDependencies {
 
-
     struct Dependencies {
         let apiService: String
     }
@@ -31,7 +30,6 @@ final class StartUpSceneDIContainer: StartUpFlowDependencies {
     func makeIntroVM(actions: OnboardingViewModelActions) -> OnboardingViewModel {
         return OnboardingViewModel(actions: actions)
     }
-    
     
     // MARK: - Flow
     func makeStartUpSceneFlow(navigationController: UINavigationController?) -> StartUpFlow {

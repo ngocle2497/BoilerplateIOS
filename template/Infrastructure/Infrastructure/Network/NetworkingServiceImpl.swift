@@ -9,13 +9,13 @@ public class NetworkingServiceImpl: NetworkingService {
     public var delegate: NetworkServiceDelegate? = nil
     
     public func enableSSL(with config: SSLPinningConfig) {
-        NetworkManager.trustkitInstance = TrustKit.init(configuration: config.toDic())
+        NetworkManager.trustKitInstance = TrustKit.init(configuration: config.toDic())
         let evaluators = config.getEvaluators()
         let manager = ServerTrustManager(evaluators: evaluators)
         let session = Session(delegate: NetworkSessionDelegate(), interceptor: RetryInterceptor(), serverTrustManager: manager)
         NetworkManager.shared.updateSession(session: session)
         
-        NetworkManager.trustkitInstance!.pinningValidatorCallback = { (validatorResult, hostName, pinningPolicy) in
+        NetworkManager.trustKitInstance!.pinningValidatorCallback = { (validatorResult, hostName, pinningPolicy) in
             if validatorResult.finalTrustDecision == .shouldBlockConnection {
                 debugPrint("Connection blocked for domain: \(validatorResult.serverHostname)")
             }
@@ -23,11 +23,11 @@ public class NetworkingServiceImpl: NetworkingService {
     }
     
     public func disableSSL() {
-        NetworkManager.trustkitInstance = nil
+        NetworkManager.trustKitInstance = nil
         NetworkManager.shared.updateSession(session: Session(interceptor: RetryInterceptor()))
     }
     
-    public func cancleAllRequest() {
+    public func cancelAllRequest() {
         NetworkManager.shared.cancelAllRequest()
     }
 }
