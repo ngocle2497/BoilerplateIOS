@@ -88,7 +88,7 @@
 			isa = PBXGroup;
 			children = (
 				127C894D2CD075FF00DAD87C /* UseCases */,
-				127C894C2CD075F900DAD87C /* Interfaces */,
+				127C894C2CD075F900DAD87C /* Repositories */,
 				127C894B2CD075F000DAD87C /* Entities */,
 				127C89362CD075C100DAD87C /* Domain.h */,
 			);
@@ -111,12 +111,12 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		127C894C2CD075F900DAD87C /* Interfaces */ = {
+		127C894C2CD075F900DAD87C /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
 				127C89522CD0762C00DAD87C /* UserRepository.swift */,
 			);
-			path = Interfaces;
+			path = Repositories;
 			sourceTree = "<group>";
 		};
 		127C894D2CD075FF00DAD87C /* UseCases */ = {

@@ -1,7 +1,6 @@
 import Foundation
 import UIKit
 
-
 protocol ColorProtocol {
     var primary: UIColor { get }
     var primaryFocus: UIColor { get }

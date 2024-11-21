@@ -568,7 +568,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 3D5F7DDAA13A286DFB278E2A /* Pods-Adapter.debug.xcconfig */;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -610,7 +610,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 37DF2892AC992DF04068DE54 /* Pods-Adapter.release.xcconfig */;
 			buildSettings = {
-				BUILD_LIBRARY_FOR_DISTRIBUTION = YES;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
