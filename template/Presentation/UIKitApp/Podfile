@@ -15,9 +15,9 @@ target 'HelloWorld' do
   infrastructure_pods
   pod "SwipeTransition"
   pod 'netfox'
+  pod 'SwiftDate'
   pod 'SwiftGen'
   pod 'SDWebImage'
-  pod 'CryptoSwift'
   pod 'IQKeyboardManagerSwift'
 end
 

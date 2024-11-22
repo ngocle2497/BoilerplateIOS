@@ -22,22 +22,21 @@ extension UIColor {
         
         if ((cString.count) == 8) {
             r = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-            g =  CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+            g = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
             b = CGFloat((rgbValue & 0x0000FF)) / 255.0
-            a = CGFloat((rgbValue & 0xFF000000)  >> 24) / 255.0
+            a = CGFloat((rgbValue & 0xFF000000) >> 24) / 255.0
             
         }else if ((cString.count) == 6){
             r = CGFloat((rgbValue & 0xFF0000) >> 16) / 255.0
-            g =  CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
+            g = CGFloat((rgbValue & 0x00FF00) >> 8) / 255.0
             b = CGFloat((rgbValue & 0x0000FF)) / 255.0
-            a =  CGFloat(1.0)
+            a = CGFloat(1.0)
         }
         
-        
-        self.init(  red: r,
-                    green: g,
-                    blue: b,
-                    alpha: a
+        self.init(red: r,
+                  green: g,
+                  blue: b,
+                  alpha: a
         )
     }
 }

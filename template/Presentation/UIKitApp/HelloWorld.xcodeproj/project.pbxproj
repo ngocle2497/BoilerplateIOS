@@ -51,6 +51,7 @@
 		12AF2D602CD37C4B00674A77 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */; };
 		12AF2D612CD37C4B00674A77 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */; };
 		12DBAF472CD4B1A200921C8B /* UIView+Animated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBAF462CD4B1A200921C8B /* UIView+Animated.swift */; };
+		12F7135B2CF05D02002844A1 /* Number+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F7135A2CF05D02002844A1 /* Number+Utilities.swift */; };
 		840292E62BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */; };
 		840292E72BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E42BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf */; };
 		840292E82BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E52BBC6F4E004EE551 /* PoppinsLatin-Medium.ttf */; };
@@ -191,6 +192,7 @@
 		12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		12DBAF462CD4B1A200921C8B /* UIView+Animated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animated.swift"; sourceTree = "<group>"; };
+		12F7135A2CF05D02002844A1 /* Number+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Utilities.swift"; sourceTree = "<group>"; };
 		7ED015E401A17E99F1E5795D /* Pods_HelloWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoppinsLatin-Regular.ttf"; sourceTree = "<group>"; };
 		840292E42BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoppinsLatin-Bold.ttf"; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				1289A6AB2CC6379B00F950BD /* ListView+Utilities.swift */,
 				123D9B452CD9D668003BA96E /* Combine+Utilities.swift */,
 				122891AB2CDC5E09003D4605 /* UIView+Utilities.swift */,
+				12F7135A2CF05D02002844A1 /* Number+Utilities.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1079,6 +1082,7 @@
 				12DBAF472CD4B1A200921C8B /* UIView+Animated.swift in Sources */,
 				842CD6382BBC675600984066 /* SplashViewModel.swift in Sources */,
 				12A3649E2BBD36660064FCE2 /* RegisterViewController.swift in Sources */,
+				12F7135B2CF05D02002844A1 /* Number+Utilities.swift in Sources */,
 				842CD5EA2BBC5C5500984066 /* SceneDelegate.swift in Sources */,
 				128C7A662CD23278009602B1 /* ThumbHashLoader.swift in Sources */,
 				122891AE2CDC5EA0003D4605 /* UIStackView+Utilities.swift in Sources */,
@@ -1287,8 +1291,6 @@
 					"-framework",
 					"\"CoreFoundation\"",
 					"-framework",
-					"\"CryptoSwift\"",
-					"-framework",
 					"\"Foundation\"",
 					"-framework",
 					"\"IQKeyboardCore\"",
@@ -1358,8 +1360,6 @@
 					"\"Combine\"",
 					"-framework",
 					"\"CoreFoundation\"",
-					"-framework",
-					"\"CryptoSwift\"",
 					"-framework",
 					"\"Foundation\"",
 					"-framework",

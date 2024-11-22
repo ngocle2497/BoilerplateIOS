@@ -1,7 +1,4 @@
 import Foundation
-import CryptoSwift
-import Infrastructure
-
 
 func localized(_ key: String, _ table: String, _ value: String) -> String {
     if let path = Bundle.main.path(forResource: GlobalSettings.shared.language.value.rawValue, ofType: "lproj"), let bundle = Bundle(path: path) {
@@ -60,20 +57,5 @@ extension String {
     func toBase64Encoded() -> Data? {
         guard let result = Data(base64Encoded: Data(self.utf8).base64EncodedString()) else { return nil }
         return result
-    }
-    
-    func aesDecrypt(password: String) -> String? {
-        do {
-            guard let keyBase64 = password.toBase64Encoded() else { return nil }
-            
-            let byeArray = [UInt8](keyBase64)
-            
-            let aes = try AES(key: byeArray, blockMode: ECB(), padding: .pkcs7)
-            let decrypted = try aes.decrypt(Array(base64: self))
-            
-            return String(data: Data(decrypted), encoding: .utf8)
-        } catch {
-            return nil
-        }
     }
 }
