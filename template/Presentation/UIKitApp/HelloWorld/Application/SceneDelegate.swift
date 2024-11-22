@@ -3,6 +3,7 @@ import Infrastructure
 import Adapter
 import netfox
 import Alamofire
+import SwiftDate
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
@@ -72,6 +73,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         MMKV_STORAGE.createInstance(cryptKey: Configuration.MMKV_CRYPTKEY)
         API_CONSTANT.setBaseUrl(with: Configuration.API_URL)
         RemoteImage.registerLoaders()
+        SwiftDate.defaultRegion = .local
         
 //        NetworkService.shared.enableSSL(with:sslConfig)
     }

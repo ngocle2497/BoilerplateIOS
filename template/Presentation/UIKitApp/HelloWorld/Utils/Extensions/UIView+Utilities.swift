@@ -135,7 +135,8 @@ extension UIView {
             view.translatesAutoresizingMaskIntoConstraints = false
         }
     }
-    func centerInSuperView(){
+    
+    func centerInSuperView() {
         guard let superview = self.superview else { return }
         
         prepareForAutoLayout()
@@ -159,7 +160,7 @@ extension UIView {
         self.widthAnchor.constraint(equalTo: self.heightAnchor).isActive = true
     }
     
-    func prepareForAutoLayout(){
+    func prepareForAutoLayout() {
         translatesAutoresizingMaskIntoConstraints = false
     }
     
