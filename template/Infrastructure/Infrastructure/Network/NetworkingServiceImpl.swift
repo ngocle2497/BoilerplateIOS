@@ -148,3 +148,12 @@ extension NetworkingServiceImpl {
         return handleDataWithoutType(result)
     }
 }
+
+// MARK: - Event Source
+extension NetworkingServiceImpl {
+    public func connect<T: Codable>(_ route: URLRequestConvertible, type: T.Type, onMessage: ((T) -> Void)? = nil, onCompletion: (() -> Void)? = nil) -> Cancellation {
+        let eventSource = EventSource(url: route, type: type.self, session: NetworkManager.shared.session, onMessage: onMessage, onCompletion: onCompletion)
+        eventSource.start()
+        return eventSource
+    }
+}

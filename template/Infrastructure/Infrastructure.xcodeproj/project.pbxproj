@@ -22,6 +22,7 @@
 		127C897A2CD077C400DAD87C /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C89792CD077C400DAD87C /* HttpStatusCode.swift */; };
 		127C897C2CD077CA00DAD87C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C897B2CD077CA00DAD87C /* NetworkManager.swift */; };
 		127C897E2CD077D000DAD87C /* NetworkingServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 127C897D2CD077D000DAD87C /* NetworkingServiceImpl.swift */; };
+		128D1A832CF6D32800FC2F03 /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 128D1A822CF6D32800FC2F03 /* EventSource.swift */; };
 		129F20252CD20E0D00D80037 /* MmkvStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 129F20242CD20E0D00D80037 /* MmkvStorage.swift */; };
 		12E7B3612CEB260F00BF23B8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12E7B3602CEB260F00BF23B8 /* Utils.swift */; };
 		12FECFFE2CE44325001EB384 /* NetworkSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FECFFD2CE44325001EB384 /* NetworkSessionDelegate.swift */; };
@@ -85,6 +86,7 @@
 		127C89792CD077C400DAD87C /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
 		127C897B2CD077CA00DAD87C /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		127C897D2CD077D000DAD87C /* NetworkingServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceImpl.swift; sourceTree = "<group>"; };
+		128D1A822CF6D32800FC2F03 /* EventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
 		129F20242CD20E0D00D80037 /* MmkvStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MmkvStorage.swift; sourceTree = "<group>"; };
 		12E7B3602CEB260F00BF23B8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		12FECFFD2CE44325001EB384 /* NetworkSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionDelegate.swift; sourceTree = "<group>"; };
@@ -225,6 +227,7 @@
 				12FED0052CE444B0001EB384 /* RetryInterceptor.swift */,
 				12E7B3602CEB260F00BF23B8 /* Utils.swift */,
 				127C897D2CD077D000DAD87C /* NetworkingServiceImpl.swift */,
+				128D1A822CF6D32800FC2F03 /* EventSource.swift */,
 				12FED0082CE44965001EB384 /* SSLPinning.swift */,
 			);
 			path = Network;
@@ -455,6 +458,7 @@
 				129F20252CD20E0D00D80037 /* MmkvStorage.swift in Sources */,
 				12FECFFE2CE44325001EB384 /* NetworkSessionDelegate.swift in Sources */,
 				12FED0062CE444B0001EB384 /* RetryInterceptor.swift in Sources */,
+				128D1A832CF6D32800FC2F03 /* EventSource.swift in Sources */,
 				127C897C2CD077CA00DAD87C /* NetworkManager.swift in Sources */,
 				127C897A2CD077C400DAD87C /* HttpStatusCode.swift in Sources */,
 				12FED0092CE44965001EB384 /* SSLPinning.swift in Sources */,

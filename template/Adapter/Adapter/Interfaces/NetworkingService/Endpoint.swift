@@ -29,6 +29,7 @@ public enum ApiTarget: URLRequestConvertible {
     case users(results: Int)
     case uploadImage(file: FormData)
     case download
+    case sse
 }
 
 
@@ -43,6 +44,8 @@ extension ApiTarget {
     
     var path: String {
         switch self {
+        case .sse:
+            return "/streaming"
         case .users:
             return "/api"
         case .uploadImage:
@@ -103,10 +106,10 @@ extension ApiTarget {
                 request.httpBody = try! JSONEncoder().encode(data)
                 break
             case .formData(let formData):
-                let multipatr = MultipartFormData()
-                multipatr.append(formData.data, withName: formData.keyName, fileName: formData.fileName, mimeType: formData.mimeType)
-                request.httpBody = try! multipatr.encode()
-                request.setValue(multipatr.contentType, forHTTPHeaderField: "Content-Type")
+                let multiPart = MultipartFormData()
+                multiPart.append(formData.data, withName: formData.keyName, fileName: formData.fileName, mimeType: formData.mimeType)
+                request.httpBody = try! multiPart.encode()
+                request.setValue(multiPart.contentType, forHTTPHeaderField: "Content-Type")
                 break
             }
         }

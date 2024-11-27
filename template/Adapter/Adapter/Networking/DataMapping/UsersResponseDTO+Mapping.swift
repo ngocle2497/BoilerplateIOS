@@ -2,7 +2,7 @@ import Foundation
 import Domain
 
 
-// MARK: - Data Tranfer Object
+// MARK: - Data Transfer Object
 struct UserResponseDTO: Codable {
     let info: Info
     let results: [UserDTO]

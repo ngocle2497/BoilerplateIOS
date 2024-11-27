@@ -9,7 +9,7 @@ final class NetworkManager {
     
     static let shared = NetworkManager(session: Session(interceptor: RetryInterceptor()))
     
-    private var session: Session
+    var session: Session
     
     init(session: Session) {
         self.session = session

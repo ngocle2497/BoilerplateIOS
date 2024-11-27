@@ -33,6 +33,9 @@ public struct ResponseBase<T> where T: Codable {
     }
 }
 
+public protocol Cancellation {
+    func cancel()
+}
 
 public protocol NetworkingService {
     // MARK: - Base request
@@ -64,4 +67,7 @@ public protocol NetworkingService {
     func upload<T: Codable, E: Codable>(_ route: URLRequestConvertible, type: T.Type, errorType: E.Type) async -> ResultWithError<ResponseBase<T>, E>
     
     func upload<T: Codable, E: Codable>(_ route: URLRequestConvertible, type: T.Type, errorType: E.Type, onProgress: ((_ progress: Double) -> Void)?) async -> ResultWithError<ResponseBase<T>, E>
+
+    // MARK: - Event Source
+    func connect<T: Codable>(_ route: URLRequestConvertible, type: T.Type, onMessage: ((T) -> Void)?, onCompletion: (() -> Void)?) -> Cancellation
 }
