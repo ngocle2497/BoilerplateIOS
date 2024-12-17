@@ -1,16 +1,6 @@
 import Foundation
 import UIKit
 
-protocol ColorProtocol {
-    var primary: UIColor { get }
-    var primaryFocus: UIColor { get }
-    var primaryContent: UIColor { get }
-    
-    var secondary: UIColor { get }
-    var secondaryFocus: UIColor { get }
-    var secondaryContent: UIColor { get }
-}
-
 protocol FontProtocol {
     var heading1: UIFont { get }
     var heading2: UIFont { get }
@@ -23,18 +13,28 @@ protocol FontProtocol {
     var title2Bold: UIFont { get }
 }
 
-let COLORS_THEME = ThemeManager.colorShared
+
 let FONTS_THEME = ThemeManager.fontShared
 
 struct ThemeManager {
-    fileprivate static var colorShared: ColorProtocol = DarkColorTheme()
     fileprivate static var fontShared: FontProtocol = DefaultFont()
+    
     static func updateTheme(_ colorTheme: ColorTheme) {
+        let keyWindow = UIApplication.shared.connectedScenes
+            .filter({$0.activationState == .foregroundActive})
+            .compactMap({$0 as? UIWindowScene})
+            .first?.windows
+            .filter({$0.isKeyWindow}).first
         switch colorTheme {
         case .dark:
-            ThemeManager.colorShared = DarkColorTheme()
+            keyWindow?.overrideUserInterfaceStyle = .dark
+            break
         case .light:
-            ThemeManager.colorShared = LightColorTheme()
+            keyWindow?.overrideUserInterfaceStyle = .light
+            break
+        case .system:
+            keyWindow?.overrideUserInterfaceStyle = .unspecified
+            break
         }
     }
     
@@ -93,44 +93,6 @@ extension UIFont {
     static  var title2Bold: UIFont {
         get {
             FONTS_THEME.title2Bold
-        }
-    }
-}
-
-extension UIColor {
-    static var primary: UIColor {
-        get {
-            return COLORS_THEME.primary
-        }
-    }
-    
-    static var primaryFocus: UIColor {
-        get {
-            COLORS_THEME.primaryFocus
-        }
-    }
-    
-    static var primaryContent: UIColor {
-        get {
-            COLORS_THEME.primaryContent
-        }
-    }
-    
-    static var secondary: UIColor {
-        get {
-            COLORS_THEME.secondary
-        }
-    }
-    
-    static var secondaryFocus: UIColor {
-        get {
-            COLORS_THEME.secondaryFocus
-        }
-    }
-    
-    static var secondaryContent: UIColor {
-        get {
-            COLORS_THEME.secondaryContent
         }
     }
 }

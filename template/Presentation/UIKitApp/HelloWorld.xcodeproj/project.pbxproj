@@ -51,6 +51,9 @@
 		12AF2D602CD37C4B00674A77 /* ImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */; };
 		12AF2D612CD37C4B00674A77 /* ImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */; };
 		12DBAF472CD4B1A200921C8B /* UIView+Animated.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12DBAF462CD4B1A200921C8B /* UIView+Animated.swift */; };
+		12EFC14B2D10076C002B6D4F /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EFC14A2D10076C002B6D4F /* CustomImageView.swift */; };
+		12EFC1532D100795002B6D4F /* CustomUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EFC1522D100795002B6D4F /* CustomUIView.swift */; };
+		12EFC1552D100927002B6D4F /* CustomBlurView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12EFC1542D100927002B6D4F /* CustomBlurView.swift */; };
 		12F7135B2CF05D02002844A1 /* Number+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12F7135A2CF05D02002844A1 /* Number+Utilities.swift */; };
 		840292E62BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */; };
 		840292E72BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 840292E42BBC6F4E004EE551 /* PoppinsLatin-Bold.ttf */; };
@@ -78,8 +81,6 @@
 		842CD63C2BBC678500984066 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6392BBC678500984066 /* SplashViewController.swift */; };
 		842CD63F2BBC681100984066 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD63E2BBC681100984066 /* ThemeManager.swift */; };
 		842CD6422BBC682A00984066 /* DefaultFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6412BBC682A00984066 /* DefaultFont.swift */; };
-		842CD6452BBC683E00984066 /* LightColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6442BBC683E00984066 /* LightColorTheme.swift */; };
-		842CD6472BBC684C00984066 /* DarkColorTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6462BBC684C00984066 /* DarkColorTheme.swift */; };
 		842CD64A2BBC686C00984066 /* String+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD6492BBC686C00984066 /* String+Utilities.swift */; };
 		842CD64C2BBC688A00984066 /* Color+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD64B2BBC688A00984066 /* Color+Utilities.swift */; };
 		842CD64E2BBC689700984066 /* UIFont+Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 842CD64D2BBC689700984066 /* UIFont+Utilities.swift */; };
@@ -192,6 +193,9 @@
 		12AF2D5E2CD37C4B00674A77 /* ImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		12AF2D5F2CD37C4B00674A77 /* ImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		12DBAF462CD4B1A200921C8B /* UIView+Animated.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Animated.swift"; sourceTree = "<group>"; };
+		12EFC14A2D10076C002B6D4F /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		12EFC1522D100795002B6D4F /* CustomUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomUIView.swift; sourceTree = "<group>"; };
+		12EFC1542D100927002B6D4F /* CustomBlurView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBlurView.swift; sourceTree = "<group>"; };
 		12F7135A2CF05D02002844A1 /* Number+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Number+Utilities.swift"; sourceTree = "<group>"; };
 		7ED015E401A17E99F1E5795D /* Pods_HelloWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		840292E32BBC6F4E004EE551 /* PoppinsLatin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoppinsLatin-Regular.ttf"; sourceTree = "<group>"; };
@@ -223,8 +227,6 @@
 		842CD63A2BBC678500984066 /* SplashViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SplashViewController.xib; sourceTree = "<group>"; };
 		842CD63E2BBC681100984066 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		842CD6412BBC682A00984066 /* DefaultFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultFont.swift; sourceTree = "<group>"; };
-		842CD6442BBC683E00984066 /* LightColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LightColorTheme.swift; sourceTree = "<group>"; };
-		842CD6462BBC684C00984066 /* DarkColorTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DarkColorTheme.swift; sourceTree = "<group>"; };
 		842CD6492BBC686C00984066 /* String+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Utilities.swift"; sourceTree = "<group>"; };
 		842CD64B2BBC688A00984066 /* Color+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Utilities.swift"; sourceTree = "<group>"; };
 		842CD64D2BBC689700984066 /* UIFont+Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIFont+Utilities.swift"; sourceTree = "<group>"; };
@@ -372,19 +374,9 @@
 			isa = PBXGroup;
 			children = (
 				1294D1582CC764CE00401985 /* Font */,
-				1294D1572CC764BE00401985 /* Color */,
 				842CD63E2BBC681100984066 /* ThemeManager.swift */,
 			);
 			path = Theming;
-			sourceTree = "<group>";
-		};
-		1294D1572CC764BE00401985 /* Color */ = {
-			isa = PBXGroup;
-			children = (
-				842CD6442BBC683E00984066 /* LightColorTheme.swift */,
-				842CD6462BBC684C00984066 /* DarkColorTheme.swift */,
-			);
-			path = Color;
 			sourceTree = "<group>";
 		};
 		1294D1582CC764CE00401985 /* Font */ = {
@@ -690,6 +682,9 @@
 				1228919E2CDC5D88003D4605 /* TabBar */,
 				128C7A5C2CD23233009602B1 /* RemoteImage */,
 				842CD61F2BBC64CA00984066 /* BaseView.swift */,
+				12EFC14A2D10076C002B6D4F /* CustomImageView.swift */,
+				12EFC1542D100927002B6D4F /* CustomBlurView.swift */,
+				12EFC1522D100795002B6D4F /* CustomUIView.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -929,7 +924,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nconfig_file=\"${PROJECT_DIR}/${TARGET_NAME}/Configuration/tmp.xcconfig\"\noutput_file=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/GeneratedAssets.xcassets\"\n\n# Initialize variable\nASSET_NAME=\"\"\n\n# Read the configuration file\nwhile IFS='=' read -r key value; do\n  case \"$key\" in\n    'ASSET_NAME') ASSET_NAME=\"$value\" ;\n  esac\ndone < \"$config_file\"\n\nbase_input_assets=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/Base.xcassets\"\ntarget_input_assets=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/${ASSET_NAME}.xcassets/\"\n\nrm -rf \"${output_file}\"\n\ncopy_files() { \n    local src_dir=$1 \n    local dest_dir=$2\n    \n    for item in \"$src_dir\"/*; do\n    \n     local base_item=$(basename \"$item\") \n     \n     if [ -e \"$dest_dir/$base_item\" ]; then \n        rm -rf \"$dest_dir/$base_item\" \n     fi\n     \n     echo \"copy from ${item} to ${dest_dir}\"\n     cp -r \"$item\" \"$dest_dir\" \n    done \n}\n\ncopy_files \"${base_input_assets}\" \"${output_file}\"\n\nif [ \"$ASSET_NAME\" = \"\" ] | [ \"$base_input_assets\" = \"$target_input_assets\" ]; then\n    exit 0\nfi\n\ncopy_files \"${target_input_assets}\" \"${output_file}\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\nconfig_file=\"${PROJECT_DIR}/${TARGET_NAME}/Configuration/tmp.xcconfig\"\noutput_file=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/GeneratedAssets.xcassets\"\n\n# Initialize variable\nASSET_NAME=\"\"\n\n# Read the configuration file\nwhile IFS='=' read -r key value; do\n  case \"$key\" in\n    'ASSET_NAME') ASSET_NAME=\"$value\" ;\n  esac\ndone < \"$config_file\"\n\nbase_input_assets=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/Base.xcassets\"\ntarget_input_assets=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/${ASSET_NAME}.xcassets/\"\n\nrm -rf \"${output_file}\"\n\ncopy_files() { \n    local src_dir=$1 \n    local dest_dir=$2\n    \n    for item in \"$src_dir\"/*; do\n    \n     local base_item=$(basename \"$item\") \n     echo \"copy from ${item} to ${dest_dir}\"\n     cp -r \"$item\" \"$dest_dir\" \n    done \n}\n\ncopy_files \"${base_input_assets}\" \"${output_file}\"\n\nif [ \"$ASSET_NAME\" = \"\" ] | [ \"$base_input_assets\" = \"$target_input_assets\" ]; then\n    exit 0\nfi\n\ncopy_files \"${target_input_assets}\" \"${output_file}\"\n";
 		};
 		12DBAF452CD4756D00921C8B /* Uninstall old App */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1050,7 +1045,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				842CD6282BBC652900984066 /* OnboardingViewController.swift in Sources */,
-				842CD6472BBC684C00984066 /* DarkColorTheme.swift in Sources */,
 				842CD6132BBC637800984066 /* AppDIContainer.swift in Sources */,
 				842CD6202BBC64CA00984066 /* BaseView.swift in Sources */,
 				122891AC2CDC5E09003D4605 /* UIView+Utilities.swift in Sources */,
@@ -1078,8 +1072,10 @@
 				842CD6052BBC613A00984066 /* swiftgen.yml in Sources */,
 				842CD6242BBC64FE00984066 /* InactiveView.swift in Sources */,
 				842CD6422BBC682A00984066 /* DefaultFont.swift in Sources */,
+				12EFC1552D100927002B6D4F /* CustomBlurView.swift in Sources */,
 				12A364932BBD31990064FCE2 /* AuthorizedFlow.swift in Sources */,
 				12DBAF472CD4B1A200921C8B /* UIView+Animated.swift in Sources */,
+				12EFC14B2D10076C002B6D4F /* CustomImageView.swift in Sources */,
 				842CD6382BBC675600984066 /* SplashViewModel.swift in Sources */,
 				12A3649E2BBD36660064FCE2 /* RegisterViewController.swift in Sources */,
 				12F7135B2CF05D02002844A1 /* Number+Utilities.swift in Sources */,
@@ -1087,8 +1083,8 @@
 				128C7A662CD23278009602B1 /* ThumbHashLoader.swift in Sources */,
 				122891AE2CDC5EA0003D4605 /* UIStackView+Utilities.swift in Sources */,
 				12A364842BBD120F0064FCE2 /* LoginViewModel.swift in Sources */,
-				842CD6452BBC683E00984066 /* LightColorTheme.swift in Sources */,
 				123D9B462CD9D668003BA96E /* Combine+Utilities.swift in Sources */,
+				12EFC1532D100795002B6D4F /* CustomUIView.swift in Sources */,
 				842CD6102BBC630E00984066 /* AppFlow.swift in Sources */,
 				1292EDF22CDA0F1800A03385 /* LoginViewController.swift in Sources */,
 				842CD63F2BBC681100984066 /* ThemeManager.swift in Sources */,

@@ -17,6 +17,7 @@ enum Language: String {
 enum ColorTheme: String {
     case dark = "dark"
     case light = "light"
+    case system = "system"
     
     static func fromString(value: String?) -> ColorTheme {
         guard let dest = ColorTheme(rawValue: value ?? "") else {

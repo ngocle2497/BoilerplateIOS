@@ -72,6 +72,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 #endif
         MMKV_STORAGE.createInstance(cryptKey: Configuration.MMKV_CRYPTKEY)
         API_CONSTANT.setBaseUrl(with: Configuration.API_URL)
+        ThemeManager.updateTheme(ColorTheme.fromString(value: MMKV_STORAGE.appTheme))
         RemoteImage.registerLoaders()
         SwiftDate.defaultRegion = .local
         
