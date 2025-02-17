@@ -13,6 +13,7 @@ struct SignInView: View {
                         .title2Bold()
                 }
                 Button {
+//                    modifyOrientation(.landscape)
                     vm.showSignUpScreen()
                 } label: {
                     Text("Show Sign Up Screen")

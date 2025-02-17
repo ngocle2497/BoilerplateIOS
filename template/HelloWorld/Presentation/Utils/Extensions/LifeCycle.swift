@@ -1,17 +1,17 @@
 import Foundation
 import SwiftUI
 
-struct ViewFisrtAppeared: ViewModifier {
-    @State var appered: Bool = false
+struct ViewFirstAppeared: ViewModifier {
+    @State var appeared: Bool = false
     let perform: () -> Void
     
     func body(content: Content) -> some View {
         content
             .onAppear {
-                if appered {
+                if appeared {
                     return
                 }
-                appered = true
+                appeared = true
                 perform()
             }
     }
@@ -19,6 +19,6 @@ struct ViewFisrtAppeared: ViewModifier {
 
 extension View {
     func onFirstAppear(_ perform: @escaping () -> Void) -> some View {
-        modifier(ViewFisrtAppeared(perform: perform))
+        modifier(ViewFirstAppeared(perform: perform))
     }
 }
