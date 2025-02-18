@@ -6,3 +6,6 @@ Configuration.swift
 Generated
 GeneratedAssets.xcassets
 !Generated/.gitkeep
+Podfile.lock
+*.xcuserdata/
+contents.xcworkspacedata
