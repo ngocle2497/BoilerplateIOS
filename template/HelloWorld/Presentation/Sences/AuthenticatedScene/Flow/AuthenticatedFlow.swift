@@ -47,7 +47,7 @@ extension AuthenticatedFlow {
         let actions: HomeView.HomeViewModelActions = .init {
             self.appState?.setScreenFlow(.authentication)
         }
-        return .init(actions: actions)
+        return .init(actions: actions, userRepository: UserRepositoriesImpl(networkService: NetworkingServiceImpl.shared))
     }
     
     @ViewBuilder

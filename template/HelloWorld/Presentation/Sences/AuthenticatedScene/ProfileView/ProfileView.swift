@@ -3,7 +3,7 @@ import SwiftUI
 struct ProfileView: View {
     var body: some View {
         ScreenView {
-            Text("Hello Profile View")
+            Text(verbatim: "Hello Profile View")
                 .foregroundStyle(.primary500)
         }
     }

@@ -4,7 +4,8 @@ ios/prebuild.log
 .xcode.env.local
 Gemfile.lock
 Podfile.lock
-*.xcworkspace/
+*.xcuserdata/
+contents.xcworkspacedata
 
 Pods/
 .DS_STORE

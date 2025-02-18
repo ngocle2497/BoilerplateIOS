@@ -8,7 +8,12 @@ struct HomeView: View {
             Button {
                 vm.logout()
             } label: {
-                Text("Logout")
+                Text(.localizable(.logout))
+            }
+            .onFirstAppear {
+                vm.getUsers { data in
+                    print(data)
+                }
             }
         }
     }

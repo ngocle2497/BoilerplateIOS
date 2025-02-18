@@ -32,9 +32,32 @@
 		12605A9B2D63374500EEC6A8 /* Inter-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12605A972D63374500EEC6A8 /* Inter-Bold.ttf */; };
 		12605A9C2D63374500EEC6A8 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 12605A992D63374500EEC6A8 /* Inter-Regular.ttf */; };
 		12605AAA2D63394900EEC6A8 /* ScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12605AA92D63394900EEC6A8 /* ScreenView.swift */; };
+		1269BB5E2D646BE2002618AF /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1269BB5D2D646BE2002618AF /* SignUpViewModel.swift */; };
+		12FC04612D6429B200C33991 /* MmkvStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04602D6429B200C33991 /* MmkvStorage.swift */; };
+		12FC04662D6429D900C33991 /* EventSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04652D6429D900C33991 /* EventSource.swift */; };
+		12FC04682D6429EB00C33991 /* HttpStatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04672D6429EB00C33991 /* HttpStatusCode.swift */; };
+		12FC046F2D642A0B00C33991 /* SSLPinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC046D2D642A0B00C33991 /* SSLPinning.swift */; };
+		12FC04702D642A0B00C33991 /* NetworkingServiceImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04692D642A0B00C33991 /* NetworkingServiceImpl.swift */; };
+		12FC04712D642A0B00C33991 /* NetworkSessionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC046B2D642A0B00C33991 /* NetworkSessionDelegate.swift */; };
+		12FC04722D642A0B00C33991 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC046A2D642A0B00C33991 /* NetworkManager.swift */; };
+		12FC04732D642A0B00C33991 /* RetryInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC046C2D642A0B00C33991 /* RetryInterceptor.swift */; };
+		12FC04742D642A0B00C33991 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC046E2D642A0B00C33991 /* Utils.swift */; };
+		12FC047B2D642A4900C33991 /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04792D642A4900C33991 /* Endpoint.swift */; };
+		12FC047C2D642A4900C33991 /* NetworkingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC047A2D642A4900C33991 /* NetworkingService.swift */; };
+		12FC047D2D642A4900C33991 /* ApiConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04782D642A4900C33991 /* ApiConstant.swift */; };
+		12FC04832D642AF600C33991 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04822D642AF600C33991 /* User.swift */; };
+		12FC04862D642B0A00C33991 /* UserRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04852D642B0A00C33991 /* UserRepository.swift */; };
+		12FC04892D642B2100C33991 /* UserRepositoriesImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04882D642B2100C33991 /* UserRepositoriesImpl.swift */; };
+		12FC048C2D642B5800C33991 /* UsersResponseDTO+Mapping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC048B2D642B5800C33991 /* UsersResponseDTO+Mapping.swift */; };
+		12FC04922D642E3900C33991 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 12FC048E2D642E3900C33991 /* Config.xcconfig */; };
+		12FC04932D642E3900C33991 /* Dev.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 12FC048F2D642E3900C33991 /* Dev.xcconfig */; };
+		12FC04A32D642FD700C33991 /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04A22D642FD700C33991 /* Configuration.swift */; };
+		12FC04AA2D643C2F00C33991 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 12FC04A92D643C2F00C33991 /* Localizable.xcstrings */; };
+		12FC04B12D643EDE00C33991 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04B02D643EDE00C33991 /* Strings.swift */; };
+		12FC04B32D643F9000C33991 /* Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12FC04B22D643F9000C33991 /* Combine.swift */; };
 		4C495BF52D6359BF0048EDC5 /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C495BF42D6359BF0048EDC5 /* Orientation.swift */; };
 		4C495BF72D6359D90048EDC5 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C495BF62D6359D90048EDC5 /* AppDelegate.swift */; };
-		4C495BF92D63699A0048EDC5 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C495BF82D63699A0048EDC5 /* SignUpViewModel.swift */; };
+		9DC8447BF59DD1A41D316C1D /* Pods_HelloWorld.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5F630C42DF39C2B7714F1654 /* Pods_HelloWorld.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -65,9 +88,35 @@
 		12605A992D63374500EEC6A8 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
 		12605A9D2D63377100EEC6A8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		12605AA92D63394900EEC6A8 /* ScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenView.swift; sourceTree = "<group>"; };
+		1269BB5D2D646BE2002618AF /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		12FC04602D6429B200C33991 /* MmkvStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MmkvStorage.swift; sourceTree = "<group>"; };
+		12FC04652D6429D900C33991 /* EventSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventSource.swift; sourceTree = "<group>"; };
+		12FC04672D6429EB00C33991 /* HttpStatusCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpStatusCode.swift; sourceTree = "<group>"; };
+		12FC04692D642A0B00C33991 /* NetworkingServiceImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingServiceImpl.swift; sourceTree = "<group>"; };
+		12FC046A2D642A0B00C33991 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		12FC046B2D642A0B00C33991 /* NetworkSessionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkSessionDelegate.swift; sourceTree = "<group>"; };
+		12FC046C2D642A0B00C33991 /* RetryInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetryInterceptor.swift; sourceTree = "<group>"; };
+		12FC046D2D642A0B00C33991 /* SSLPinning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SSLPinning.swift; sourceTree = "<group>"; };
+		12FC046E2D642A0B00C33991 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		12FC04782D642A4900C33991 /* ApiConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiConstant.swift; sourceTree = "<group>"; };
+		12FC04792D642A4900C33991 /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
+		12FC047A2D642A4900C33991 /* NetworkingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkingService.swift; sourceTree = "<group>"; };
+		12FC04822D642AF600C33991 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		12FC04852D642B0A00C33991 /* UserRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepository.swift; sourceTree = "<group>"; };
+		12FC04882D642B2100C33991 /* UserRepositoriesImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRepositoriesImpl.swift; sourceTree = "<group>"; };
+		12FC048B2D642B5800C33991 /* UsersResponseDTO+Mapping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UsersResponseDTO+Mapping.swift"; sourceTree = "<group>"; };
+		12FC048E2D642E3900C33991 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		12FC048F2D642E3900C33991 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
+		12FC04A22D642FD700C33991 /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
+		12FC04A42D64357700C33991 /* HelloWorld.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HelloWorld.entitlements; sourceTree = "<group>"; };
+		12FC04A92D643C2F00C33991 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		12FC04B02D643EDE00C33991 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		12FC04B22D643F9000C33991 /* Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Combine.swift; sourceTree = "<group>"; };
 		4C495BF42D6359BF0048EDC5 /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		4C495BF62D6359D90048EDC5 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		4C495BF82D63699A0048EDC5 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SignUpViewModel.swift; path = HelloWorld/Presentation/Sences/AuthenticationScene/SignUp/SignUpViewModel.swift; sourceTree = SOURCE_ROOT; };
+		5F630C42DF39C2B7714F1654 /* Pods_HelloWorld.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HelloWorld.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		7C4E7DD72DBD5B775204EE06 /* Pods-HelloWorld.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.release.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.release.xcconfig"; sourceTree = "<group>"; };
+		93F4055D2345D857DD03B019 /* Pods-HelloWorld.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HelloWorld.debug.xcconfig"; path = "Target Support Files/Pods-HelloWorld/Pods-HelloWorld.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,17 +124,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9DC8447BF59DD1A41D316C1D /* Pods_HelloWorld.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		122BFC1CF304B68A8456AF19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5F630C42DF39C2B7714F1654 /* Pods_HelloWorld.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		12605A292D62D6A800EEC6A8 = {
 			isa = PBXGroup;
 			children = (
 				12605A482D62D6E600EEC6A8 /* HelloWorld */,
 				12605A332D62D6A800EEC6A8 /* Products */,
+				21DDE5FD48784A7B1F255F82 /* Pods */,
+				122BFC1CF304B68A8456AF19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -108,7 +168,10 @@
 		12605A482D62D6E600EEC6A8 /* HelloWorld */ = {
 			isa = PBXGroup;
 			children = (
+				12FC047E2D642AAA00C33991 /* Domain */,
+				12FC04762D642A3200C33991 /* Adapter */,
 				12605A4D2D62D6E900EEC6A8 /* Presentation */,
+				12FC045E2D6429A300C33991 /* Infrastructure */,
 				12605A442D62D6E600EEC6A8 /* Preview Content */,
 				12605A9D2D63377100EEC6A8 /* Info.plist */,
 			);
@@ -119,6 +182,7 @@
 			isa = PBXGroup;
 			children = (
 				12605AAB2D63405C00EEC6A8 /* Application */,
+				12FC048D2D642E2500C33991 /* Configuration */,
 				12605A6E2D62DDE700EEC6A8 /* State */,
 				12605A4F2D62D71500EEC6A8 /* Sences */,
 				12605A4E2D62D70500EEC6A8 /* Utils */,
@@ -178,8 +242,8 @@
 		12605A5E2D62D99E00EEC6A8 /* SignUp */ = {
 			isa = PBXGroup;
 			children = (
+				1269BB5C2D646BD8002618AF /* ViewModel */,
 				12605A7D2D62EC2600EEC6A8 /* View */,
-				12605A7C2D62EC1F00EEC6A8 /* ViewModel */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -238,6 +302,7 @@
 		12605A752D62E9E300EEC6A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				12FC04A82D64375500C33991 /* Localizable */,
 				12605AAC2D63406E00EEC6A8 /* Assets */,
 				12605A962D63372E00EEC6A8 /* Font */,
 				12605A762D62E9ED00EEC6A8 /* Launch */,
@@ -260,14 +325,6 @@
 				12605AA92D63394900EEC6A8 /* ScreenView.swift */,
 			);
 			path = Components;
-			sourceTree = "<group>";
-		};
-		12605A7C2D62EC1F00EEC6A8 /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				4C495BF82D63699A0048EDC5 /* SignUpViewModel.swift */,
-			);
-			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		12605A7D2D62EC2600EEC6A8 /* View */ = {
@@ -301,6 +358,8 @@
 				12605A922D62F62000EEC6A8 /* Typo.swift */,
 				12605A942D63159B00EEC6A8 /* Colors.swift */,
 				4C495BF42D6359BF0048EDC5 /* Orientation.swift */,
+				12FC04B22D643F9000C33991 /* Combine.swift */,
+				12FC04B02D643EDE00C33991 /* Strings.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -334,6 +393,7 @@
 		12605AAB2D63405C00EEC6A8 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				12FC04A42D64357700C33991 /* HelloWorld.entitlements */,
 				12605A462D62D6E600EEC6A8 /* ContentView.swift */,
 				4C495BF62D6359D90048EDC5 /* AppDelegate.swift */,
 				12605A472D62D6E600EEC6A8 /* HelloWorldApp.swift */,
@@ -349,6 +409,142 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		1269BB5C2D646BD8002618AF /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				1269BB5D2D646BE2002618AF /* SignUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		12FC045E2D6429A300C33991 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04622D6429CB00C33991 /* Network */,
+				12FC045F2D6429AC00C33991 /* LocalStorage */,
+			);
+			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		12FC045F2D6429AC00C33991 /* LocalStorage */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04602D6429B200C33991 /* MmkvStorage.swift */,
+			);
+			path = LocalStorage;
+			sourceTree = "<group>";
+		};
+		12FC04622D6429CB00C33991 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04652D6429D900C33991 /* EventSource.swift */,
+				12FC04672D6429EB00C33991 /* HttpStatusCode.swift */,
+				12FC04692D642A0B00C33991 /* NetworkingServiceImpl.swift */,
+				12FC046A2D642A0B00C33991 /* NetworkManager.swift */,
+				12FC046B2D642A0B00C33991 /* NetworkSessionDelegate.swift */,
+				12FC046C2D642A0B00C33991 /* RetryInterceptor.swift */,
+				12FC046D2D642A0B00C33991 /* SSLPinning.swift */,
+				12FC046E2D642A0B00C33991 /* Utils.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		12FC04752D642A2A00C33991 /* Interfaces */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04772D642A3B00C33991 /* NetworkingService */,
+			);
+			path = Interfaces;
+			sourceTree = "<group>";
+		};
+		12FC04762D642A3200C33991 /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				12FC048A2D642B5200C33991 /* DataMapping */,
+				12FC04872D642B1B00C33991 /* Repositories */,
+				12FC04752D642A2A00C33991 /* Interfaces */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		12FC04772D642A3B00C33991 /* NetworkingService */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04782D642A4900C33991 /* ApiConstant.swift */,
+				12FC04792D642A4900C33991 /* Endpoint.swift */,
+				12FC047A2D642A4900C33991 /* NetworkingService.swift */,
+			);
+			path = NetworkingService;
+			sourceTree = "<group>";
+		};
+		12FC047E2D642AAA00C33991 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04842D642B0400C33991 /* Repositories */,
+				12FC047F2D642AE700C33991 /* Entities */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		12FC047F2D642AE700C33991 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04822D642AF600C33991 /* User.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		12FC04842D642B0400C33991 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04852D642B0A00C33991 /* UserRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		12FC04872D642B1B00C33991 /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04882D642B2100C33991 /* UserRepositoriesImpl.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		12FC048A2D642B5200C33991 /* DataMapping */ = {
+			isa = PBXGroup;
+			children = (
+				12FC048B2D642B5800C33991 /* UsersResponseDTO+Mapping.swift */,
+			);
+			path = DataMapping;
+			sourceTree = "<group>";
+		};
+		12FC048D2D642E2500C33991 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04A22D642FD700C33991 /* Configuration.swift */,
+				12FC048E2D642E3900C33991 /* Config.xcconfig */,
+				12FC048F2D642E3900C33991 /* Dev.xcconfig */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		12FC04A82D64375500C33991 /* Localizable */ = {
+			isa = PBXGroup;
+			children = (
+				12FC04A92D643C2F00C33991 /* Localizable.xcstrings */,
+			);
+			path = Localizable;
+			sourceTree = "<group>";
+		};
+		21DDE5FD48784A7B1F255F82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				93F4055D2345D857DD03B019 /* Pods-HelloWorld.debug.xcconfig */,
+				7C4E7DD72DBD5B775204EE06 /* Pods-HelloWorld.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -356,17 +552,21 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 12605A402D62D6A900EEC6A8 /* Build configuration list for PBXNativeTarget "HelloWorld" */;
 			buildPhases = (
+				E6A63628365219AE2DDB9683 /* [CP] Check Pods Manifest.lock */,
+				12FC049F2D642E8A00C33991 /* Setup Configuration */,
+				12FC04A02D642EB600C33991 /* Merge Asset If Need */,
 				12605A2E2D62D6A800EEC6A8 /* Sources */,
 				12605A2F2D62D6A800EEC6A8 /* Frameworks */,
 				12605A302D62D6A800EEC6A8 /* Resources */,
+				12FC04A12D642EDE00C33991 /* Setup Firebase Environment GoogleService-Info.plist */,
+				9565B9460FDDBE2054F7D424 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				12FC04A72D64373B00C33991 /* PBXTargetDependency */,
 			);
 			name = HelloWorld;
-			packageProductDependencies = (
-			);
 			productName = HelloWorld;
 			productReference = 12605A322D62D6A800EEC6A8 /* HelloWorld.app */;
 			productType = "com.apple.product-type.application";
@@ -395,6 +595,9 @@
 			);
 			mainGroup = 12605A292D62D6A800EEC6A8;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				12FC04A52D64368200C33991 /* XCRemoteSwiftPackageReference "xcstrings-tool-plugin" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 12605A332D62D6A800EEC6A8 /* Products */;
 			projectDirPath = "";
@@ -413,49 +616,175 @@
 				12605A9A2D63374500EEC6A8 /* Inter-Medium.ttf in Resources */,
 				12605A9B2D63374500EEC6A8 /* Inter-Bold.ttf in Resources */,
 				12605A9C2D63374500EEC6A8 /* Inter-Regular.ttf in Resources */,
+				12FC04922D642E3900C33991 /* Config.xcconfig in Resources */,
+				12FC04932D642E3900C33991 /* Dev.xcconfig in Resources */,
 				12605A492D62D6E600EEC6A8 /* Preview Assets.xcassets in Resources */,
 				12605A782D62E9FD00EEC6A8 /* Default.storyboard in Resources */,
 				12605A4A2D62D6E600EEC6A8 /* Default.xcassets in Resources */,
+				12FC04AA2D643C2F00C33991 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		12FC049F2D642E8A00C33991 /* Setup Configuration */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Configuration";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "input_file=\"${PROJECT_DIR}/${TARGET_NAME}/Presentation/Configuration/tmp.xcconfig\"\noutput_file=\"${PROJECT_DIR}/${TARGET_NAME}/Presentation/Configuration/Configuration.swift\"\n\n# Start writing to Config.swift\necho \"// Auto-generated configuration file. Do not edit this file\" > $output_file\necho \"struct Configuration {\" >> $output_file\n\n# Read each line from tmp.xcconfig\nwhile IFS= read -r line\ndo\n  # Skip empty lines and comments\n  if [ -z \"$line\" ] || [[ $line == \\#* ]] || [[ $line == \\/\\/* ]]; then \n    continue \n  fi\n  \n\n  # Parse key-value pairs\n  key=$(echo \"$line\" | cut -d '=' -f 1 | xargs)\n  value=$(echo \"$line\" | cut -d '=' -f 2- | xargs)\n\n  # Write to Config.swift\n  echo \"    static let $key = \\\"$value\\\"\" >> $output_file\ndone < \"$input_file\"\n\n# Close the struct\necho \"}\" >> $output_file\n";
+		};
+		12FC04A02D642EB600C33991 /* Merge Asset If Need */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Merge Asset If Need";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n\n#config_file=\"${PROJECT_DIR}/${TARGET_NAME}/Configuration/tmp.xcconfig\"\n#output_file=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/GeneratedAssets.xcassets\"\n\n## Initialize variable\n#ASSET_NAME=\"\"\n\n## Read the configuration file\n#while IFS='=' read -r key value; do\n#  case \"$key\" in\n#    'ASSET_NAME') ASSET_NAME=\"$value\" ;\n#  esac\n#done < \"$config_file\"\n\n#base_input_assets=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/Base.xcassets\"\n#target_input_assets=\"${PROJECT_DIR}/${TARGET_NAME}/Resources/Assets/${ASSET_NAME}.xcassets/\"\n\n#rm -rf \"${output_file}\"\n\n#copy_files() { \n#    local src_dir=$1 \n#    local dest_dir=$2\n#    \n#    for item in \"$src_dir\"/*; do\n#    \n#     local base_item=$(basename \"$item\") \n#     echo \"copy from ${item} to ${dest_dir}\"\n#     cp -r \"$item\" \"$dest_dir\" \n#    done \n#}\n\n#copy_files \"${base_input_assets}\" \"${output_file}\"\n\n#if [ \"$ASSET_NAME\" = \"\" ] | [ \"$base_input_assets\" = \"$target_input_assets\" ]; then\n#    exit 0\n#fi\n\n#copy_files \"${target_input_assets}\" \"${output_file}\"\n";
+		};
+		12FC04A12D642EDE00C33991 /* Setup Firebase Environment GoogleService-Info.plist */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Setup Firebase Environment GoogleService-Info.plist";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n#INFO_PLIST_FILE=GoogleService-Info.plist\n#INFO_PLIST_FILE_PATH=${PROJECT_DIR}/${TARGET_NAME}/Presentation/GoogleService/${SCHEME_SUFFIX}/${INFO_PLIST_FILE}\n#echo ${PROJECT_DIR}\n\n## Make sure the release version exists\n#echo \"Looking for ${INFO_PLIST_FILE} in ${INFO_PLIST_FILE_PATH}\"\n#if [ ! -f $INFO_PLIST_FILE_PATH ] ; then\n#    echo \"File ${INFO_PLIST_FILE} not found.\"\n#    exit 1\n#fi\n\n#PLIST_DESTINATION=${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app\n#echo \"Copying ${INFO_PLIST_FILE} to final destination: #${PLIST_DESTINATION}\"\n#echo \"File ${INFO_PLIST_FILE_PATH} copied\"\n#cp \"${INFO_PLIST_FILE_PATH}\" \"${PLIST_DESTINATION}\"\n\n";
+		};
+		9565B9460FDDBE2054F7D424 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-HelloWorld/Pods-HelloWorld-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E6A63628365219AE2DDB9683 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-HelloWorld-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		12605A2E2D62D6A800EEC6A8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				12FC04B32D643F9000C33991 /* Combine.swift in Sources */,
 				12605A8D2D62F0CE00EEC6A8 /* LifeCycle.swift in Sources */,
 				12605A952D63159B00EEC6A8 /* Colors.swift in Sources */,
+				12FC04B12D643EDE00C33991 /* Strings.swift in Sources */,
+				12FC04862D642B0A00C33991 /* UserRepository.swift in Sources */,
 				12605A5D2D62D96B00EEC6A8 /* SignInView.swift in Sources */,
 				12605A702D62DDEF00EEC6A8 /* AppState.swift in Sources */,
 				12605A912D62F30B00EEC6A8 /* HomeViewModel.swift in Sources */,
+				12FC047B2D642A4900C33991 /* Endpoint.swift in Sources */,
+				12FC047C2D642A4900C33991 /* NetworkingService.swift in Sources */,
+				12FC047D2D642A4900C33991 /* ApiConstant.swift in Sources */,
 				12605A722D62DF8500EEC6A8 /* InactiveView.swift in Sources */,
 				12605A4B2D62D6E600EEC6A8 /* ContentView.swift in Sources */,
 				12605A6A2D62DC9100EEC6A8 /* HomeView.swift in Sources */,
 				12605A742D62DFE400EEC6A8 /* SplashView.swift in Sources */,
 				12605A602D62D9AB00EEC6A8 /* SignUpView.swift in Sources */,
+				12FC04832D642AF600C33991 /* User.swift in Sources */,
 				12605A632D62DAA900EEC6A8 /* Coordinator.swift in Sources */,
+				12FC048C2D642B5800C33991 /* UsersResponseDTO+Mapping.swift in Sources */,
 				12605A812D62EC4000EEC6A8 /* SignInViewModel.swift in Sources */,
 				12605A932D62F62000EEC6A8 /* Typo.swift in Sources */,
 				12605A4C2D62D6E600EEC6A8 /* HelloWorldApp.swift in Sources */,
+				12FC046F2D642A0B00C33991 /* SSLPinning.swift in Sources */,
+				12FC04702D642A0B00C33991 /* NetworkingServiceImpl.swift in Sources */,
+				12FC04712D642A0B00C33991 /* NetworkSessionDelegate.swift in Sources */,
+				12FC04722D642A0B00C33991 /* NetworkManager.swift in Sources */,
+				12FC04732D642A0B00C33991 /* RetryInterceptor.swift in Sources */,
+				12FC04742D642A0B00C33991 /* Utils.swift in Sources */,
+				12FC04682D6429EB00C33991 /* HttpStatusCode.swift in Sources */,
 				12605A7B2D62EB5F00EEC6A8 /* Icon.swift in Sources */,
+				12FC04662D6429D900C33991 /* EventSource.swift in Sources */,
 				12605AAA2D63394900EEC6A8 /* ScreenView.swift in Sources */,
+				12FC04612D6429B200C33991 /* MmkvStorage.swift in Sources */,
 				4C495BF52D6359BF0048EDC5 /* Orientation.swift in Sources */,
 				12605A5B2D62D8FA00EEC6A8 /* AuthenticationFlow.swift in Sources */,
+				12FC04A32D642FD700C33991 /* Configuration.swift in Sources */,
 				4C495BF72D6359D90048EDC5 /* AppDelegate.swift in Sources */,
 				12605A6D2D62DCA800EEC6A8 /* ProfileView.swift in Sources */,
-				4C495BF92D63699A0048EDC5 /* SignUpViewModel.swift in Sources */,
 				12605A672D62DC4500EEC6A8 /* AuthenticatedFlow.swift in Sources */,
+				1269BB5E2D646BE2002618AF /* SignUpViewModel.swift in Sources */,
+				12FC04892D642B2100C33991 /* UserRepositoriesImpl.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		12FC04A72D64373B00C33991 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 12FC04A62D64373B00C33991 /* XCStringsToolPlugin */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
 		12605A3E2D62D6A900EEC6A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12FC048E2D642E3900C33991 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -513,12 +842,14 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		12605A3F2D62D6A900EEC6A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 12FC048E2D642E3900C33991 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -569,19 +900,25 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		12605A412D62D6A900EEC6A8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 93F4055D2345D857DD03B019 /* Pods-HelloWorld.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(ASSETCATALOG_COMPILER_APPICON_NAME)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "HelloWorld/Presentation/Application/$(CODE_SIGN_ENTITLEMENTS).entitlements";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HelloWorld/Preview Content\"";
+				DEVELOPMENT_TEAM = "$(APPLE_DEVELOPMENT_TEAM)";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = "$(APPLE_DEVELOPMENT_TEAM)";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -595,8 +932,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.HelloWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "$(DEBUG_PROVISIONING_PROFILE)";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "$(DEBUG_PROVISIONING_PROFILE)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -609,13 +948,18 @@
 		};
 		12605A422D62D6A900EEC6A8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7C4E7DD72DBD5B775204EE06 /* Pods-HelloWorld.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "$(ASSETCATALOG_COMPILER_APPICON_NAME)";
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_STYLE = Automatic;
+				CODE_SIGN_ENTITLEMENTS = "HelloWorld/Presentation/Application/$(CODE_SIGN_ENTITLEMENTS).entitlements";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"HelloWorld/Preview Content\"";
+				DEVELOPMENT_TEAM = "$(APPLE_DEVELOPMENT_TEAM)";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = "$(APPLE_DEVELOPMENT_TEAM)";
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = HelloWorld/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -629,8 +973,10 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.HelloWorld;
+				PRODUCT_BUNDLE_IDENTIFIER = "$(BUNDLE_IDENTIFIER)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "$(RELEASE_PROVISIONING_PROFILE)";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "$(RELEASE_PROVISIONING_PROFILE)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -663,6 +1009,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		12FC04A52D64368200C33991 /* XCRemoteSwiftPackageReference "xcstrings-tool-plugin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "http://github.com/liamnichols/xcstrings-tool-plugin.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		12FC04A62D64373B00C33991 /* XCStringsToolPlugin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 12FC04A52D64368200C33991 /* XCRemoteSwiftPackageReference "xcstrings-tool-plugin" */;
+			productName = "plugin:XCStringsToolPlugin";
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 12605A2A2D62D6A800EEC6A8 /* Project object */;
 }

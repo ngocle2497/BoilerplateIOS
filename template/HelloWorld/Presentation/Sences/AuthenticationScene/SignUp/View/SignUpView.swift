@@ -2,8 +2,8 @@ import SwiftUI
 
 struct SignUpView: View {
     var body: some View {
-        ScreenView() {
-            Text("Hello SignUpView!")
+        ScreenView {
+            Text(verbatim: "Hello SignUpView!")
                 .foregroundStyle(.primary500)
         }
     }

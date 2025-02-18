@@ -1,18 +1,14 @@
 {
   "name": "ios-boiler-template",
-  "version": "1.0.24",
-  "description": "Boilerplate IOS with clean architecture, MMKV, RxSwift, Moya, Task, ...",
+  "version": "1.0.29",
+  "description": "Boilerplate IOS with clean architecture, MMKV, Combine, Alamofire, Task, ...",
   "author": "Ngoc Le lhngoc2497@gmail.com",
   "license": "MIT",
   "files": [
     "template",
     "template.config.js",
-    "!template/HelloWorld.xcworkspace",
-    "!template/Data.xcworkspace",
-    "!template/Domain.xcworkspace",
-    "!template/Infrastructure.xcworkspace",
     "!template/vendor/",
-    "!template/ios/Pods/"
+    "!template/HelloWorld/Pods/"
   ],
   "repository": {
     "type": "git",

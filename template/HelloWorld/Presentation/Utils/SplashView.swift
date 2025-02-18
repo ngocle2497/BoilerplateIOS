@@ -14,11 +14,11 @@ struct SplashView: View {
         .background(.bg)
         .opacity(shown ? 1 : 0)
         .task {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1, execute: {
                 withAnimation {
                     shown = false
                 }
-                self.appState.preparing = false
+                self.appState.setPreparing(false)
             })
         }
         .ignoresSafeArea()
