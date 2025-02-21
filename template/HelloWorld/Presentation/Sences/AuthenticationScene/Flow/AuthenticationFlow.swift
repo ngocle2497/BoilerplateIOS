@@ -31,7 +31,7 @@ struct AuthenticationView: View {
         .onFirstAppear {
             authenticationFlow.setup(appState: appState)
         }
-        .overlay(.black.opacity(appState.screenFlow == .authentication ? 0 : 0.5))
+        .overlay(.black.opacity(appState.token == nil ? 0 : 0.5))
         .transition(
             .asymmetric(
                 insertion: .move(edge: .trailing),
@@ -47,7 +47,7 @@ extension AuthenticationFlow {
         let actions: SignInView.ViewModelActions = .init {
             self.push(.signup)
         } shownAuthenticatedScreen: {
-            self.appState?.setScreenFlow(.authenticated)
+            self.appState?.setToken("Demo token")
         }
         
         return .init(actions: actions)

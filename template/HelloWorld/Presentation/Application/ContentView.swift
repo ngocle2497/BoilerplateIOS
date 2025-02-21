@@ -19,11 +19,10 @@ struct ContentView: View {
         if appState.preparing {
             EmptyView()
         } else {
-            switch appState.screenFlow {
-            case .authentication:
-                AuthenticationView()
-            case .authenticated:
+            if appState.token != nil {
                 AuthenticatedView()
+            } else {
+                AuthenticationView()
             }
         }
     }

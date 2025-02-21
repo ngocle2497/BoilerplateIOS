@@ -31,7 +31,7 @@ struct AuthenticatedView: View {
         .onFirstAppear {
             authenticatedFlow.setup(appState: appState)
         }
-        .overlay(.black.opacity(appState.screenFlow == .authenticated ? 0 : 0.5))
+        .overlay(.black.opacity(appState.token != nil ? 0 : 0.5))
         .transition(
             .asymmetric(
                 insertion: .move(edge: .trailing),
@@ -45,7 +45,7 @@ struct AuthenticatedView: View {
 extension AuthenticatedFlow {
     private func makeHomeViewModel() -> HomeView.ViewModel {
         let actions: HomeView.HomeViewModelActions = .init {
-            self.appState?.setScreenFlow(.authentication)
+            self.appState?.setToken(nil)
         }
         return .init(actions: actions, userRepository: UserRepositoriesImpl(networkService: NetworkingServiceImpl.shared))
     }

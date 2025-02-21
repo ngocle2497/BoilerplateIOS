@@ -2,23 +2,10 @@ import Foundation
 import SwiftUI
 import UIKit
 
-fileprivate extension ColorScheme {
-    static func fromString(value: String?) -> ColorScheme {
-        switch value {
-        case "light":
-            return .light
-        case "dark":
-            return .dark
-        default:
-            return .light
-        }
-    }
-}
-
 final class AppState: ObservableObject {
-    @Published private(set) var screenFlow: ScreenFlow      = .authentication
+    @Published private(set) var token: String?              = nil
     @Published private(set) var preparing                   = true
-    @Published private(set) var colorScheme: ColorScheme    = .light
+    @Published private(set) var colorScheme: Theme          = .light
     @Published private(set) var language: Language          = .english
     
     enum Language: String {
@@ -38,21 +25,36 @@ final class AppState: ObservableObject {
         }
     }
     
+    enum Theme: String {
+        case light = "light"
+        case dark = "dark"
+        case system = "system"
+        
+        static func fromString(value: String?) -> Theme {
+            guard let dest = Theme(rawValue: value ?? "") else {
+                return .light
+            }
+            return dest
+        }
+    }
+    
     func setPreparing(_ preparing: Bool) {
         self.preparing = preparing
     }
     
     func setLanguage(_ language: Language) {
+        MMKV_STORAGE.appLanguage = language.rawValue
         self.language = language
     }
     
-    func setTheme(_ colorScheme: ColorScheme) {
+    func setTheme(_ colorScheme: Theme) {
+        MMKV_STORAGE.appTheme = colorScheme.rawValue
         self.colorScheme = colorScheme
     }
     
-    func setScreenFlow(_ screenFlow: ScreenFlow) {
+    func setToken(_ token: String?) {
         withAnimation(.easeInOut(duration: 0.3)) {
-            self.screenFlow = screenFlow
+            self.token = token
         }
     }
 }
@@ -61,11 +63,8 @@ extension AppState {
     static func create() -> AppState {
         let appState: AppState = .init()
         appState.setLanguage(Language.fromString(value: MMKV_STORAGE.appLanguage))
-        appState.setTheme(ColorScheme.fromString(value: MMKV_STORAGE.appTheme))
-        let token = MMKV_STORAGE.appToken
-        if let token {
-            appState.setScreenFlow(.authenticated)
-        }
+        appState.setTheme(Theme.fromString(value: MMKV_STORAGE.appTheme))
+        appState.setToken(MMKV_STORAGE.appToken)
         return appState
     }
     enum ScreenFlow {
