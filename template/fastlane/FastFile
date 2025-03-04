@@ -1,0 +1,62 @@
+default_platform(:ios)
+
+
+before_all do |lane|
+  environment = lane_context[SharedValues::ENVIRONMENT]
+  import('HelperFile')
+  unless environment.nil?
+    load_env_from_xcconfig(file: "#{ENV["XCCONFIG_FILE"]}")
+    BUILD_IOS_FILENAME = "#{ENV['APP_DISPLAY_NAME']}-IOS-#{ENV['SCHEME_SUFFIX']}-#{ENV['VERSION_NAME']}-#{ENV['VERSION_CODE']}"
+    puts "Environment Variables:"
+    ENV.each do |key, value|
+      puts "#{key}: #{value}"
+    end
+  end
+end
+
+
+platform :ios do
+
+  desc "Upload IPA to TestFlight"
+  lane :upload_to_TF do |params|
+    ipa_path = "./fastlane/#{ENV["EXPORT_DIR"]}" + "/#{BUILD_IOS_FILENAME}.ipa"
+      if ENV['FASTLANE_USER']
+        upload_to_testflight({
+          apple_id: ENV['APPLE_ID'],
+          ipa: ipa_path,
+          app_identifier: ENV['BUNDLE_IDENTIFIER'],
+          skip_waiting_for_build_processing: true,
+        })
+      else
+        api_key = app_store_connect_api_key(
+          key_id: ENV["APPSTORE_CONNECT_KEY_ID"],
+          issuer_id: ENV["APPSTORE_CONNECT_ISSUER_ID"],
+          key_filepath: ENV["APPSTORE_CONNECT_KEY_PATH"],
+          duration: 1200,
+          in_house: false
+        )
+        upload_to_testflight({
+          api_key: api_key,
+          ipa: ipa_path,
+          skip_submission: true,
+          app_identifier: ENV['BUNDLE_IDENTIFIER']
+        })
+      end
+  end
+
+  desc "IOS ipa"
+  lane :build_ipa do |params|
+    build_app(
+      workspace: "ios/#{ENV['WORKSPACE_NAME']}.xcworkspace",
+      scheme: "#{ENV['WORKSPACE_NAME']}-#{ENV['SCHEME_SUFFIX']}",
+      export_method: ENV['EXPORT_METHOD'],
+      output_name: "#{BUILD_IOS_FILENAME}.ipa",
+      output_directory: "./fastlane/#{ENV["EXPORT_DIR"]}",
+      export_options: {
+        provisioningProfiles: { 
+          "#{ENV['BUNDLE_IDENTIFIER']}" => "#{ENV['PUBLISH_PROVISIONING_PROFILE']}"
+        }
+      }
+    )
+  end
+end

@@ -1,0 +1,95 @@
+lane :notify_testers do |params|
+  uri = URI.parse(ENV["GOOGLE_CHAT_WEBHOOK"])
+  text = params[:text]
+  thread = {
+    name: ENV["GOOGLE_CHAT_THREAD"],
+  } 
+  cards =  [
+        {
+          header: {
+            title: params[:title],
+            subtitle: ENV["VERSION_NAME"]
+          },
+          sections: [
+            {
+              widgets: [
+                {
+                  keyValue: {
+                    topLabel: "Build number",
+                    content: ENV["VERSION_CODE"],
+                    contentMultiline: true
+                  }
+                }
+              ]
+            },
+            {
+              widgets: [
+                {
+                  buttons: [
+                    {
+                      textButton: {
+                        text: "Install app",
+                        onClick: {
+                          openLink: {
+                            url: params[:buttonUrl]
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ] 
+
+   # Create the HTTP objects
+   http = Net::HTTP.new(uri.host, uri.port)
+   http.use_ssl = true
+   http.verify_mode = OpenSSL::SSL::VERIFY_PEER
+   request = Net::HTTP::Post.new(uri.request_uri)
+   request.content_type = "application/json"
+   request.body = {"text":text, "cards":cards, "thread":thread}.to_json
+
+   # Send the request
+   response = http.request(request)
+   case response
+   when Net::HTTPSuccess
+     UI.message("Message sent!")
+   when Net::HTTPServerError
+     UI.message(response.message)
+   else
+     UI.message(response.message)
+   end
+end
+
+lane :load_env_from_json do |params|
+  json_data = JSON.parse(File.read(params[:file]))
+
+  # Set the environment variables
+  json_data.each do |key, value|
+    json_data.each do |scope, values|
+      values.each do |key, value|
+        ENV["#{key}"] = value
+      end
+    end
+  end
+end
+
+lane :load_env_from_xcconfig do |params|
+  xcconfig_path = params[:file]
+  puts "Loading environment variables from #{xcconfig_path}"
+  if File.exist?(xcconfig_path)
+    File.foreach(xcconfig_path) do |line|
+      # Skip comments and empty lines
+      next if line.strip.empty? || line.strip.start_with?("//", "#")
+      
+      # Parse key-value pairs
+      key, value = line.split('=').map(&:strip)
+      ENV[key] = value if key && value
+    end
+  else
+    puts "File #{xcconfig_path} does not exist"
+  end
+end
