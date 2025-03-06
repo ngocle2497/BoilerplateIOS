@@ -3,7 +3,6 @@ import netfox
 import Alamofire
 import SwiftDate
 
-
 class AppDelegate: NSObject, UIApplicationDelegate {
     static var orientation: UIInterfaceOrientationMask = .portrait
     
@@ -24,8 +23,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
         MMKV_STORAGE.createInstance(cryptKey: Configuration.MMKV_CRYPTKEY)
         API_CONSTANT.setBaseUrl(with: Configuration.API_URL)
         SwiftDate.defaultRegion = .local
-        
-//        NetworkService.shared.enableSSL(with:sslConfig)
+        NetworkingServiceImpl.shared.delegate = self
+//        NetworkingServiceImpl.shared.enableSSL(with:sslConfig)
     }
 }
 
