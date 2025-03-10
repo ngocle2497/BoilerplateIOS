@@ -1,6 +1,6 @@
 {
   "name": "ios-boiler-template",
-  "version": "1.0.33",
+  "version": "1.0.40",
   "description": "Boilerplate IOS with clean architecture, MMKV, Combine, Alamofire, Task, ...",
   "author": "Ngoc Le lhngoc2497@gmail.com",
   "license": "MIT",

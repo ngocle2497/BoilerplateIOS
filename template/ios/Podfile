@@ -17,4 +17,5 @@ post_install do |installer|
           end
       end
   end
+  system("bundle install")
 end

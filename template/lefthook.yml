@@ -1,0 +1,9 @@
+commit-msg:
+  scripts:
+    'verify-commit-msg':
+      runner: bash
+pre-commit:
+  piped: true
+  scripts:
+    'verify-author':
+      runner: bash
